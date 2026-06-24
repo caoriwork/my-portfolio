@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>定例会議 議事録</title>
+<style>
+  :root {
+    --bg: #f8fafb;
+    --card: #ffffff;
+    --teal: #0f8b8d;
+    --teal-soft: #f3f8f8;
+    --ink: #1f2a2e;
+    --ink-soft: #5c6a70;
+    --line: #e6ecee;
+    --green: #16a34a;
+    --green-soft: #edf8f2;
+    --amber: #d99e00;
+    --amber-soft: #fff8e6;
+    --grey: #9aa6ac;
+    --blue: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    padding: 48px 20px 80px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+
+  /* Header */
+  .doc-head { margin-bottom: 36px; }
+  .doc-emoji {
+    font-size: 38px; line-height: 1;
+    display: inline-block; margin-bottom: 14px;
+  }
+  h1 {
+    font-size: 34px; font-weight: 700; letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .h1-en {
+    font-size: 14px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--teal);
+    margin-top: 6px;
+  }
+  .subtitle {
+    font-size: 15px; color: var(--ink-soft); margin-top: 12px;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 24px 26px;
+    margin-bottom: 20px;
+  }
+  .section-label {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-soft);
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 16px;
+  }
+  .section-label::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--teal);
+  }
+
+  /* Meeting info table */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    row-gap: 2px;
+  }
+  .info-grid .k {
+    font-size: 14px; color: var(--ink-soft); font-weight: 500;
+    padding: 9px 0;
+  }
+  .info-grid .v {
+    font-size: 14px; color: var(--ink); font-weight: 500;
+    padding: 9px 0; border-bottom: 1px solid var(--line);
+  }
+  .info-grid .k { border-bottom: 1px solid var(--line); }
+  .info-grid > .k:last-of-type, .info-grid > .v:last-of-type { border-bottom: none; }
+
+  /* Agenda */
+  .agenda { list-style: none; counter-reset: ag; }
+  .agenda li {
+    counter-increment: ag;
+    display: flex; gap: 14px; align-items: baseline;
+    padding: 7px 0; font-size: 15px;
+  }
+  .agenda li::before {
+    content: counter(ag);
+    flex: 0 0 24px; height: 24px;
+    display: grid; place-items: center;
+    background: var(--teal-soft); color: var(--teal);
+    border-radius: 6px; font-size: 12px; font-weight: 700;
+  }
+
+  /* Two column row */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  /* Decisions (green, larger) */
+  .decisions {
+    background: var(--green-soft);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--green);
+    border-radius: 12px;
+    padding: 26px 28px;
+  }
+  .decisions .section-label::before { background: var(--green); }
+  .decisions ul { list-style: none; }
+  .decisions li {
+    font-size: 16px; font-weight: 600; color: var(--ink);
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 10px 0; border-bottom: 1px dashed rgba(22,163,74,0.18);
+  }
+  .decisions li:last-child { border-bottom: none; }
+  .decisions .check {
+    flex: 0 0 22px; height: 22px; border-radius: 50%;
+    background: var(--green); color: #fff;
+    display: grid; place-items: center; font-size: 12px;
+    margin-top: 2px;
+  }
+
+  /* Issues (amber) */
+  .issues {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--teal);
+    border-radius: 12px;
+    padding: 24px 26px;
+  }
+  .issues .section-label::before { background: var(--teal); }
+  .issues ul { list-style: none; }
+  .issues li {
+    font-size: 14px; color: var(--ink);
+    padding: 8px 0 8px 20px; position: relative;
+    border-bottom: 1px dashed rgba(217,158,0,0.2);
+  }
+  .issues li:last-child { border-bottom: none; }
+  .issues li::before {
+    content: "!"; position: absolute; left: 0; top: 8px;
+    width: 14px; height: 14px; border-radius: 4px;
+    background: var(--teal); color: #fff;
+    font-size: 10px; font-weight: 700;
+    display: grid; place-items: center;
+  }
+
+  /* ToDo (main, teal) */
+  .todo {
+    background: var(--teal-soft);
+    border: 1px solid #dceaea;
+    border-radius: 14px;
+    padding: 26px 28px;
+    margin-bottom: 20px;
+  }
+  .todo .section-label { font-size: 13px; }
+  .todo-head {
+    display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px;
+  }
+  .todo-head h2 { font-size: 20px; font-weight: 700; }
+  .todo-head .pill {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+    background: var(--teal); color: #fff;
+    padding: 3px 10px; border-radius: 999px;
+  }
+  table.todo-table { width: 100%; border-collapse: collapse; }
+  table.todo-table thead th {
+    font-size: 12px; font-weight: 600; color: var(--ink-soft);
+    text-align: left; text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 0 14px 12px;
+  }
+  table.todo-table tbody td {
+    background: var(--card); padding: 16px 14px;
+    font-size: 15px; border-top: 6px solid var(--teal-soft);
+  }
+  table.todo-table tbody tr td:first-child {
+    border-top-left-radius: 10px; border-bottom-left-radius: 10px;
+    font-weight: 600;
+  }
+  table.todo-table tbody tr td:last-child {
+    border-top-right-radius: 10px; border-bottom-right-radius: 10px;
+  }
+  .owner {
+    display: inline-grid; place-items: center;
+    width: 30px; height: 30px; border-radius: 8px;
+    background: var(--teal-soft); color: var(--teal);
+    font-weight: 700; font-size: 13px;
+  }
+  .status {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 13px; font-weight: 600;
+    padding: 5px 12px; border-radius: 999px;
+  }
+  .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; }
+  .s-todo { background: #f1f3f4; color: #6b7780; }
+  .s-todo::before { background: var(--grey); }
+  .s-doing { background: #e8f0fe; color: var(--blue); }
+  .s-doing::before { background: var(--blue); }
+  .s-done { background: var(--green-soft); color: var(--green); }
+  .s-done::before { background: var(--green); }
+
+  /* Next check */
+  .next ul { list-style: none; }
+  .next li {
+    font-size: 14px; padding: 8px 0 8px 22px; position: relative;
+    color: var(--ink);
+  }
+  .next li::before {
+    content: "→"; position: absolute; left: 0; color: var(--teal);
+    font-weight: 700;
+  }
+
+  /* Footer meta */
+  .meta-foot {
+    font-size: 12px; color: var(--grey); text-align: center;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 640px) {
+    body { padding: 28px 14px 60px; }
+    h1 { font-size: 26px; }
+    .two-col { grid-template-columns: 1fr; }
+    .info-grid { grid-template-columns: 96px 1fr; }
+    table.todo-table { font-size: 13px; }
+    table.todo-table tbody td { padding: 12px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="doc-head">
+    <h1>定例会議 議事録</h1>
+    <div class="h1-en">Meeting Minutes</div>
+    <p class="subtitle">会議内容の記録とタスク管理</p>
+  </header>
+
+  <!-- 会議情報 -->
+  <section class="card">
+    <div class="section-label">会議情報</div>
+    <div class="info-grid">
+      <div class="k">会議名</div><div class="v">カスタマーサポート定例会</div>
+      <div class="k">日時</div><div class="v">2026/06/21 10:00〜11:00</div>
+      <div class="k">参加者</div><div class="v">営業、CS、業務委託</div>
+      <div class="k">作成者</div><div class="v">高橋</div>
+      <div class="k">次回会議</div><div class="v">2026/06/28</div>
+    </div>
+  </section>
+
+  <!-- 議題 -->
+  <section class="card">
+    <div class="section-label">議題</div>
+    <ol class="agenda">
+      <li>問い合わせ件数の振り返り</li>
+      <li>FAQ更新について</li>
+      <li>契約更新案件の進捗確認</li>
+    </ol>
+  </section>
+
+  <!-- 決定事項 + 課題 -->
+  <div class="two-col">
+    <section class="decisions">
+      <div class="section-label">決定事項</div>
+      <ul>
+        <li><span class="check">✓</span>FAQを月末までに更新</li>
+        <li><span class="check">✓</span>問い合わせ対応フローを改訂</li>
+        <li><span class="check">✓</span>契約更新アラート運用を開始</li>
+      </ul>
+    </section>
+
+    <section class="issues">
+      <div class="section-label">課題・懸念事項</div>
+      <ul>
+        <li>問い合わせ件数が増加傾向</li>
+        <li>FAQの情報が一部古い</li>
+        <li>更新期限管理が属人化している</li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- ToDo一覧（メイン） -->
+  <section class="todo">
+    <div class="todo-head">
+      <h2>ToDo一覧</h2>
+    </div>
+    <table class="todo-table">
+      <thead>
+        <tr><th>タスク</th><th>担当</th><th>期限</th><th>状況</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>FAQ更新</td>
+          <td><span class="owner">C</span></td>
+          <td>6/30</td>
+          <td><span class="status s-doing">進行中</span></td>
+        </tr>
+        <tr>
+          <td>フロー改訂</td>
+          <td><span class="owner">業</span></td>
+          <td>6/28</td>
+          <td><span class="status s-todo">未着手</span></td>
+        </tr>
+        <tr>
+          <td>更新アラート設定</td>
+          <td><span class="owner">法</span></td>
+          <td>6/25</td>
+          <td><span class="status s-done">完了</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 次回確認事項 -->
+  <section class="card next">
+    <div class="section-label">次回確認事項</div>
+    <ul>
+      <li>FAQ更新状況</li>
+      <li>契約更新対象の確認</li>
+      <li>問い合わせ件数推移</li>
+    </ul>
+  </section>
+
+  <p class="meta-foot">作成者: 高橋 ・ 最終更新 2026/06/21</p>
+
+</div>
+</body>
+</html>

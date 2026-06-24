@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>業務引継ぎシート</title>
+<style>
+  :root {
+    --bg: #f8fafb;
+    --card: #ffffff;
+    --teal: #0f8b8d;
+    --teal-soft: #f3f8f8;
+    --ink: #1f2a2e;
+    --ink-soft: #5c6a70;
+    --line: #e6ecee;
+    --green: #16a34a;
+    --green-soft: #edf8f2;
+    --amber: #d99e00;
+    --amber-soft: #fff8e6;
+    --red: #dc2626;
+    --red-soft: #fdeceb;
+    --grey: #9aa6ac;
+    --blue: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    padding: 48px 20px 80px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+
+  /* Header */
+  .doc-head { margin-bottom: 36px; }
+  h1 {
+    font-size: 34px; font-weight: 700; letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .h1-en {
+    font-size: 14px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--teal);
+    margin-top: 6px;
+  }
+  .subtitle {
+    font-size: 15px; color: var(--ink-soft); margin-top: 12px;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 24px 26px;
+    margin-bottom: 20px;
+  }
+  .section-label {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-soft);
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 16px;
+  }
+  .section-label::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--teal);
+  }
+
+  /* Basic info table */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    row-gap: 2px;
+  }
+  .info-grid .k {
+    font-size: 14px; color: var(--ink-soft); font-weight: 500;
+    padding: 9px 0; border-bottom: 1px solid var(--line);
+  }
+  .info-grid .v {
+    font-size: 14px; color: var(--ink); font-weight: 500;
+    padding: 9px 0; border-bottom: 1px solid var(--line);
+  }
+  .info-grid > .k:last-of-type, .info-grid > .v:last-of-type { border-bottom: none; }
+
+  /* Overview (teal, important) */
+  .overview {
+    background: var(--teal-soft);
+    border: 1px solid #dceaea;
+    border-radius: 14px;
+    padding: 26px 28px;
+    margin-bottom: 20px;
+  }
+  .overview .section-label { font-size: 13px; }
+  .overview ol { list-style: none; counter-reset: ov; }
+  .overview li {
+    counter-increment: ov;
+    display: flex; gap: 14px; align-items: baseline;
+    padding: 9px 0; font-size: 16px; font-weight: 600;
+    border-bottom: 1px dashed rgba(15,139,141,0.16);
+  }
+  .overview li:last-child { border-bottom: none; }
+  .overview li::before {
+    content: counter(ov);
+    flex: 0 0 26px; height: 26px;
+    display: grid; place-items: center;
+    background: var(--teal); color: #fff;
+    border-radius: 7px; font-size: 13px; font-weight: 700;
+  }
+
+  /* Flow diagram */
+  .flow { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .flow-node {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 10px; padding: 12px 22px;
+    font-size: 15px; font-weight: 600; color: var(--ink);
+    text-align: center; min-width: 200px;
+  }
+  .flow-node.start { border-left: 4px solid var(--teal); }
+  .flow-node.end { border-left: 4px solid var(--green); }
+  .flow-decision {
+    background: var(--teal); color: #fff;
+    border-radius: 10px; padding: 12px 22px;
+    font-size: 15px; font-weight: 700; text-align: center;
+  }
+  .flow-arrow { color: var(--teal); font-size: 20px; line-height: 1; padding: 8px 0; }
+  .flow-branch {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    width: 100%; max-width: 520px;
+  }
+  .branch-col { display: flex; flex-direction: column; align-items: center; }
+  .branch-label {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+    padding: 3px 12px; border-radius: 999px; margin-bottom: 6px;
+  }
+  .yes { background: var(--green-soft); color: var(--green); }
+  .no  { background: var(--amber-soft); color: var(--amber); }
+  .branch-col .flow-node { min-width: 0; width: 100%; font-size: 14px; padding: 12px 14px; }
+  .flow-merge {
+    font-size: 12px; color: var(--ink-soft); padding: 6px 0 2px;
+  }
+
+  /* Steps table */
+  table.steps { width: 100%; border-collapse: collapse; }
+  table.steps thead th {
+    font-size: 12px; font-weight: 600; color: var(--ink-soft);
+    text-align: left; text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 0 14px 12px;
+  }
+  table.steps tbody td {
+    padding: 14px; font-size: 15px; border-top: 1px solid var(--line);
+  }
+  table.steps tbody tr:first-child td { border-top: none; }
+  table.steps tbody td:first-child {
+    width: 56px;
+  }
+  .step-no {
+    display: inline-grid; place-items: center;
+    width: 28px; height: 28px; border-radius: 8px;
+    background: var(--teal-soft); color: var(--teal);
+    font-weight: 700; font-size: 13px;
+  }
+
+  /* Notes (caution) */
+  .notes {
+    background: var(--amber-soft);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--amber);
+    border-radius: 12px;
+    padding: 24px 26px;
+    margin-bottom: 20px;
+  }
+  .notes .section-label::before { background: var(--amber); }
+  .notes ul { list-style: none; }
+  .notes li {
+    font-size: 15px; color: var(--ink); font-weight: 500;
+    padding: 9px 0 9px 26px; position: relative;
+    border-bottom: 1px dashed rgba(217,158,0,0.22);
+  }
+  .notes li:last-child { border-bottom: none; }
+  .notes li::before {
+    content: "!"; position: absolute; left: 0; top: 11px;
+    width: 16px; height: 16px; border-radius: 5px;
+    background: var(--amber); color: #fff;
+    font-size: 11px; font-weight: 700;
+    display: grid; place-items: center;
+  }
+  .notes li.critical { font-weight: 700; }
+  .notes li.critical::before { background: var(--red); }
+
+  /* FAQ */
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 14px 0;
+  }
+  .faq-item:last-child { padding-bottom: 0; border-bottom: none; }
+  .faq-item:first-child { padding-top: 0; }
+  .faq-q {
+    display: flex; gap: 10px; align-items: baseline;
+    font-size: 15px; font-weight: 700; color: var(--ink);
+  }
+  .faq-a {
+    display: flex; gap: 10px; align-items: baseline;
+    font-size: 14px; color: var(--ink-soft); margin-top: 6px;
+  }
+  .faq-badge {
+    flex: 0 0 22px; height: 22px; border-radius: 6px;
+    display: grid; place-items: center; font-size: 12px; font-weight: 700;
+  }
+  .faq-q .faq-badge { background: var(--teal); color: #fff; }
+  .faq-a .faq-badge { background: var(--teal-soft); color: var(--teal); }
+
+  /* Related docs */
+  .related ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; }
+  .related li {
+    font-size: 14px; padding: 8px 0 8px 22px; position: relative; color: var(--ink);
+  }
+  .related li::before {
+    content: "→"; position: absolute; left: 0; color: var(--teal); font-weight: 700;
+  }
+
+  /* Footer meta */
+  .meta-foot {
+    font-size: 12px; color: var(--grey); text-align: center;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 640px) {
+    body { padding: 28px 14px 60px; }
+    h1 { font-size: 26px; }
+    .info-grid { grid-template-columns: 96px 1fr; }
+    .related ul { grid-template-columns: 1fr; }
+    .flow-branch { gap: 12px; }
+    .flow-node { min-width: 0; width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="doc-head">
+    <h1>業務引継ぎシート</h1>
+    <div class="h1-en">Task Handover Sheet</div>
+    <p class="subtitle">業務内容・手順・注意事項の共有</p>
+  </header>
+
+  <!-- ① 基本情報 -->
+  <section class="card">
+    <div class="section-label">基本情報</div>
+    <div class="info-grid">
+      <div class="k">業務名</div><div class="v">問い合わせ一次対応</div>
+      <div class="k">担当部署</div><div class="v">カスタマーサポート</div>
+      <div class="k">現担当</div><div class="v">高橋</div>
+      <div class="k">引継先</div><div class="v">鈴木</div>
+      <div class="k">引継日</div><div class="v">2026/07/01</div>
+    </div>
+  </section>
+
+  <!-- ② 業務概要 -->
+  <section class="overview">
+    <div class="section-label">業務概要</div>
+    <ol>
+      <li>顧客からの問い合わせ受付</li>
+      <li>内容確認</li>
+      <li>FAQ回答</li>
+      <li>エスカレーション判断</li>
+      <li>対応履歴登録</li>
+    </ol>
+  </section>
+
+  <!-- ③ 業務フロー -->
+  <section class="card">
+    <div class="section-label">業務フロー</div>
+    <div class="flow">
+      <div class="flow-node start">問い合わせ受信</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node">内容確認</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-decision">FAQで回答可能？</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-branch">
+        <div class="branch-col">
+          <span class="branch-label yes">Yes</span>
+          <div class="flow-node">回答送信</div>
+        </div>
+        <div class="branch-col">
+          <span class="branch-label no">No</span>
+          <div class="flow-node">専門部署へ依頼</div>
+        </div>
+      </div>
+      <div class="flow-merge">合流</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node end">対応履歴登録</div>
+    </div>
+  </section>
+
+  <!-- ④ 業務手順 -->
+  <section class="card">
+    <div class="section-label">業務手順</div>
+    <table class="steps">
+      <thead>
+        <tr><th>No</th><th>作業内容</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="step-no">1</span></td><td>問い合わせ内容を確認</td></tr>
+        <tr><td><span class="step-no">2</span></td><td>FAQ検索</td></tr>
+        <tr><td><span class="step-no">3</span></td><td>回答作成</td></tr>
+        <tr><td><span class="step-no">4</span></td><td>履歴登録</td></tr>
+        <tr><td><span class="step-no">5</span></td><td>完了報告</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ⑤ 注意事項 -->
+  <section class="notes">
+    <div class="section-label">注意事項</div>
+    <ul>
+      <li>回答前に顧客情報を確認</li>
+      <li class="critical">個人情報は社外共有禁止</li>
+      <li>判断に迷う場合は必ずエスカレーション</li>
+    </ul>
+  </section>
+
+  <!-- ⑥ よくある問い合わせ -->
+  <section class="card">
+    <div class="section-label">よくある問い合わせ</div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-badge">Q</span>パスワードを忘れた</div>
+      <div class="faq-a"><span class="faq-badge">A</span>再設定URLを案内</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-badge">Q</span>請求書を再発行したい</div>
+      <div class="faq-a"><span class="faq-badge">A</span>管理画面から発行</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-badge">Q</span>問い合わせ状況を確認したい</div>
+      <div class="faq-a"><span class="faq-badge">A</span>管理画面の履歴から確認</div>
+    </div>
+        <div class="faq-item">
+      <div class="faq-q"><span class="faq-badge">Q</span>サービスの使い方がわからない</div>
+      <div class="faq-a"><span class="faq-badge">A</span>オンラインマニュアルを案内</div>
+    </div>
+  </section>
+
+  <!-- ⑦ 関連資料 -->
+  <section class="card related">
+    <div class="section-label">関連資料</div>
+    <ul>
+      <li>問い合わせ対応マニュアル</li>
+      <li>FAQ一覧</li>
+      <li>契約管理台帳ダッシュボード</li>
+      <li>問い合わせ管理ダッシュボード</li>
+    </ul>
+  </section>
+
+  <p class="meta-foot">作成者: 高橋 ・ 最終更新 2026/06/21</p>
+
+</div>
+</body>
+</html>

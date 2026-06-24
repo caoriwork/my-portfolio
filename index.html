@@ -1,856 +1,656 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caori | 実務特化型AIコンサルタント</title>
-    <meta name="description" content="オンライン秘書の実務経験を活かした、事務サポート×AIコンサルティング。">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome (Latest version for X-Twitter icon) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <style>
-        /* --- CSS Variables & Reset --- */
-        :root {
-            --color-main: #3b5c85;      
-            --color-accent: #8ab0d0;    
-            --color-bg: #f4f7fa;        
-            --color-white: #ffffff;
-            --color-text: #444444;      
-            --color-text-light: #f8f9fa;
-            
-            --bg-body: var(--color-bg);
-            --bg-card: var(--color-white);
-            --text-primary: var(--color-main);
-            --text-body: var(--color-text);
-            --btn-bg: var(--color-main);
-            --btn-text: var(--color-white);
-            --section-padding: 80px 0;
-            --border-radius: 16px;
-            --transition: all 0.3s ease;
-        }
-
-        [data-theme="dark"] {
-            --bg-body: #1a2639;
-            --bg-card: #2d4059;
-            --text-primary: #a8cce8;
-            --text-body: #e0e0e0;
-            --btn-bg: #8ab0d0;
-            --btn-text: #1a2639;
-            --color-bg: #121212;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-body);
-            line-height: 1.8;
-            transition: background-color 0.4s ease, color 0.4s ease;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
-            color: var(--text-primary);
-            line-height: 1.4;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--btn-bg);
-            color: var(--btn-text);
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: var(--transition);
-            border: 2px solid transparent;
-        }
-
-        .btn:hover {
-            background-color: transparent;
-            color: var(--text-primary);
-            border-color: var(--text-primary);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: var(--color-accent);
-            margin: 15px auto 0;
-            border-radius: 2px;
-        }
-
-        /* --- Animations --- */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- Header --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.03);
-            transition: background-color 0.4s ease;
-        }
-
-        [data-theme="dark"] header {
-            background-color: rgba(45, 64, 89, 0.95);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            font-size: 0.95rem;
-            font-weight: 500;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--color-accent);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .theme-switch {
-            cursor: pointer;
-            font-size: 1.2rem;
-            color: var(--text-primary);
-            margin-left: 20px;
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--text-primary);
-        }
-
-        /* --- Hero Section --- */
-        #hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-image: linear-gradient(rgba(59, 92, 133, 0.4), rgba(59, 92, 133, 0.3)), url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            text-align: center;
-            color: var(--color-white);
-            padding: 0 20px;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            text-shadow: 
-                0 0 15px rgba(255, 255, 255, 0.6),
-                0 0 5px rgba(255, 255, 255, 0.4),
-                0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-main-copy {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            letter-spacing: 0.05em;
-            line-height: 1.3;
-        }
-
-        /* ダークモード時のメインコピー特殊デザイン */
-        [data-theme="dark"] .hero-main-copy span {
-            background-color: rgba(0, 0, 0, 0.4); 
-            padding: 5px 15px;
-            display: inline-block;
-            margin-bottom: 5px;
-            box-decoration-break: clone;
-            -webkit-box-decoration-break: clone;
-        }
-
-        .hero-sub-copy {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            font-weight: 500;
-            opacity: 1;
-        }
-
-        .hero-btn {
-            background-color: var(--color-accent);
-            color: white;
-            border-color: transparent;
-            text-shadow: none;
-        }
-        .hero-btn:hover {
-            background-color: white;
-            color: var(--color-main);
-            border-color: white;
-        }
-
-        /* --- About Section --- */
-        #about {
-            padding: var(--section-padding);
-        }
-
-        .about-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            background-color: var(--bg-card);
-            padding: 50px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
-        }
-
-        .about-image {
-            flex: 0 0 300px;
-            text-align: center;
-        }
-
-        .about-image img {
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 5px solid var(--color-accent);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            background-color: #fff;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--color-accent);
-            line-height: 1.6;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            text-align: justify;
-        }
-
-        /* --- Skills (Experience) Section --- */
-        #skills {
-            padding: var(--section-padding);
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 2px;
-            background-color: var(--color-accent);
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            padding: 20px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-
-        .timeline-item:nth-child(odd) {
-            left: 0;
-            text-align: right;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: var(--color-main);
-            border: 4px solid var(--bg-body);
-            border-radius: 50%;
-            top: 25px;
-            z-index: 1;
-        }
-
-        .timeline-item:nth-child(odd)::after {
-            right: -10px;
-        }
-
-        .timeline-item:nth-child(even)::after {
-            left: -10px;
-        }
-
-        .experience-card {
-            background-color: var(--bg-card);
-            padding: 25px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-
-        .experience-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .experience-card h3 {
-            color: var(--color-main);
-            font-size: 1.25rem;
-            line-height: 1.4;
-            margin-bottom: 8px;
-        }
-        
-        [data-theme="dark"] .experience-card h3 {
-            color: var(--color-accent);
-        }
-
-        .experience-card .duration {
-            display: inline-block;
-            font-size: 0.9rem;
-            color: var(--color-accent);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .experience-card ul li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 5px;
-            text-align: left;
-            font-size: 0.95rem;
-        }
-
-        .experience-card ul li::before {
-            content: '•';
-            color: var(--color-accent);
-            position: absolute;
-            left: 0;
-        }
-
-        /* --- Works (Support Menu) Section --- */
-        #works {
-            padding: var(--section-padding);
-            background-color: rgba(138, 176, 208, 0.1); 
-        }
-        
-        [data-theme="dark"] #works {
-            background-color: rgba(0,0,0,0.2);
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .menu-card {
-            background-color: var(--bg-card);
-            padding: 40px 30px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            transition: var(--transition);
-            border-top: 4px solid var(--color-accent);
-        }
-
-        .menu-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-        }
-
-        .menu-icon {
-            font-size: 2.5rem;
-            color: var(--color-main);
-            margin-bottom: 20px;
-        }
-        
-        [data-theme="dark"] .menu-icon {
-            color: var(--color-accent);
-        }
-
-        .menu-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 15px;
-        }
-
-        .menu-card p {
-            font-size: 0.95rem;
-            color: var(--text-body);
-            opacity: 0.8;
-        }
-
-        /* --- Contact Section --- */
-        #contact {
-            padding: var(--section-padding);
-        }
-
-        .contact-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-text {
-            margin-bottom: 40px;
-        }
-
-        .contact-form {
-            width: 100%;
-            background-color: var(--bg-card);
-            padding: 40px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--text-primary);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: inherit;
-            background-color: var(--bg-body);
-            color: var(--text-body);
-            transition: border-color 0.3s;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--color-accent);
-        }
-
-        .sns-links {
-            margin-top: 40px;
-            display: flex;
-            gap: 20px;
-        }
-
-        .sns-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--bg-card);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-main);
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: var(--transition);
-        }
-
-        [data-theme="dark"] .sns-icon {
-            color: var(--color-white);
-            background-color: var(--color-accent);
-        }
-
-        .sns-icon:hover {
-            transform: scale(1.1) rotate(10deg);
-            color: var(--color-accent);
-        }
-
-        /* --- Footer --- */
-        footer {
-            background-color: var(--color-main);
-            color: var(--color-white);
-            padding: 30px 0;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .hero-main-copy {
-                font-size: 1.8rem;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: var(--bg-card);
-                flex-direction: column;
-                padding: 20px 0;
-                gap: 0;
-                border-bottom: 1px solid rgba(0,0,0,0.1);
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.4s ease;
-            }
-
-            .nav-links.active {
-                max-height: 300px;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 15px 30px;
-            }
-
-            .about-wrapper {
-                flex-direction: column;
-                text-align: center;
-                padding: 30px 20px;
-            }
-
-            .about-image {
-                flex: 0 0 auto;
-                margin-bottom: 20px;
-            }
-
-            .timeline::before {
-                left: 30px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-
-            .timeline-item:nth-child(odd) {
-                text-align: left;
-            }
-
-            .timeline-item::after {
-                left: 20px !important;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="バックオフィス業務18年以上。業務整理・改善からLP制作・導線設計まで、事業がスムーズに回る環境づくりをサポートします。">
+<title>Caori | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1B2A41;
+  --navy-deep:#14202F;
+  --paper:#FBFAF7;
+  --paper-2:#F4F2EC;
+  --ink:#2B2B2B;
+  --muted:#7A7A74;
+  --line:#E6E3DB;
+  --gold:#A98C5A;
+  --gold-soft:#C9B388;
+  --serif:"Cormorant Garamond",serif;
+  --mincho:"Zen Old Mincho",serif;
+  --sans:"Noto Sans JP",sans-serif;
+  --maxw:1140px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:400;
+  line-height:2;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
+.section{padding:150px 0}
+.sec-head{margin-bottom:80px}
+.sec-en{
+  font-family:var(--serif);
+  font-size:clamp(34px,5vw,56px);
+  font-weight:500;letter-spacing:.04em;color:var(--navy);
+  line-height:1.1;display:inline-block;position:relative;
+}
+.sec-en::after{
+  content:"";position:absolute;left:0;bottom:-14px;width:46px;height:2px;background:var(--gold);
+}
+.sec-ja{
+  display:block;font-family:var(--sans);font-size:12px;letter-spacing:.34em;
+  color:var(--gold);text-transform:uppercase;margin-top:26px;font-weight:500;
+}
+.center{text-align:center}
+.center .sec-en::after{left:50%;transform:translateX(-50%)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* nav */
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 0;transition:.4s ease}
+header.on-navy .logo,header.on-navy .nav-links a{color:rgba(255,255,255,.92)}
+header.on-navy .nav-toggle span{background:#fff}
+header.scrolled{background:rgba(251,250,247,.92);backdrop-filter:blur(14px);padding:16px 0;box-shadow:0 1px 0 var(--line)}
+header.scrolled .logo,header.scrolled .nav-links a{color:var(--navy)}
+header.scrolled .nav-toggle span{background:var(--navy)}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--serif);font-size:23px;letter-spacing:.14em;font-weight:600;transition:color .4s}
+.logo .sm{font-size:13px;letter-spacing:.18em;opacity:.7}
+.nav-links{display:flex;gap:40px;align-items:center}
+.nav-links a{font-family:var(--serif);font-size:15px;letter-spacing:.08em;position:relative;color:var(--muted);transition:color .3s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--gold);transition:width .35s}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
+.nav-links a.active{color:var(--gold)}
+.nav-links a.active::after{width:100%}
+header.on-navy .nav-links a.active{color:var(--gold-soft)}
+header.on-navy .nav-links a.active::after{background:var(--gold-soft)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+.nav-toggle span{width:24px;height:1.5px;background:var(--ink);display:block;transition:.3s}
+
+/* hero (navy) */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 0;background:var(--navy);color:#fff;overflow:hidden}
+.hero-bgphoto{position:absolute;inset:0;z-index:0;background-color:var(--navy);background-image:url("work/images/hero-bg.png"),radial-gradient(120% 90% at 80% 10%,rgba(169,140,90,.16) 0%,rgba(27,42,65,0) 55%),linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 55%,#22344d 100%);background-size:cover,cover,cover;background-position:center;background-repeat:no-repeat;}
+.hero-bgphoto::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(27,42,65,.92) 0%,rgba(27,42,65,.78) 46%,rgba(27,42,65,.5) 100%)}
+.hero-inner{max-width:640px;width:100%}
+.hero-eyebrow{font-family:var(--serif);font-size:17px;letter-spacing:.3em;color:var(--gold-soft);margin-bottom:30px;text-transform:uppercase}
+.hero-title{font-family:var(--mincho);font-size:clamp(34px,5.2vw,60px);font-weight:500;line-height:1.5;letter-spacing:.06em;margin-bottom:36px;color:#fff}
+.hero-title .accent{color:var(--gold-soft)}
+.hero-body{font-size:15.5px;color:rgba(255,255,255,.74);max-width:460px;letter-spacing:.05em;margin-bottom:52px}
+.hero-body strong{color:#fff;font-weight:500}
+.hero-cta{display:flex;gap:18px;flex-wrap:wrap}
+.btn{font-family:var(--serif);font-size:16px;letter-spacing:.1em;padding:15px 40px;border-radius:1px;transition:.35s ease;display:inline-flex;align-items:center;gap:10px}
+.btn-primary{background:var(--gold);color:#fff}
+.btn-primary:hover{background:#977b4c;transform:translateY(-2px)}
+.btn-ghost{border:1px solid rgba(255,255,255,.4);color:#fff}
+.btn-ghost:hover{border-color:var(--gold-soft);color:var(--gold-soft)}
+.btn .arrow{transition:transform .3s}.btn:hover .arrow{transform:translateX(4px)}
+.hero-mark{position:absolute;right:-3%;top:4%;font-family:var(--mincho);font-size:42vw;line-height:1;color:rgba(255,255,255,.04);pointer-events:none;user-select:none;z-index:0}
+.hero .wrap{position:relative;z-index:2}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center}
+.about-photo{position:relative}
+.about-photo::before{content:"";position:absolute;inset:-18px -18px 18px 18px;border:1px solid var(--gold);opacity:.4;z-index:0}
+.about-photo img{position:relative;z-index:1;width:100%;aspect-ratio:1/1;object-fit:cover}
+.about-lead{font-family:var(--mincho);font-size:24px;font-weight:500;line-height:1.7;letter-spacing:.04em;color:var(--navy);margin-bottom:34px}
+.about-text p{font-size:15.5px;color:#4d4d48;letter-spacing:.04em;margin-bottom:22px;line-height:2.05}
+.about-text p:last-child{margin-bottom:0}
+.about-text strong{color:var(--navy);font-weight:500}
+
+/* experience */
+.experience{background:var(--paper-2)}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.exp{position:relative;padding-top:34px;border-top:1px solid var(--line)}
+.exp-years{font-family:var(--serif);font-size:34px;font-weight:500;color:var(--gold);line-height:1;margin-bottom:18px}
+.exp-years .u{font-size:.45em;letter-spacing:.08em;margin-left:4px;color:var(--muted)}
+.exp-title{font-family:var(--mincho);font-size:18px;font-weight:500;letter-spacing:.04em;line-height:1.6;margin-bottom:22px;min-height:2.4em}
+.exp-list{list-style:none}
+.exp-list li{font-size:14px;color:var(--muted);padding:8px 0 8px 18px;position:relative;line-height:1.8}
+.exp-list li::before{content:"";position:absolute;left:0;top:16px;width:5px;height:5px;background:var(--gold-soft);transform:rotate(45deg)}
+
+/* service */
+.service{background:var(--paper-2);border-top:1px solid var(--line)}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px}
+.svc{background:#fff;padding:48px 40px 52px;border-top:2px solid var(--gold);box-shadow:0 2px 24px rgba(27,42,65,.04)}
+.svc-num{font-family:var(--serif);font-size:30px;color:var(--gold);display:block;margin-bottom:20px}
+.svc-title{font-family:var(--mincho);font-size:21px;font-weight:500;letter-spacing:.05em;margin-bottom:6px}
+.svc-sub{font-family:var(--serif);font-size:14px;letter-spacing:.14em;color:var(--gold);margin-bottom:28px}
+.svc-list{list-style:none}
+.svc-list li{font-size:14.5px;color:var(--muted);padding:10px 0 10px 20px;position:relative;border-bottom:1px dotted var(--line)}
+.svc-list li:last-child{border-bottom:none}
+.svc-list li::before{content:"";position:absolute;left:0;top:19px;width:6px;height:6px;background:var(--gold-soft);transform:rotate(45deg)}
+
+/* works */
+.works-category{margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--line);}
+.works-category h3{font-family:var(--serif);font-size:22px;color:var(--navy);margin-bottom:10px;}
+.works-category p{font-size:14px;color:var(--muted);line-height:1.8;}
+.works-section{background:var(--paper-2)}
+.works-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:48px}
+.work{background:#fff;overflow:hidden;border:1px solid var(--line);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s ease}
+.work:hover{transform:translateY(-8px);box-shadow:0 28px 64px rgba(27,42,65,.12)}
+.work-img .ph{font-family:var(--mincho);font-size:54px;color:var(--gold-soft);opacity:.6;letter-spacing:.1em}
+.work-img .sample{position:absolute;top:16px;left:16px;font-family:var(--serif);font-size:12px;letter-spacing:.2em;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);padding:3px 13px;backdrop-filter:blur(2px)}
+.work-img{aspect-ratio:16/10;background:#F7F5F0;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:18px;box-shadow:0 14px 30px rgba(27,42,65,.10);}
+.work-img img{width:100%;height:100%;object-fit:contain;display:block;}
+.work-body{padding:38px 40px 42px}
+.work-cat{font-family:var(--serif);font-size:14px;letter-spacing:.16em;color:var(--gold);margin-bottom:12px}
+.work-title{font-family:var(--mincho);font-size:23px;font-weight:500;letter-spacing:.04em;margin-bottom:12px}
+.work-desc{font-size:14px;color:var(--muted);margin-bottom:26px;line-height:1.9}
+.work-tags{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:30px}
+.work-tags span{font-size:11.5px;letter-spacing:.06em;color:var(--gold);border:1px solid var(--line);padding:6px 14px}
+.work-link{font-family:var(--serif);font-size:15px;letter-spacing:.1em;color:var(--navy);display:inline-flex;align-items:center;gap:8px}
+.work-link .arrow{transition:transform .3s}.work:hover .work-link .arrow{transform:translateX(5px)}
+.work-soon{border:1px dashed var(--line);background:transparent;display:flex;align-items:center;justify-content:center}
+.work-soon:hover{transform:none;box-shadow:none}
+.work-soon .inner{text-align:center;padding:70px 20px;color:#B3AFA4}
+.work-soon .mark{font-family:var(--serif);font-size:40px;color:var(--line);margin-bottom:10px}
+.work-soon p{font-family:var(--serif);font-size:14px;letter-spacing:.16em}
+
+/* tools */
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px}
+.tl-cat{font-family:var(--serif);font-size:19px;letter-spacing:.1em;color:var(--navy);margin-bottom:26px;padding-bottom:16px;border-bottom:1px solid var(--gold);display:inline-block}
+.tl-list{display:flex;flex-direction:column;gap:15px}
+.tl-list span{font-size:15.5px;letter-spacing:.04em;color:var(--ink)}
+
+/* contact (navy) */
+.contact{background:var(--navy);color:#fff;padding:150px 0}
+.contact .sec-en{color:#fff}
+.contact .sec-en::after{background:var(--gold-soft)}
+.contact .sec-ja{color:var(--gold-soft)}
+.contact-lead{font-size:15.5px;color:rgba(255,255,255,.76);max-width:700px;margin:0 auto 56px;letter-spacing:.05em;text-align:center;line-height:2}
+.form{max-width:820px;margin:0 auto}
+.field{margin-bottom:26px}
+.field label{display:block;font-family:var(--serif);font-size:15px;letter-spacing:.1em;color:var(--gold-soft);margin-bottom:10px}
+.field input,.field textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.22);color:#fff;font-family:var(--sans);font-size:15px;padding:14px 16px;border-radius:1px;transition:border-color .3s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold-soft)}
+.field textarea{min-height:130px;resize:vertical}
+.form-submit{text-align:center;margin-top:38px}
+.btn-submit{background:var(--gold);color:#fff;border:none;cursor:pointer;font-family:var(--serif);font-size:16px;letter-spacing:.12em;padding:16px 56px;transition:.35s ease}
+.btn-submit:hover{background:#977b4c;transform:translateY(-2px)}
+.btn-submit:disabled{opacity:.6;cursor:default;transform:none}
+.form-status{text-align:center;margin-top:18px;font-size:14px;letter-spacing:.04em;min-height:1.4em}
+.form-status.ok{color:var(--gold-soft)}
+.form-status.ng{color:#e8a3a3}
+.socials{text-align:center;margin-top:54px;display:flex;gap:28px;justify-content:center}
+.socials a{font-family:var(--serif);font-size:15px;letter-spacing:.12em;color:rgba(255,255,255,.7);transition:color .3s}
+.socials a:hover{color:var(--gold-soft)}
+.request-links{display:flex;justify-content:center;gap:16px;margin:40px 0 30px;flex-wrap:nowrap;}
+.request-links .btn{width:300px;padding:15px 24px;justify-content:center;white-space:nowrap;}
+
+/* footer */
+footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center;padding:40px 0;font-family:var(--serif);font-size:14px;letter-spacing:.12em}
+
+@media (max-width:768px){
+  .request-links{flex-wrap:wrap;}
+  .request-links .btn{width:100%;}
+  .section{padding:100px 0}.sec-head{margin-bottom:56px}
+  .hero{padding:130px 0}.about-grid{grid-template-columns:1fr;gap:56px}
+  .about-photo{max-width:360px}
+  .service-grid,.tools-grid{grid-template-columns:1fr;gap:36px}
+  .exp-grid{grid-template-columns:1fr;gap:40px}
+  .works-grid{grid-template-columns:1fr}
+  .nav-links{display:none}.nav-toggle{display:flex}.contact{padding:100px 0}
+}
+@media (max-width:480px){
+  .wrap{padding:0 24px}.hero-cta{flex-direction:column;align-items:flex-start}.btn{width:100%;justify-content:center}
+}
+</style>
 </head>
-<body data-theme="light">
+<body>
 
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <a href="#" class="logo">Caori_on-linesupport</a>
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
-            <nav class="nav-links">
-                <a href="#about">Who I Am</a>
-                <a href="#skills">Experience</a>
-                <a href="#works">Support Menu</a>
-                <a href="#contact">Get In Touch</a>
-            </nav>
-            <div class="theme-switch" id="theme-toggle">
-                <i class="fas fa-moon"></i>
-            </div>
+<header id="header" class="on-navy">
+  <div class="wrap nav">
+    <a href="#hero" class="logo">Caori<span class="sm"> | Portfolio</span></a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#service">Service</a>
+      <a href="#works">Works</a>
+      <a href="#tools">Tools</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav-toggle" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bgphoto"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <p class="hero-eyebrow reveal">— Online Assistant / Back Office Partner — </p>
+      <h1 class="hero-title reveal">業務を整え、<br><span class="accent">伝わる仕組み</span>をつくる。</h1>
+      <p class="hero-body reveal"><strong>バックオフィス業務18年以上。</strong><br>業務整理・改善・マニュアル作成・タスク管理から、LP制作・導線設計まで。事業がスムーズに回る環境づくりをサポートします。</p>
+      <div class="hero-cta reveal">
+        <a href="#works" class="btn btn-primary">Worksを見る <span class="arrow">→</span></a>
+        <a href="#contact" class="btn btn-ghost">お問い合わせ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about-section" id="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-en">About</span><span class="sec-ja">わたしについて</span></div>
+    <div class="about-grid">
+      <div class="about-photo reveal">
+        <img src="work/images/photo1.png" alt="プロフ画像" loading="lazy">
+      </div>
+      <div class="about-text reveal">
+        <p class="about-lead">かおり<br>Online Assistant / Back Office Partner</p>
+        <p>バックオフィス業務に18年以上携わり、契約管理・顧客対応・請求管理など幅広い業務を経験してきました。</p>
+        <p>単なる作業代行ではなく、<strong>業務全体を整理し、「無理なく回る仕組み」をつくること</strong>を大切にしています。</p>
+        <p>細かな作業を正確に進めること、そして相手の状況に合わせて柔軟に対応することが強みです。</p>
+        <p>また、業務改善提案やマニュアル整備、契約管理業務を通じて、「属人化しない仕組みづくり」に取り組んできました。</p>        
+        <p>業務を支えるパートナーとして、安心して任せていただける存在を目指しています。</p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section experience" id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-en">Experience</span><span class="sec-ja">これまでの経験</span></div>
+    <div class="exp-grid">
+      <div class="exp reveal">
+        <div class="exp-years">18+<span class="u">Years</span></div>
+        <h3 class="exp-title">業務改善・<br>バックオフィス支援</h3>
+        <ul class="exp-list">
+          <li>カスタマーサポート</li>
+          <li>セールスサポート</li>
+          <li>業務フローの改善提案</li>
+        </ul>
+      </div>
+      <div class="exp reveal">
+        <div class="exp-years">11<span class="u">Years</span></div>
+        <h3 class="exp-title">契約管理・<br>コンプライアンス</h3>
+        <ul class="exp-list">
+          <li>国内外の契約書作成および締結対応</li>
+          <li>書類管理・ファイリング</li>
+          <li>データ分析、関係者へのヒアリング</li>
+        </ul>
+      </div>
+      <div class="exp reveal">
+        <div class="exp-years">7<span class="u">Years</span></div>
+        <h3 class="exp-title">総務事務</h3>
+        <ul class="exp-list">
+          <li>社会保険、雇用保険関係の手続き</li>
+          <li>在庫管理、棚卸実務</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE -->
+<section class="section service" id="service">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-en">Service</span><span class="sec-ja">対応できること</span></div>
+    <div class="service-grid">
+      <div class="svc reveal">
+        <span class="svc-num">01</span>
+        <h3 class="svc-title">業務整理・改善</h3>
+        <p class="svc-sub">Operations</p>
+        <ul class="svc-list"><li>業務フロー整理</li><li>マニュアル作成</li><li>タスク管理</li></ul>
+      </div>
+      <div class="svc reveal">
+        <span class="svc-num">02</span>
+        <h3 class="svc-title">バックオフィス支援</h3>
+        <p class="svc-sub">Back Office Support</p>
+        <ul class="svc-list"><li>メール対応</li><li>スケジュール管理</li><li>各種事務サポート</li></ul>
+      </div>
+      <div class="svc reveal">
+        <span class="svc-num">03</span>
+        <h3 class="svc-title">Web・コンテンツ制作</h3>
+        <p class="svc-sub">Web & Content</p>
+        <ul class="svc-list"><li>LP制作</li><li>HTML/CSS修正</li><li>導線設計</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section class="section works-section" id="works">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-en">Works</span><span class="sec-ja">制作実績</span></div>
+    <div class="works-category reveal"><h3>Landing Page</h3><p>構成設計からデザイン・実装まで担当したLP制作実績</p></div>
+    <div class="works-grid">
+      <article class="work reveal">
+        <div class="work-img">
+          <img src="work/images/lp_online-hisyo.jpg"
+               alt="オンライン秘書LP">
+        </div>        
+        <div class="work-body">
+          <p class="work-cat">Landing Page</p>
+          <h3 class="work-title">オンライン秘書LP</h3>
+          <p class="work-desc">オンライン秘書サービスを想定し、信頼感と安心感を重視して制作。<br>サービス内容や対応範囲が伝わる構成を意識しました。</p>
+          <div class="work-tags"><span>構成設計</span><span>デザイン</span><span>実装</span></div>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="hero-content fade-in-up">
-            <h1 class="hero-main-copy">
-                <span>業務を知っているから、</span><br>
-                <span>AIが活きる。</span>
-            </h1>
-            <p class="hero-sub-copy">オンライン秘書の実務経験を活かした、<br>事務サポート × AIコンサルティング。</p>
-            <a href="#works" class="btn hero-btn">Support Menu</a>
-            <a href="#contact" class="btn hero-btn" style="background: transparent; border: 2px solid white; margin-left: 10px;">お問い合わせ</a>
+      </article>
+      <article class="work reveal">
+        <div class="work-img">
+          <img src="work/images/lp_ai_course.jpg"
+               alt="AI講座LP">
+        </div>        
+        <div class="work-body">
+          <p class="work-cat">Landing Page</p>
+          <h3 class="work-title">AI講座LP</h3>
+          <p class="work-desc">AI学習を検討している会社員向けに制作。<br>講座の特徴やサポート内容が伝わる導線設計を意識しました。</p>
+          <div class="work-tags"><span>構成設計</span><span>デザイン</span><span>実装</span></div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title fade-in-up">Who I Am</h2>
-            <div class="about-wrapper fade-in-up">
-                <div class="about-image">
-                    <img src="https://res.cloudinary.com/dizkujc8k/image/upload/v1769763344/28BDC587-82A8-48C6-9421-CFFE7B5A18BC_fclaxm.jpg" alt="Caoriのプロフィール画像" onerror="this.src='https://via.placeholder.com/300?text=Profile+Image'">
-                </div>
-                <div class="about-text">
-                    <h3>はじめまして。<br>実務特化型AIコンサルタントのかおりです。</h3>
-                    <p>一人で、または少人数で業務を回していると、「本当はやらなくていい作業」に時間を取られてしまうことがあります。</p>
-                    <p>私はオンライン秘書として、事務・管理業務をサポートする中で、AIを使えばもっと楽になるのに、という場面をたくさん見てきました。</p>
-                    <p>難しい知識や専門資格はありません。その代わり、実際の業務を一緒に見ながら、「これなら使えそう」「これなら続けられる」という形でAIを取り入れるお手伝いています。</p>
-                    <p>無理に変えない。背伸びしない。今の働き方に合った事務サポートとAI活用で、余裕のある毎日を支えます。</p>
-                </div>
-            </div>
+      </article>
+      <article class="work reveal">
+        <div class="work-img">
+          <img src="work/images/lp_hotel.jpg"
+               alt="架空ホテルLP">
+        </div>        
+        <div class="work-body">
+          <p class="work-cat">Landing Page</p>
+          <h3 class="work-title">架空ホテルLP</h3>
+          <p class="work-desc">全8室限定のプライベートリゾートを想定した宿泊施設向けLP。<br>快適な滞在体験を提供するためのデザインと構成を意識しました。</p>
+          <div class="work-tags"><span>構成設計</span><span>デザイン</span><span>HTML・CSSコーディング</span><span>実装</span></div>
         </div>
-    </section>
-
-    <!-- Experience (Skills) Section -->
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title fade-in-up">Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item fade-in-up">
-                    <div class="experience-card">
-                        <h3>バックオフィス業務</h3>
-                        <span class="duration">8 Years</span>
-                        <ul>
-                            <li>カスタマーサポート</li>
-                            <li>セールスサポート</li>
-                            <li>業務フローの改善提案</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item fade-in-up">
-                    <div class="experience-card">
-                        <h3>契約書管理業務・コンプライアンス業務</h3>
-                        <span class="duration">11 Years</span>
-                        <ul>
-                            <li>国内外の契約書作成および締結対応</li>
-                            <li>書類管理・ファイリング</li>
-                            <li>データ分析、関係者へのヒアリング</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item fade-in-up">
-                    <div class="experience-card">
-                        <h3>総務事務</h3>
-                        <span class="duration">7 Years</span>
-                        <ul>
-                            <li>社会保険、雇用保険関係の手続き</li>
-                            <li>在庫管理、棚卸実務</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+      </article>
+      </div>
+    <div class="works-category reveal" style="margin-top:80px;"><h3>Design</h3><p>サービス訴求や採用募集を想定したバナー制作サンプル</p></div>    
+    <div class="works-grid"> 
+      <article class="work reveal">
+        <div class="work-img">
+          <img src="work/images/banner_online-hisyo.jpg"
+               alt="オンライン秘書サービス広告">
+        </div>        
+        <div class="work-body">
+        <p class="work-cat">Banner Design</p>
+        <h3 class="work-title">オンライン秘書サービス広告</h3>
+        <p class="work-desc">個人事業主・フリーランス向けに、事務作業の負担軽減を訴求した広告バナー。</p>
+        <div class="work-tags"><span>Canva</span><span>広告バナー</span><span>構成設計</span></div>
+       </div>
+      </article>
+      <article class="work reveal">
+        <div class="work-img">
+          <img src="work/images/banner_online-bosyu.jpg"
+               alt="オンライン秘書募集バナー">
+        </div>        
+        <div class="work-body">
+        <p class="work-cat">Banner Design</p>
+        <h3 class="work-title">オンライン秘書募集バナー</h3>
+        <p class="work-desc">事務経験を活かしたい方向けに、在宅ワークの魅力が伝わるよう制作した採用バナー。</p>
+        <div class="work-tags"><span>Canva</span><span>広告バナー</span><span>構成設計</span></div>
+       </div>
+      </article>
+      <article class="work reveal">
+        <div class="work-img">
+          <img src="work/images/banner_AI-katuyo.jpg"
+               alt="AI活用講座バナー">
+        </div>        
+        <div class="work-body">
+        <p class="work-cat">Banner Design</p>
+        <h3 class="work-title">AI活用講座バナー</h3>
+        <p class="work-desc">AI初心者向け講座を想定し、実務で使える内容であることが伝わるよう設計したバナー。</p>
+        <div class="work-tags"><span>Canva</span><span>講座バナー</span><span>構成設計</span></div>
         </div>
-    </section>
-
-    <!-- Works (Support Menu) Section -->
-    <section id="works">
-        <div class="container">
-            <h2 class="section-title fade-in-up">Support Menu</h2>
-            <div class="menu-grid">
-                <div class="menu-card fade-in-up">
-                    <div class="menu-icon"><i class="fas fa-file-alt"></i></div>
-                    <h3>各種資料作成</h3>
-                    <p>請求書、見積書、議事録、マニュアル作成など、形式の整った資料を迅速に作成します。</p>
-                </div>
-                <div class="menu-card fade-in-up">
-                    <div class="menu-icon"><i class="fas fa-search"></i></div>
-                    <h3>リサーチ業務</h3>
-                    <p>競合調査や市場調査、必要な情報の収集・整理を行い、意思決定をサポートします。</p>
-                </div>
-                <div class="menu-card fade-in-up">
-                    <div class="menu-icon"><i class="fas fa-robot"></i></div>
-                    <h3>AI導入サポート</h3>
-                    <p>ChatGPTなどのAIツールを業務に組み込み、メール作成や要約作業の自動化を支援します。</p>
-                </div>
-                <div class="menu-card fade-in-up">
-                    <div class="menu-icon"><i class="fas fa-boxes"></i></div>
-                    <h3>受発注・在庫管理</h3>
-                    <p>備品の発注管理や在庫の棚卸し、取引先との受発注連絡を代行します。</p>
-                </div>
-                <div class="menu-card fade-in-up">
-                    <div class="menu-icon"><i class="fas fa-calendar-check"></i></div>
-                    <h3>スケジュール・タスク管理</h3>
-                    <p>アポイント調整やタスクの進捗管理を行い、業務の抜け漏れを防ぎます。</p>
-                </div>
-                <div class="menu-card fade-in-up">
-                    <div class="menu-icon"><i class="fas fa-keyboard"></i></div>
-                    <h3>データ入力</h3>
-                    <p>顧客リストの作成や売上データの入力など、正確性が求められる作業を代行します。</p>
-                </div>
-            </div>
+      </article>
+      </div>
+    <div class="works-category reveal" style="margin-top:80px;"><h3>SNS Contents</h3><p>情報発信や集客を目的としたSNS投稿サンプル</p></div>    
+    <div class="works-grid"> 
+      <article class="work reveal">
+        <div class="work-img">
+          <img src="work/images/instagram_post1.jpg"
+               alt="Instagram投稿1">
+        </div>        
+        <div class="work-body">
+        <p class="work-cat">Instagram</p>
+        <h3 class="work-title">Instagram投稿</h3>
+        <p class="work-desc">宿泊施設の魅力を伝えることを目的に制作。<br>世界観が伝わるビジュアルと、視認性を意識したレイアウトで構成しました。</p>
+        <div class="work-tags"><span>Canva</span><span>Instagram</span><span>構成設計</span></div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title fade-in-up">Get In Touch</h2>
-            <div class="contact-content fade-in-up">
-                <div class="contact-text">
-                    <p>サポートのご依頼、お見積もり、その他ご相談はお気軽にどうぞ。<br>2営業日以内に返信いたします。</p>
-                    <div class="sns-links" style="justify-content: center;">
-                        <!-- Updated X (Twitter) icon class -->
-                        <a href="https://x.com/caori_work" target="_blank" rel="noopener noreferrer" class="sns-icon" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://www.instagram.com/caori_workonline/" target="_blank" rel="noopener noreferrer" class="sns-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('お問い合わせありがとうございます。');">
-                    <div class="form-group">
-                        <label for="name">お名前</label>
-                        <input type="text" id="name" class="form-control" placeholder="例：山田 花子" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">メールアドレス</label>
-                        <input type="email" id="email" class="form-control" placeholder="例：sample@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">お問い合わせ内容</label>
-                        <textarea id="message" rows="5" class="form-control" placeholder="ご相談内容をご記入ください" required></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="width: 100%;">送信する</button>
-                </form>
-            </div>
+      </article>
+      <article class="work reveal">
+        <div class="work-img">
+          <img src="work/images/instagram_post2.jpg"
+               alt="Instagram投稿2">
+        </div>        
+        <div class="work-body">
+        <p class="work-cat">Instagram</p>
+        <h3 class="work-title">Instagram投稿</h3>
+        <p class="work-desc">AI活用講座をテーマに制作。<br>初心者にも内容が伝わるよう、情報整理と分かりやすさを意識しました。</p>
+        <div class="work-tags"><span>Canva</span><span>Instagram</span><span>構成設計</span></div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Caori Portfolio. All Rights Reserved.</p>
+      </article>
+      <article class="work reveal">
+        <div class="work-img">
+          <img src="work/images/instagram_post3.jpg"
+               alt="Instagram投稿3">
+        </div>        
+        <div class="work-body">
+        <p class="work-cat">Instagram</p>
+        <h3 class="work-title">Instagram投稿</h3>
+        <p class="work-desc">業務改善事例をテーマに制作。<br>改善前後の変化がひと目で伝わる構成を意識しました。</p>
+        <div class="work-tags"><span>Canva</span><span>Instagram</span><span>構成設計</span></div>
         </div>
-    </footer>
+      </article>
+      </div>
+    <div class="works-category reveal" style="margin-top:80px;"><h3>Business Documents</h3><p>業務改善・マニュアル・議事録などのドキュメント作成サンプル</p></div>
+    <div class="works-grid">
+      <article class="work reveal">
+        <div class="work-img">
+          <img src="work/images/work-teiansyo.jpg"
+               alt="業務改善提案書">
+        </div>        
+        <div class="work-body">
+        <p class="work-cat">Documents</p>
+        <h3 class="work-title">業務改善提案書</h3>
+        <p class="work-desc">請求業務の誤請求防止をテーマに、<br>原因分析から改善策までを提案。</p>
+        <div class="work-tags"><span>業務改善</span><span>資料作成</span><span>課題分析</span></div>
+       </div>
+      </article>
+      <article class="work reveal">
+        <div class="work-img">
+          <img src="work/images/work-instagram-manual.jpg"
+               alt="Instagram投稿運用マニュアル">
+        </div>        
+        <div class="work-body">
+        <p class="work-cat">Documents</p>
+        <h3 class="work-title">Instagram投稿運用マニュアル</h3>
+        <p class="work-desc">Instagramの運用方法を文書化し、<br>従業員の教育・訓練に活用。</p>
+        <div class="work-tags"><span>マニュアル作成</span><span>SNS運用</span><span>業務標準化</span></div>
+        </div>
+      </article>
+      <article class="work reveal">
+        <div class="work-img">
+          <img src="work/images/work-gijiroku.jpg"
+               alt="定例会議議事録">
+        </div>        
+        <div class="work-body">
+        <p class="work-cat">Documents</p>
+        <h3 class="work-title">定例会議議事録</h3>
+        <p class="work-desc">定例会議の内容を記録し、<br>決定事項やアクションアイテムを管理。</p>
+        <div class="work-tags"><span>議事録</span><span>ToDo管理</span><span>会議運営</span></div>
+       </div>
+      </article>
+      <article class="work reveal">
+        <div class="work-img">
+          <img src="work/images/work-gyoumuhikitugi.jpg"
+               alt="業務引継ぎシート">
+        </div>        
+        <div class="work-body">
+        <p class="work-cat">Documents</p>
+        <h3 class="work-title">業務引継ぎシート</h3>
+        <p class="work-desc">問い合わせ対応業務の引継ぎを想定し、<br>業務概要からFAQまでを整理。</p>
+        <div class="work-tags"><span>マニュアル作成</span><span>業務整理</span><span>引継ぎ資料</span></div>
+       </div>
+      </article>
+      </div>
+    <div class="works-category reveal" style="margin-top:80px;"><h3>Dashboard & Operations</h3><p>業務管理・進捗管理を目的とした業務設計サンプル</p></div>
+    <div class="works-grid">
+      <article class="work reveal">
+        <div class="work-img">
+          <img src="work/images/work-dashboard-toiawase.jpg"
+               alt="問い合わせ管理ダッシュボード">
+        </div>
+        <div class="work-body">
+         <p class="work-cat">Dashboard</p>
+        <h3 class="work-title">問い合わせ管理ダッシュボード</h3>
+        <p class="work-desc">問い合わせ対応状況を可視化し、<br>進捗管理を効率化することを目的に制作。</p>
+        <div class="work-tags"><span>Google Sheets</span><span>ダッシュボード設計</span><span>業務効率化</span></div>
+       </div>
+      </article>
+      <article class="work reveal">
+        <div class="work-img">
+          <img src="work/images/work-dashboard-task.jpg"
+               alt="タスク管理ダッシュボード">
+        </div>
+        <div class="work-body">
+        <p class="work-cat">Dashboard</p>
+        <h3 class="work-title">タスク管理ダッシュボード</h3>
+        <p class="work-desc">タスクの進捗を可視化し、<br>効率的な管理を実現することを目的に制作。</p>
+        <div class="work-tags"><span>Google Sheets</span><span>ダッシュボード設計</span><span>業務効率化</span></div>
+       </div>
+      </article>
+      <article class="work reveal">
+        <div class="work-img">
+          <img src="work/images/work-dashboard-keiyakukanri.jpg"
+               alt="契約管理台帳ダッシュボード">
+        </div>        
+        <div class="work-body">
+        <p class="work-cat">Dashboard</p>
+        <h3 class="work-title">契約管理台帳ダッシュボード</h3>
+        <p class="work-desc">契約情報を一元管理し、<br>更新期限の可視化による契約更新漏れ防止を目的に制作。</p>
+        <div class="work-tags"><span>Google Sheets</span><span>ダッシュボード設計</span><span>業務効率化</span></div>
+       </div>
+      </article>
+      <article class="work reveal">
+        <div class="work-img">
+          <img src="work/images/work-toiawase-flo.jpg"
+               alt="問い合わせ対応フロー">
+        </div>        
+        <div class="work-body">
+        <p class="work-cat">Flow Design</p>
+        <h3 class="work-title">問い合わせ対応フロー</h3>
+        <p class="work-desc">問い合わせ対応のプロセスを可視化し、<br>効率的な対応を実現することを目的に制作。</p>
+        <div class="work-tags"><span>業務フロー</span><span>業務整理</span><span>業務標準化</span></div>
+       </div>
+      </article>
+    </div>
+  </div>
+</section>
 
-    <!-- JavaScript -->
-    <script>
-        // Dark Mode
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-        const icon = themeToggle.querySelector('i');
+<!-- TOOLS -->
+<section class="section tools" id="tools">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-en">Tools</span><span class="sec-ja">使えるツール</span></div>
+    <div class="tools-grid">
+      <div class="tl reveal"><p class="tl-cat">Business</p><div class="tl-list"><span>Google Workspace</span><span>Microsoft Office</span><span>Notion</span></div></div>
+      <div class="tl reveal"><p class="tl-cat">AI Tools</p><div class="tl-list"><span>ChatGPT</span><span>Claude</span><span>Gemini</span></div></div>
+      <div class="tl reveal"><p class="tl-cat">Design</p><div class="tl-list"><span>Canva</span><span>HTML / CSS</span><span>Visual Studio Code</span><span>GitHub Pages</span></div></div>
+    </div>
+  </div>
+</section>
 
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            body.setAttribute('data-theme', newTheme);
-            icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-        });
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head center reveal"><span class="sec-en">Contact</span><span class="sec-ja">お問い合わせ</span></div>
+    <p class="contact-lead reveal">業務整理やバックオフィスサポート、LP制作について、まずはお気軽にご相談ください。<br>現在のお悩みやご要望を伺いながら、最適なサポートをご提案いたします。<br>お問い合わせ内容を確認後、2営業日以内を目安に返信いたします。</p>
+    <form class="form reveal" id="contact-form" action="https://formspree.io/f/mpqgqpen" method="POST">
+      <div class="field"><label for="name">お名前</label><input type="text" id="name" name="name" required></div>
+      <div class="field"><label for="email">メールアドレス</label><input type="email" id="email" name="email" required></div>
+      <div class="field"><label for="msg">お問い合わせ内容</label><textarea id="msg" name="message" required></textarea></div>
+      <div class="form-submit"><button type="submit" class="btn-submit">送信する</button></div>
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
 
-        // Hamburger Menu
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+      <!-- 依頼導線 -->
+      <div class="request-links">
+        <a href="https://www.lancers.jp/profile/caori_a" target="_blank" rel="noopener" class="btn btn-primary">ランサーズで相談する</a>
+        <a href="https://crowdworks.jp/public/employees/6248494?ref=login_header" target="_blank" rel="noopener" class="btn btn-primary">クラウドワークスで相談する</a>
+      </div>
 
-        // Intersection Observer for animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
+<!-- SNS -->
+      <div class="socials">
+        <a href="https://x.com/caori_work" target="_blank" rel="noopener">X (Twitter)</a>
+        <a href="https://www.instagram.com/caori_support/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </form>
+  </div>
+</section>
 
-        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+<footer><div class="wrap">© 2026 Caori Portfolio. All Rights Reserved.</div></footer>
 
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 70,
-                        behavior: "smooth"
-                    });
-                    navLinks.classList.remove('active');
-                }
-            });
-        });
-    </script>
+<script>
+const header=document.getElementById('header'),hero=document.getElementById('hero');
+function onScroll(){
+  const scrolled=window.scrollY>40;
+  header.classList.toggle('scrolled',scrolled);
+  const overHero=window.scrollY<hero.offsetHeight-80;
+  header.classList.toggle('on-navy',overHero&&!scrolled);
+}
+window.addEventListener('scroll',onScroll);onScroll();
+const io=new IntersectionObserver((es)=>{es.forEach((e)=>{if(e.isIntersecting){const els=[...e.target.parentNode.querySelectorAll('.reveal')];e.target.style.transitionDelay=(els.indexOf(e.target)%4*0.09)+'s';e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* scroll-spy: highlight current section in nav */
+const navLinks=[...document.querySelectorAll('.nav-links a')];
+const spyTargets=navLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+function onSpy(){
+  const pos=window.scrollY+window.innerHeight*0.3;
+  let current=spyTargets[0];
+  for(const sec of spyTargets){if(sec.offsetTop<=pos)current=sec;}
+  navLinks.forEach(a=>a.classList.toggle('active',current&&a.getAttribute('href')==='#'+current.id));
+}
+window.addEventListener('scroll',onSpy);onSpy();
+
+const toggle=document.querySelector('.nav-toggle'),links=document.querySelector('.nav-links');
+toggle&&toggle.addEventListener('click',()=>{const open=links.style.display==='flex';links.style.display=open?'':'flex';links.style.position='absolute';links.style.flexDirection='column';links.style.top='100%';links.style.right='24px';links.style.gap='18px';links.style.background='var(--paper)';links.style.padding=open?'':'24px 28px';links.style.boxShadow=open?'':'0 14px 40px rgba(27,42,65,.16)';toggle.setAttribute('aria-expanded',String(!open));});
+
+/* contact form submit (Formspree) */
+const cForm=document.getElementById('contact-form'),cStatus=document.getElementById('form-status');
+cForm&&cForm.addEventListener('submit',async(ev)=>{
+  ev.preventDefault();
+  const btn=cForm.querySelector('.btn-submit');
+  cStatus.className='form-status';cStatus.textContent='';
+  if(cForm.action.includes('YOUR_FORM_ID')){
+    cStatus.classList.add('ng');
+    cStatus.textContent='送信先が未設定です。FormspreeのフォームIDを設定してください。';
+    return;
+  }
+  btn.disabled=true;const label=btn.textContent;btn.textContent='送信中...';
+  try{
+    const res=await fetch(cForm.action,{method:'POST',body:new FormData(cForm),headers:{'Accept':'application/json'}});
+    if(res.ok){
+      cForm.reset();
+      cStatus.classList.add('ok');
+      cStatus.textContent='送信しました。2営業日以内を目安にご返信いたします。';
+    }else{
+      cStatus.classList.add('ng');
+      cStatus.textContent='送信に失敗しました。お手数ですが時間をおいて再度お試しください。';
+    }
+  }catch(e){
+    cStatus.classList.add('ng');
+    cStatus.textContent='通信エラーが発生しました。ネットワークをご確認ください。';
+  }finally{
+    btn.disabled=false;btn.textContent=label;
+  }
+});
+</script>
 </body>
 </html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>オンライン秘書 募集バナー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F2EC;
+    --text:#2F2F2F;
+    --text-muted:rgba(47,47,47,0.66);
+    --accent:#7A8B7A;
+    --accent-dark:#637363;
+    --accent-soft:rgba(122,139,122,0.16);
+    --desk:#ECE5D6;
+    --white:#FFFFFF;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+
+  body{
+    background:var(--bg);
+    font-family:'Noto Sans JP',sans-serif;
+    color:var(--text);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+  }
+
+  .banner{
+    position:relative;
+    width:100%;
+    max-width:1180px;
+    display:flex;
+    align-items:center;
+    gap:clamp(32px,6vw,90px);
+    padding:clamp(44px,7vw,88px) clamp(24px,5vw,64px);
+    overflow:hidden;
+  }
+
+  /* ---------- 左：デスクワークのイラスト ---------- */
+  .illust-col{
+    position:relative;
+    flex:0 0 auto;
+    width:clamp(240px,32vw,360px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .blob{
+    position:absolute;
+    width:380px;
+    height:380px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(122,139,122,0.26), rgba(122,139,122,0) 70%);
+    filter:blur(6px);
+    z-index:0;
+  }
+
+  .dot{ position:absolute; border-radius:50%; background:var(--accent); z-index:2; }
+  .dot-a{ width:14px; height:14px; top:4%; right:10%; opacity:.7; animation:float 5s ease-in-out infinite; }
+  .dot-b{ width:9px; height:9px; bottom:8%; left:4%; opacity:.5; animation:float 4.5s ease-in-out infinite reverse; }
+
+  @keyframes float{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-10px); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .dot-a,.dot-b{ animation:none; }
+  }
+
+  .illust-card{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:320px;
+    background:linear-gradient(150deg, #FFFFFF 0%, #F5F1E7 55%, #ECE6D9 100%);
+    border-radius:28px;
+    padding:28px 22px 22px;
+    box-shadow:0 30px 60px rgba(47,47,47,0.16), 0 8px 18px rgba(47,47,47,0.10);
+  }
+
+  .illust-card svg{ display:block; width:100%; height:auto; }
+
+  /* ---------- 右：コピー＆CTA ---------- */
+  .content-col{
+    flex:1 1 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    text-align:left;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    font-weight:500;
+    color:var(--accent-dark);
+    letter-spacing:.08em;
+    margin:0 0 18px;
+  }
+  .eyebrow::before{
+    content:"";
+    display:inline-block;
+    width:14px;
+    height:14px;
+    background:var(--accent);
+    border-radius:3px;
+  }
+
+  .headline{
+    font-family:'Shippori Mincho',serif;
+    font-weight:700;
+    font-size:clamp(32px,4.6vw,52px);
+    line-height:1.4;
+    letter-spacing:.02em;
+    color:var(--text);
+    margin:0 0 22px;
+  }
+
+  .subcopy{
+    font-size:clamp(14px,1.6vw,16px);
+    line-height:1.95;
+    color:var(--text-muted);
+    max-width:420px;
+    margin:0 0 36px;
+  }
+
+  .cta-group{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .cta-btn{
+    border:none;
+    cursor:pointer;
+    background:var(--accent);
+    color:#fff;
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:16px;
+    font-weight:500;
+    letter-spacing:.04em;
+    padding:17px 42px;
+    border-radius:999px;
+    box-shadow:0 10px 24px rgba(122,139,122,0.38);
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .cta-btn:hover{
+    background:var(--accent-dark);
+    transform:translateY(-2px);
+    box-shadow:0 14px 30px rgba(122,139,122,0.45);
+  }
+  .cta-btn .arrow{ transition:transform .25s ease; }
+  .cta-btn:hover .arrow{ transform:translateX(4px); }
+
+  .trust{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin:28px 0 0;
+    padding-top:16px;
+    border-top:1px solid rgba(47,47,47,0.14);
+    font-size:12px;
+    color:var(--text-muted);
+    letter-spacing:.04em;
+  }
+  .trust .trust-dot{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--accent);
+    flex:0 0 auto;
+  }
+
+  /* ---------- レスポンシブ ---------- */
+  @media (max-width:760px){
+    .banner{
+      flex-direction:column;
+      text-align:center;
+      gap:36px;
+      padding:44px 24px;
+    }
+    .content-col{ align-items:center; text-align:center; }
+    .cta-group{ align-items:center; }
+    .subcopy{ max-width:320px; }
+    .illust-card{ max-width:260px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">
+
+  <div class="illust-col">
+    <div class="blob"></div>
+    <div class="dot dot-a"></div>
+    <div class="dot dot-b"></div>
+    <div class="illust-card">
+      <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="shadowSoft" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="3.2"/>
+          </filter>
+          <filter id="shadowSmall" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="2"/>
+          </filter>
+        </defs>
+
+        <!-- desk -->
+        <rect x="0" y="200" width="320" height="60" rx="14" fill="#ECE5D6"/>
+
+        <!-- plant -->
+        <ellipse cx="266" cy="178" rx="13" ry="7" fill="#7A8B7A" opacity="0.85"/>
+        <ellipse cx="252" cy="172" rx="11" ry="6" fill="#7A8B7A" opacity="0.7"/>
+        <ellipse cx="278" cy="170" rx="10" ry="6" fill="#7A8B7A" opacity="0.7"/>
+        <path d="M252 196 L258 178 L274 178 L280 196 Z" fill="#2F2F2F"/>
+
+        <!-- laptop shadow -->
+        <ellipse cx="160" cy="216" rx="82" ry="9" fill="#2F2F2F" opacity="0.16" filter="url(#shadowSoft)"/>
+
+        <!-- laptop base -->
+        <path d="M86 196 L234 196 L246 210 L74 210 Z" fill="#2F2F2F"/>
+        <rect x="74" y="208" width="172" height="6" rx="3" fill="#2F2F2F"/>
+
+        <!-- laptop screen -->
+        <rect x="92" y="106" width="136" height="92" rx="8" fill="#2F2F2F"/>
+        <rect x="100" y="114" width="120" height="76" rx="4" fill="#FBFAF7"/>
+
+        <!-- screen content: simple inbox lines -->
+        <rect x="110" y="124" width="16" height="16" rx="4" fill="#7A8B7A"/>
+        <rect x="132" y="127" width="78" height="5" rx="2.5" fill="#D9D3C5"/>
+        <rect x="132" y="137" width="56" height="5" rx="2.5" fill="#E5E0D5"/>
+
+        <rect x="110" y="150" width="110" height="5" rx="2.5" fill="#E5E0D5"/>
+        <rect x="110" y="161" width="92" height="5" rx="2.5" fill="#E5E0D5"/>
+        <rect x="110" y="172" width="100" height="5" rx="2.5" fill="#E5E0D5"/>
+
+        <!-- mug shadow -->
+        <ellipse cx="64" cy="178" rx="26" ry="6" fill="#2F2F2F" opacity="0.16" filter="url(#shadowSmall)"/>
+
+        <!-- coffee cup -->
+        <path d="M44 150 q-4 24 18 24 q22 0 18 -24 Z" fill="#FBFAF7" stroke="#2F2F2F" stroke-width="3"/>
+        <ellipse cx="62" cy="150" rx="20" ry="6" fill="#637363"/>
+        <ellipse cx="62" cy="150" rx="20" ry="6" fill="none" stroke="#2F2F2F" stroke-width="3"/>
+        <path d="M80 152 q14 0 14 10 q0 10 -14 8" fill="none" stroke="#2F2F2F" stroke-width="3" stroke-linecap="round"/>
+
+        <!-- steam -->
+        <path d="M54 132 q-6 -8 0 -16" fill="none" stroke="#637363" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+        <path d="M66 132 q-6 -8 0 -16" fill="none" stroke="#637363" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+
+        <!-- notepad + pen -->
+        <rect x="244" y="182" width="44" height="32" rx="4" fill="#FBFAF7" stroke="#2F2F2F" stroke-width="2.5"/>
+        <rect x="252" y="190" width="28" height="3.5" rx="1.5" fill="#D9D3C5"/>
+        <rect x="252" y="198" width="20" height="3.5" rx="1.5" fill="#D9D3C5"/>
+        <rect x="252" y="206" width="24" height="3.5" rx="1.5" fill="#D9D3C5"/>
+        <line x1="262" y1="178" x2="286" y2="156" stroke="#7A8B7A" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="content-col">
+    <span class="eyebrow">新しい働き方を探している方へ</span>
+    <h1 class="headline">事務経験を、<br>新しい働き方へ。</h1>
+    <p class="subcopy">メール対応・資料作成・スケジュール管理など<br><br>在宅で企業を支えるオンライン秘書のお仕事です</p>
+    <div class="cta-group">
+      <button class="cta-btn">募集要項を見る<span class="arrow">→</span></button>
+    </div>
+    <p class="trust"><span class="trust-dot"></span>未経験歓迎｜在宅勤務可</p>
+  </div>
+
+</div>
+
+</body>
+</html>

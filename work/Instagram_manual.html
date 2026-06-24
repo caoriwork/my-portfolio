@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram投稿運用マニュアル</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        teal: {
+                            deep: '#005d64',
+                            mint: '#00a29a',
+                            light: '#f0f9f9',
+                            border: '#b2dfdb'
+                        },
+                        neutral: {
+                            dark: '#334155',
+                            light: '#f8fafc',
+                            bg: '#F7F5F0'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans JP', 'sans-serif'],
+                        mont: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F7F5F0;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #f8fafc;
+            position: relative;
+            display: none; 
+        }
+        
+        .slide-container.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Accent dotted pattern background */
+        .dot-pattern {
+            background-image: radial-gradient(#00a29a 15%, transparent 15%);
+            background-size: 16px 16px;
+            opacity: 0.15;
+        }
+        .portfolio-shadow{
+            box-shadow: 0 24px 30px -20px rgba(27,42,65,.25);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-center items-center py-8">
+
+    <div id="presentation-container" class="relative overflow-hidden rounded-lg portfolio-shadow">
+        
+        <!-- ==========================================
+             SLIDE 1: COVER (Styled after Version 1)
+             ========================================== -->
+        <div class="slide-container active p-16 justify-between animate-fade-in" id="slide-1">
+            <!-- Background Decorative Grid and Shapes -->
+            <div class="absolute inset-0 dot-pattern w-48 h-48 top-4 left-4 pointer-events-none"></div>
+            <div class="absolute inset-0 dot-pattern w-48 h-48 bottom-4 right-4 pointer-events-none"></div>
+            <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-gradient-to-br from-teal-mint/5 to-teal-deep/10 pointer-events-none"></div>
+            
+            <!-- Cover Top Header -->
+            <div class="flex items-center justify-between z-10">
+                <span class="bg-teal-deep text-white px-4 py-1 rounded text-xs font-mont font-bold tracking-widest">STANDARD MANUAL</span>
+                <span class="text-sm font-semibold text-slate-400 font-mont">PAGE 01</span>
+            </div>
+            
+            <!-- Main Title & Subtitle Section -->
+            <div class="my-auto z-10 pl-8 border-l-8 border-teal-mint">
+                <h1 class="text-6xl font-black text-teal-deep leading-tight tracking-wide font-sans">
+                    Instagram投稿<br>運用マニュアル
+                </h1>
+                <p class="text-2xl text-slate-600 mt-6 font-medium flex items-center gap-3">
+                    <span class="text-teal-mint font-bold">|</span> 誰が担当しても同じ品質で投稿できる仕組みづくり
+                </p>
+            </div>
+            
+            <!-- Bottom Tag -->
+            <div class="flex justify-between items-end z-10">
+                <div class="bg-teal-deep text-white px-6 py-2.5 rounded-full text-base font-bold tracking-wide shadow-md shadow-teal-deep/10">
+                    業務マニュアル作成サンプル
+                </div>
+                <div class="flex gap-4 text-teal-mint/40 text-2xl">
+                    <i class="fa-solid fa-laptop"></i>
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 2: PURPOSE (Version 2 Base Layout)
+             ========================================== -->
+        <div class="slide-container p-12 justify-between" id="slide-2">
+            <!-- Header Block -->
+            <div class="flex justify-between items-start border-b-2 border-teal-deep/20 pb-4">
+                <div class="flex items-center gap-4">
+                    <span class="bg-teal-deep text-white w-10 h-10 rounded flex items-center justify-center font-bold font-mont">01</span>
+                    <div>
+                        <h2 class="text-3xl font-bold text-teal-deep">このマニュアルの目的</h2>
+                        <p class="text-sm text-teal-mint font-semibold mt-0.5">作業を属人化させない</p>
+                    </div>
+                </div>
+                <span class="text-sm font-semibold text-slate-400 font-mont">Instagram投稿運用マニュアル / 02</span>
+            </div>
+
+            <!-- Content Area -->
+            <div class="grid grid-cols-1 gap-8 my-auto px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <p class="text-2xl font-bold text-slate-700 leading-relaxed">
+                        投稿作成の流れを標準化し、ミスと品質のバラツキを防止します。
+                    </p>
+                </div>
+                
+                <!-- Graphic Flowchart -->
+                <div class="flex justify-center items-center gap-8 mt-4">
+                    <!-- Step 1 Card -->
+                    <div class="bg-white border-2 border-teal-deep rounded-2xl p-6 w-64 text-center shadow-lg shadow-teal-deep/5 flex flex-col items-center justify-center relative">
+                        <span class="absolute -top-4 bg-teal-mint text-white text-xs px-3 py-1 rounded-full font-bold">STEP 1</span>
+                        <div class="bg-teal-light text-teal-deep p-4 rounded-full mb-3 mt-1">
+                            <i class="fa-solid fa-users text-3xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-teal-deep">3人の担当者</h4>
+                    </div>
+                    
+                    <i class="fa-solid fa-chevron-right text-3xl text-teal-mint"></i>
+
+                    <!-- Step 2 Card (The Manual) -->
+                    <div class="bg-white border-2 border-teal-deep rounded-2xl p-6 w-64 text-center shadow-lg shadow-teal-deep/5 flex flex-col items-center justify-center relative">
+                        <span class="absolute -top-4 bg-teal-deep text-white text-xs px-3 py-1 rounded-full font-bold">STEP 2</span>
+                        <div class="bg-teal-deep text-white p-4 rounded-full mb-3 mt-1">
+                            <i class="fa-solid fa-book-open text-3xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-teal-deep">同じマニュアル</h4>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-right text-3xl text-teal-mint"></i>
+
+                    <!-- Step 3 Card -->
+                    <div class="bg-white border-2 border-teal-deep rounded-2xl p-6 w-64 text-center shadow-lg shadow-teal-deep/5 flex flex-col items-center justify-center relative">
+                        <span class="absolute -top-4 bg-teal-mint text-white text-xs px-3 py-1 rounded-full font-bold">STEP 3</span>
+                        <div class="bg-teal-light text-teal-deep p-4 rounded-full mb-3 mt-1">
+                            <i class="fa-solid fa-circle-check text-3xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-teal-deep">同じ品質</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Takeaway Frame -->
+            <div class="bg-teal-deep text-white py-4 px-6 rounded-xl flex items-center gap-4 shadow-md">
+                <div class="bg-teal-mint rounded-full p-2 flex items-center justify-center w-8 h-8">
+                    <i class="fa-solid fa-triangle-exclamation text-sm text-teal-deep"></i>
+                </div>
+                <p class="text-lg font-semibold">確認漏れ・投稿ミス・担当者による品質差を防ぐことを最優先とします。</p>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 3: OVERALL FLOW (Version 2 Base Layout)
+             ========================================== -->
+        <div class="slide-container p-12 justify-between" id="slide-3">
+            <!-- Header Block -->
+            <div class="flex justify-between items-start border-b-2 border-teal-deep/20 pb-4">
+                <div class="flex items-center gap-4">
+                    <span class="bg-teal-deep text-white w-10 h-10 rounded flex items-center justify-center font-bold font-mont">02</span>
+                    <div>
+                        <h2 class="text-3xl font-bold text-teal-deep">全体の流れ</h2>
+                        <p class="text-sm text-teal-mint font-semibold mt-0.5">準備から公開までのステップ</p>
+                    </div>
+                </div>
+                <span class="text-sm font-semibold text-slate-400 font-mont">Instagram投稿運用マニュアル / 03</span>
+            </div>
+
+            <!-- Content Area: Horizontal timeline -->
+            <div class="my-auto relative px-6">
+                <!-- Center Connecting Line -->
+                <div class="absolute top-1/2 left-16 right-16 h-1 bg-teal-deep/10 -translate-y-12"></div>
+                
+                <div class="grid grid-cols-5 gap-4 relative z-10">
+                    <!-- Node 1 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-20 h-20 bg-teal-deep text-white rounded-full flex items-center justify-center shadow-lg shadow-teal-deep/20 mb-4 ring-8 ring-teal-light">
+                            <i class="fa-solid fa-arrow-pointer text-2xl"></i>
+                        </div>
+                        <span class="bg-teal-deep text-white text-xs px-2.5 py-0.5 rounded-full font-bold mb-2">STEP 01</span>
+                        <p class="text-lg font-bold text-slate-800">Canvaを開く</p>
+                    </div>
+
+                    <!-- Node 2 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-20 h-20 bg-white border-2 border-teal-deep text-teal-deep rounded-full flex items-center justify-center shadow-md mb-4">
+                            <i class="fa-solid fa-layer-group text-2xl"></i>
+                        </div>
+                        <span class="bg-teal-mint text-white text-xs px-2.5 py-0.5 rounded-full font-bold mb-2">STEP 02</span>
+                        <p class="text-lg font-bold text-slate-800">テンプレ選択</p>
+                    </div>
+
+                    <!-- Node 3 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-20 h-20 bg-white border-2 border-teal-deep text-teal-deep rounded-full flex items-center justify-center shadow-md mb-4">
+                            <i class="fa-solid fa-image-retro text-2xl"></i>
+                        </div>
+                        <span class="bg-teal-mint text-white text-xs px-2.5 py-0.5 rounded-full font-bold mb-2">STEP 03</span>
+                        <p class="text-lg font-bold text-slate-800">画像差し替え</p>
+                    </div>
+
+                    <!-- Node 4 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-20 h-20 bg-white border-2 border-teal-deep text-teal-deep rounded-full flex items-center justify-center shadow-md mb-4">
+                            <i class="fa-solid fa-pen-fancy text-2xl"></i>
+                        </div>
+                        <span class="bg-teal-mint text-white text-xs px-2.5 py-0.5 rounded-full font-bold mb-2">STEP 04</span>
+                        <p class="text-lg font-bold text-slate-800">投稿文作成</p>
+                    </div>
+
+                    <!-- Node 5 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-20 h-20 bg-white border-2 border-teal-deep text-teal-deep rounded-full flex items-center justify-center shadow-md mb-4">
+                            <i class="fa-solid fa-paper-plane text-2xl"></i>
+                        </div>
+                        <span class="bg-teal-mint text-white text-xs px-2.5 py-0.5 rounded-full font-bold mb-2">STEP 05</span>
+                        <p class="text-lg font-bold text-slate-800">投稿</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Takeaway Frame -->
+            <div class="bg-teal-deep text-white py-4 px-6 rounded-xl flex items-center gap-4 shadow-md">
+                <div class="bg-teal-mint rounded-full p-2 flex items-center justify-center w-8 h-8">
+                    <i class="fa-solid fa-lightbulb text-sm text-teal-deep"></i>
+                </div>
+                <p class="text-lg font-semibold">作業の全体像を最初に把握することで、引き継ぎ時の理解をスムーズにします。</p>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 4: IMAGE CREATION (Version 2 Base Layout)
+             ========================================== -->
+        <div class="slide-container p-12 justify-between" id="slide-4">
+            <!-- Header Block -->
+            <div class="flex justify-between items-start border-b-2 border-teal-deep/20 pb-4">
+                <div class="flex items-center gap-4">
+                    <span class="bg-teal-deep text-white w-10 h-10 rounded flex items-center justify-center font-bold font-mont">03</span>
+                    <div>
+                        <h2 class="text-3xl font-bold text-teal-deep">投稿画像を作成する</h2>
+                        <p class="text-sm text-teal-mint font-semibold mt-0.5">デザイン作成時の基本ルール</p>
+                    </div>
+                </div>
+                <span class="text-sm font-semibold text-slate-400 font-mont">Instagram投稿運用マニュアル / 04</span>
+            </div>
+
+            <!-- Content Area: Two Column Layout -->
+            <div class="grid grid-cols-12 gap-8 my-auto items-center">
+                <!-- Left: Beautiful Inline SVG representation of Canva Interface -->
+                <div class="col-span-5 bg-white border-2 border-teal-deep rounded-2xl p-4 shadow-md h-[360px] flex flex-col justify-between">
+                    <!-- Top bar of mock editor -->
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mont">Canva Editor</span>
+                    </div>
+                    
+                    <!-- Editor Interface Layout -->
+                    <div class="flex-grow grid grid-cols-12 gap-3 mt-3 overflow-hidden">
+                        <!-- Sidebar -->
+                        <div class="col-span-3 bg-slate-50 rounded-lg p-2 flex flex-col gap-2 border border-slate-100">
+                            <div class="h-5 bg-slate-200 rounded w-full flex items-center justify-center text-[8px] text-slate-500 font-bold">Template</div>
+                            <div class="h-5 bg-teal-deep text-white rounded w-full flex items-center justify-center text-[8px] font-bold"><i class="fa-solid fa-cloud-arrow-up mr-1"></i>Upload</div>
+                            <div class="h-4 bg-slate-200 rounded w-2/3"></div>
+                            <div class="h-4 bg-slate-200 rounded w-3/4"></div>
+                        </div>
+                        <!-- Canvas Area -->
+                        <div class="col-span-9 bg-slate-100 rounded-lg p-3 flex flex-col justify-center items-center border-2 border-dashed border-teal-mint/30 relative">
+                            <!-- Inner Slide Template Card representation -->
+                            <div class="w-44 h-44 bg-white border border-teal-deep rounded-lg p-2 shadow flex flex-col justify-between">
+                                <div class="bg-teal-light rounded-md h-20 overflow-hidden flex items-center justify-center relative">
+                                    <i class="fa-solid fa-image text-teal-deep/30 text-3xl"></i>
+                                    <span class="absolute bottom-1 right-1 bg-teal-deep text-white text-[8px] px-1 py-0.5 rounded"></span>
+                                </div>
+                                <div class="space-y-1.5 mt-2">
+                                    <div class="h-3 bg-teal-deep rounded w-5/6"></div>
+                                    <div class="h-2 bg-slate-300 rounded w-full"></div>
+                                    <div class="h-2 bg-slate-200 rounded w-2/3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: STEP Cards and Points Card -->
+                <div class="col-span-7 flex flex-col gap-4">
+                    <div class="grid grid-cols-1 gap-2.5">
+                        <div class="flex items-center gap-3 bg-white border border-teal-deep/30 px-4 py-2.5 rounded-xl">
+                            <span class="bg-teal-deep text-white w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm">1</span>
+                            <p class="text-lg font-bold text-slate-700">Canvaを開く</p>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white border border-teal-deep/30 px-4 py-2.5 rounded-xl">
+                            <span class="bg-teal-deep text-white w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm">2</span>
+                            <p class="text-lg font-bold text-slate-700">指定のテンプレートを選択</p>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white border border-teal-deep/30 px-4 py-2.5 rounded-xl">
+                            <span class="bg-teal-deep text-white w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm">3</span>
+                            <p class="text-lg font-bold text-slate-700">今回の画像へ差し替える</p>
+                        </div>
+                    </div>
+
+                    <!-- Points Box with Mint Accent border -->
+                    <div class="bg-teal-light border-l-4 border-teal-mint rounded-r-xl p-4">
+                        <h4 class="text-teal-deep font-bold text-lg flex items-center gap-2 mb-1.5">
+                            <i class="fa-solid fa-circle-check"></i> 制作のポイント
+                        </h4>
+                        <ul class="text-slate-600 font-medium text-sm space-y-1 pl-1">
+                            <li class="flex items-center gap-2">✔ ブランドカラーの統一を徹底</li>
+                            <li class="flex items-center gap-2">✔ 文字量を増やしすぎず、余白を活かす</li>
+                            <li class="flex items-center gap-2">✔ スマホで見やすいフォントサイズを意識</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Takeaway Frame -->
+            <div class="bg-teal-deep text-white py-4 px-6 rounded-xl flex items-center gap-4 shadow-md">
+                <span class="bg-teal-mint text-teal-deep px-3 py-1 rounded font-bold text-sm">STEP 01-03</span>
+                <p class="text-lg font-semibold">テンプレートのルールを逸脱しないことが、ブランドの一貫性を守るコツです。</p>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 5: CAPTION & PUBLISHING (Version 2 Base Layout)
+             ========================================== -->
+        <div class="slide-container p-12 justify-between" id="slide-5">
+            <!-- Header Block -->
+            <div class="flex justify-between items-start border-b-2 border-teal-deep/20 pb-4">
+                <div class="flex items-center gap-4">
+                    <span class="bg-teal-deep text-white w-10 h-10 rounded flex items-center justify-center font-bold font-mont">04</span>
+                    <div>
+                        <h2 class="text-3xl font-bold text-teal-deep">投稿文を作成して公開する</h2>
+                        <p class="text-sm text-teal-mint font-semibold mt-0.5">投稿直前の手順とポイント</p>
+                    </div>
+                </div>
+                <span class="text-sm font-semibold text-slate-400 font-mont">Instagram投稿運用マニュアル / 05</span>
+            </div>
+
+            <!-- Content Area: Two Column Layout -->
+            <div class="grid grid-cols-12 gap-8 my-auto items-center">
+                <!-- Left: Beautiful Inline SVG representation of Instagram Post Mockup -->
+                <div class="col-span-5 bg-white border-2 border-teal-deep rounded-2xl p-4 shadow-md h-[360px] flex flex-col justify-between">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-yellow-400 to-pink-500 flex items-center justify-center">
+                                <i class="fa-brands fa-instagram text-white text-[10px]"></i>
+                            </span>
+                            <span class="text-xs font-bold text-slate-700">Official Account</span>
+                        </div>
+                        <i class="fa-solid fa-ellipsis text-slate-400"></i>
+                    </div>
+
+                    <!-- Inner Mock Image Frame -->
+                    <div class="bg-slate-100 rounded-lg flex-grow my-3 relative overflow-hidden flex flex-col justify-end p-3">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fa-regular fa-image text-slate-300 text-5xl"></i>
+                        </div>
+                        <!-- Likes and Description overlay mock -->
+                        <div class="bg-white/90 backdrop-blur-sm rounded p-2 z-10 space-y-1">
+                            <div class="flex gap-2 text-slate-600 text-[10px]">
+                                <i class="fa-regular fa-heart text-red-500"></i>
+                                <i class="fa-regular fa-comment"></i>
+                                <i class="fa-regular fa-paper-plane"></i>
+                            </div>
+                            <div class="h-2 bg-slate-300 rounded w-1/3"></div>
+                            <div class="h-1.5 bg-slate-200 rounded w-full"></div>
+                            <div class="h-1.5 bg-slate-200 rounded w-2/3"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: STEP list & CHECK box -->
+                <div class="col-span-7 flex flex-col gap-4">
+                    <div class="grid grid-cols-1 gap-2.5">
+                        <div class="flex items-center gap-3 bg-white border border-teal-deep/30 px-4 py-3 rounded-xl">
+                            <span class="bg-teal-deep text-white w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm">4</span>
+                            <p class="text-lg font-bold text-slate-700">キャプション（投稿文）を作成</p>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white border border-teal-deep/30 px-4 py-3 rounded-xl">
+                            <span class="bg-teal-deep text-white w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm">5</span>
+                            <p class="text-lg font-bold text-slate-700">Instagramへ公開・予約</p>
+                        </div>
+                    </div>
+
+                    <!-- CHECKLIST Card -->
+                    <div class="bg-white border-2 border-teal-deep rounded-xl p-5 shadow-sm relative">
+                        <span class="absolute -top-3 left-4 bg-teal-deep text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider">CHECK</span>
+                        <ul class="space-y-2 mt-1">
+                            <li class="flex items-center gap-3 text-slate-600 font-semibold text-base">
+                                <i class="fa-solid fa-square-check text-teal-mint text-xl"></i> 誤字脱字・日付の確認
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600 font-semibold text-base">
+                                <i class="fa-solid fa-square-check text-teal-mint text-xl"></i> リンクURLが正しいか
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600 font-semibold text-base">
+                                <i class="fa-solid fa-square-check text-teal-mint text-xl"></i> ハッシュタグの選定
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600 font-semibold text-base">
+                                <i class="fa-solid fa-square-check text-teal-mint text-xl"></i> 投稿先アカウントの間違い防止
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Takeaway Frame -->
+            <div class="bg-teal-deep text-white py-4 px-6 rounded-xl flex items-center gap-4 shadow-md">
+                <span class="bg-teal-mint text-teal-deep px-3 py-1 rounded font-bold text-sm">STEP 04-05</span>
+                <p class="text-lg font-semibold">「本番アカウントにログインしているか」の事前確認が最も重要な防衛線です。</p>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 6: PRE-PUBLISH CHECKLIST (Version 2 Base Layout)
+             ========================================== -->
+        <div class="slide-container p-12 justify-between" id="slide-6">
+            <!-- Header Block -->
+            <div class="flex justify-between items-start border-b-2 border-teal-deep/20 pb-4">
+                <div class="flex items-center gap-4">
+                    <span class="bg-teal-deep text-white w-10 h-10 rounded flex items-center justify-center font-bold font-mont">05</span>
+                    <div>
+                        <h2 class="text-3xl font-bold text-teal-deep">投稿前チェックリスト</h2>
+                        <p class="text-sm text-teal-mint font-semibold mt-0.5">ミスを出さないための必須ステップ</p>
+                    </div>
+                </div>
+                <span class="text-sm font-semibold text-slate-400 font-mont">Instagram投稿運用マニュアル / 06</span>
+            </div>
+
+            <!-- Content Area: Check Grid -->
+            <div class="grid grid-cols-1 gap-4 my-auto max-w-4xl mx-auto w-full">
+                <div class="bg-white border-2 border-teal-deep rounded-2xl p-8 shadow-lg shadow-teal-deep/5 space-y-4">
+                    <!-- Check item 1 -->
+                    <div class="flex items-center gap-4 border-b border-slate-100 pb-3">
+                        <div class="w-7 h-7 rounded border-2 border-teal-mint flex items-center justify-center text-teal-mint font-bold bg-teal-light">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <p class="text-xl font-bold text-slate-700">画像内の写真やテキストに差し替え漏れがないか</p>
+                    </div>
+                    
+                    <!-- Check item 2 -->
+                    <div class="flex items-center gap-4 border-b border-slate-100 pb-3">
+                        <div class="w-7 h-7 rounded border-2 border-teal-mint flex items-center justify-center text-teal-mint font-bold bg-teal-light">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <p class="text-xl font-bold text-slate-700">投稿用テキスト（詳細、ハッシュタグ）が確認済みか</p>
+                    </div>
+
+                    <!-- Check item 3 -->
+                    <div class="flex items-center gap-4 border-b border-slate-100 pb-3">
+                        <div class="w-7 h-7 rounded border-2 border-teal-mint flex items-center justify-center text-teal-mint font-bold bg-teal-light">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <p class="text-xl font-bold text-slate-700">配信対象の公式アカウント（本番環境）になっているか</p>
+                    </div>
+
+                    <!-- Check item 4 -->
+                    <div class="flex items-center gap-4">
+                        <div class="w-7 h-7 rounded border-2 border-teal-mint flex items-center justify-center text-teal-mint font-bold bg-teal-light">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <p class="text-xl font-bold text-slate-700">スマートフォンプレビュー時に文字切れが発生していないか</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Takeaway Frame -->
+            <div class="bg-teal-deep text-white py-4 px-6 rounded-xl flex items-center gap-4 shadow-md">
+                <div class="bg-teal-mint rounded-full p-2 flex items-center justify-center w-8 h-8">
+                    <i class="fa-solid fa-clipboard-check text-sm text-teal-deep"></i>
+                </div>
+                <p class="text-lg font-semibold">チェックリストをルーチン化することで、人的な確認漏れを確実に防ぎます。</p>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 7: PORTFOLIO KEY POINTS (Version 2 Base Layout)
+             ========================================== -->
+        <div class="slide-container p-12 justify-between" id="slide-7">
+            <!-- Header Block -->
+            <div class="flex justify-between items-start border-b-2 border-teal-deep/20 pb-4">
+                <div class="flex items-center gap-4">
+                    <span class="bg-teal-deep text-white w-10 h-10 rounded flex items-center justify-center font-bold font-mont">06</span>
+                    <div>
+                        <h2 class="text-3xl font-bold text-teal-deep">制作のポイント</h2>
+                        <p class="text-sm text-teal-mint font-semibold mt-0.5">ポートフォリオ用実績・プロセス</p>
+                    </div>
+                </div>
+                <span class="text-sm font-semibold text-slate-400 font-mont">Instagram投稿運用マニュアル / 07</span>
+            </div>
+
+            <!-- Content Area: Three Columns Smart Cards -->
+            <div class="grid grid-cols-3 gap-6 my-auto px-2">
+                <!-- Point Card 1 -->
+                <div class="bg-white border border-teal-deep rounded-2xl p-6 shadow-md relative flex flex-col justify-between h-[280px]">
+                    <span class="absolute -top-4 left-6 bg-teal-deep text-white w-8 h-8 rounded-full flex items-center justify-center font-bold font-mont">1</span>
+                    <div class="pt-2">
+                        <h3 class="text-xl font-bold text-teal-deep mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-compass-drafting text-teal-mint"></i> 構成設計
+                        </h3>
+                        <p class="text-[15px] font-medium text-slate-600 leading-relaxed">
+                            誰が見ても迷わない構成を意識し、直感的な順序で作業手順を視覚化。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Point Card 2 -->
+                <div class="bg-white border border-teal-deep rounded-2xl p-6 shadow-md relative flex flex-col justify-between h-[280px]">
+                    <span class="absolute -top-4 left-6 bg-teal-deep text-white w-8 h-8 rounded-full flex items-center justify-center font-bold font-mont">2</span>
+                    <div class="pt-2">
+                        <h3 class="text-xl font-bold text-teal-deep mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-arrow-up-right-dots text-teal-mint"></i> 業務改善
+                        </h3>
+                        <p class="text-[15px] font-medium text-slate-600 leading-relaxed">
+                            ヒューマンエラーを未然に防ぎ、実務で使えチェックリストを完備。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Point Card 3 -->
+                <div class="bg-white border border-teal-deep rounded-2xl p-6 shadow-md relative flex flex-col justify-between h-[280px]">
+                    <span class="absolute -top-4 left-6 bg-teal-deep text-white w-8 h-8 rounded-full flex items-center justify-center font-bold font-mont">3</span>
+                    <div class="pt-2">
+                        <h3 class="text-xl font-bold text-teal-deep mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-people-group text-teal-mint"></i> スムーズな引き継ぎ
+                        </h3>
+                        <p class="text-[15px] font-medium text-slate-600 leading-relaxed">
+                            属人化しやすい運用フローを標準化。急な担当変更にも即座に対応可能。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Takeaway Frame -->
+            <div class="bg-teal-deep text-white py-4 px-6 rounded-xl flex items-center justify-between shadow-md">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-screwdriver-wrench text-teal-mint"></i>
+                    <p class="text-lg font-semibold">【使用ツール】</p>
+                </div>
+                <div class="flex gap-4">
+                    <span class="bg-white/10 px-4 py-1 rounded-full text-base font-semibold">ChatGPT（構成・マニュアル設計）</span>
+                    <span class="bg-white/10 px-4 py-1 rounded-full text-base font-semibold">Canva（テンプレート適用）</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Presentation Control Navigation Bar -->
+    <div class="w-full bg-[#F7F5F0] flex justify-center py-6">
+    <div class="flex items-center gap-6 bg-teal-deep text-white px-8 py-3 rounded-full shadow-lg">
+        <button onclick="prevSlide()" class="hover:text-teal-mint transition-colors w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10">
+            <i class="fa-solid fa-chevron-left text-xl"></i>
+        </button>
+
+        <span class="text-lg font-bold font-mont tracking-wider" id="slide-indicator">1 / 7</span>
+
+        <button onclick="nextSlide()" class="hover:text-teal-mint transition-colors w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10">
+            <i class="fa-solid fa-chevron-right text-xl"></i>
+        </button>
+    </div>
+</div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 7;
+
+        function showSlide(slideIndex) {
+            // Hide all slides
+            for (let i = 1; i <= totalSlides; i++) {
+                document.getElementById(`slide-${i}`).classList.remove('active');
+            }
+            // Show target slide
+            document.getElementById(`slide-${slideIndex}`).classList.add('active');
+            // Update indicator text
+            document.getElementById('slide-indicator').innerText = `${slideIndex} / ${totalSlides}`;
+            currentSlide = slideIndex;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                showSlide(currentSlide + 1);
+            } else {
+                showSlide(1); // loop back to start
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                showSlide(currentSlide - 1);
+            } else {
+                showSlide(totalSlides); // loop back to end
+            }
+        }
+
+        // Add keyboard arrow keys support for comfortable presentation flow
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight') {
+                nextSlide();
+            } else if (event.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+    </script>
+</body>
+</html>

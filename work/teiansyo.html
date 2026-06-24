@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>請求業務におけるチェック体制の改善</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        teal: {
+                            deep: '#005d64',
+                            mint: '#00a29a',
+                            light: '#f0f9f9',
+                            border: '#b2dfdb'
+                        },
+                        neutral: {
+                            dark: '#334155',
+                            light: '#f8fafc',
+                            bg: '#F7F5F0'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans JP', 'sans-serif'],
+                        mont: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F7F5F0;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #f8fafc;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            display: none;
+        }
+
+        .slide-container.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dot-pattern {
+            background-image: radial-gradient(#00a29a 15%, transparent 15%);
+            background-size: 16px 16px;
+            opacity: 0.15;
+        }
+
+        .portfolio-shadow{
+    box-shadow: 0 20px 50px rgba(27,42,65,.12);
+        }
+
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-center items-center py-8">
+
+    <div id="presentation-container" class="relative overflow-hidden rounded-lg portfolio-shadow">
+
+        <!-- ==========================================
+             SLIDE 1: COVER
+             ========================================== -->
+        <div class="slide-container active p-16 justify-between" id="slide-1">
+            <div class="absolute inset-0 dot-pattern w-48 h-48 top-4 left-4 pointer-events-none"></div>
+            <div class="absolute inset-0 dot-pattern w-48 h-48 bottom-4 right-4 pointer-events-none"></div>
+            <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-gradient-to-br from-teal-mint/5 to-teal-deep/10 pointer-events-none"></div>
+
+            <!-- Cover Top Header -->
+            <div class="flex items-center justify-between z-10">
+                <span class="bg-teal-deep text-white px-4 py-1 rounded text-xs font-mont font-bold tracking-widest">IMPROVEMENT PROPOSAL</span>
+                <span class="text-sm font-semibold text-slate-400 font-mont">PAGE 01</span>
+            </div>
+
+            <!-- Main Title & Subtitle Section -->
+            <div class="my-auto z-10 pl-8 border-l-8 border-teal-mint">
+                <p class="text-2xl font-bold text-teal-mint mb-4 tracking-wide">業務改善提案書</p>
+                <h1 class="text-6xl font-black text-teal-deep leading-tight tracking-wide font-sans">
+                    請求業務における<br>チェック体制の改善
+                </h1>
+                <p class="text-2xl text-slate-600 mt-6 font-medium flex items-center gap-3">
+                    <span class="text-teal-mint font-bold">|</span> ヒューマンエラー防止と業務品質向上を目的とした改善提案
+                </p>
+            </div>
+
+            <!-- Bottom Tag -->
+            <div class="flex justify-between items-end z-10">
+                <div class="bg-teal-deep text-white px-6 py-2.5 rounded-full text-base font-bold tracking-wide shadow-md shadow-teal-deep/10">
+                    業務改善提案サンプル
+                </div>
+                <div class="flex gap-4 text-teal-mint/40 text-2xl">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 2: CURRENT ISSUE
+             ========================================== -->
+        <div class="slide-container p-12 justify-between" id="slide-2">
+            <div class="flex justify-between items-start border-b-2 border-teal-deep/20 pb-4">
+                <div class="flex items-center gap-4">
+                    <span class="bg-teal-deep text-white w-10 h-10 rounded flex items-center justify-center font-bold font-mont">01</span>
+                    <div>
+                        <h2 class="text-3xl font-bold text-teal-deep">現状の課題</h2>
+                        <p class="text-sm text-teal-mint font-semibold mt-0.5">目視確認のみによる確認漏れ</p>
+                    </div>
+                </div>
+                <span class="text-sm font-semibold text-slate-400 font-mont">請求業務チェック体制の改善 / 02</span>
+            </div>
+
+            <!-- Content Area -->
+            <div class="grid grid-cols-12 gap-8 my-auto items-center px-2">
+                <!-- Left: Problem cause chain -->
+                <div class="col-span-5 flex flex-col gap-3">
+                    <div class="bg-white border-2 border-teal-deep rounded-xl px-6 py-4 shadow-sm flex items-center gap-4">
+                        <i class="fa-solid fa-eye text-teal-mint text-2xl"></i>
+                        <p class="text-lg font-bold text-slate-700">請求処理時に<span class="text-teal-deep">目視確認のみ</span>で運用</p>
+                    </div>
+                    <div class="flex justify-center"><i class="fa-solid fa-chevron-down text-2xl text-teal-mint"></i></div>
+                    <div class="bg-white border-2 border-teal-deep rounded-xl px-6 py-4 shadow-sm flex items-center gap-4">
+                        <i class="fa-solid fa-triangle-exclamation text-teal-mint text-2xl"></i>
+                        <p class="text-lg font-bold text-slate-700"><span class="text-teal-deep">確認漏れ</span>が発生</p>
+                    </div>
+                    <div class="flex justify-center"><i class="fa-solid fa-chevron-down text-2xl text-teal-mint"></i></div>
+                    <div class="bg-red-50 border-2 border-red-300 rounded-xl px-6 py-4 shadow-sm flex items-center gap-4">
+                        <i class="fa-solid fa-circle-exclamation text-red-500 text-2xl"></i>
+                        <p class="text-lg font-bold text-red-600">月平均 <span class="text-3xl font-black">2件</span> の誤請求</p>
+                    </div>
+                </div>
+
+                <!-- Right: Current flow diagram -->
+                <div class="col-span-7 bg-teal-light border-2 border-teal-border rounded-2xl p-6">
+                    <p class="text-sm font-bold text-teal-deep mb-4 tracking-wide"><i class="fa-solid fa-diagram-project mr-2"></i>現状の業務フロー</p>
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="bg-white border border-teal-deep/40 rounded-lg w-64 py-3 text-center font-bold text-slate-700 shadow-sm">請求データ作成</div>
+                        <i class="fa-solid fa-chevron-down text-teal-mint"></i>
+                        <div class="bg-white border border-teal-deep/40 rounded-lg w-64 py-3 text-center font-bold text-slate-700 shadow-sm">目視確認</div>
+                        <i class="fa-solid fa-chevron-down text-teal-mint"></i>
+                        <div class="bg-white border border-teal-deep/40 rounded-lg w-64 py-3 text-center font-bold text-slate-700 shadow-sm">請求書発行</div>
+                        <i class="fa-solid fa-chevron-down text-red-400"></i>
+                        <div class="bg-red-500 text-white rounded-lg w-64 py-3 text-center font-bold shadow-md">誤請求発生</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Takeaway Frame -->
+            <div class="bg-teal-deep text-white py-4 px-6 rounded-xl flex items-center gap-4 shadow-md">
+                <div class="bg-teal-mint rounded-full p-2 flex items-center justify-center w-8 h-8">
+                    <i class="fa-solid fa-triangle-exclamation text-sm text-teal-deep"></i>
+                </div>
+                <p class="text-lg font-semibold">人の目だけに依存した確認工程が、誤請求の温床となっています。</p>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 3: ROOT CAUSE ANALYSIS
+             ========================================== -->
+        <div class="slide-container p-12 justify-between" id="slide-3">
+            <div class="flex justify-between items-start border-b-2 border-teal-deep/20 pb-4">
+                <div class="flex items-center gap-4">
+                    <span class="bg-teal-deep text-white w-10 h-10 rounded flex items-center justify-center font-bold font-mont">02</span>
+                    <div>
+                        <h2 class="text-3xl font-bold text-teal-deep">課題分析</h2>
+                        <p class="text-sm text-teal-mint font-semibold mt-0.5">誤請求が起きる3つの原因</p>
+                    </div>
+                </div>
+                <span class="text-sm font-semibold text-slate-400 font-mont">請求業務チェック体制の改善 / 03</span>
+            </div>
+
+            <!-- Content Area: Three Columns -->
+            <div class="grid grid-cols-3 gap-6 px-2">
+                <div class="bg-white border border-teal-deep rounded-2xl p-6 shadow-md relative flex flex-col h-[300px]">
+                    <span class="absolute -top-4 left-6 bg-teal-deep text-white w-8 h-8 rounded-full flex items-center justify-center font-bold font-mont">1</span>
+                    <div class="pt-2">
+                        <div class="bg-teal-light text-teal-deep w-14 h-14 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-user-lock text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-teal-deep mb-3">確認項目の属人化</h3>
+                        <p class="text-[15px] font-medium text-slate-600 leading-relaxed">
+                            何をどこまで確認するかが担当者の経験に依存し、人によってチェックの精度がばらつく。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-teal-deep rounded-2xl p-6 shadow-md relative flex flex-col h-[300px]">
+                    <span class="absolute -top-4 left-6 bg-teal-deep text-white w-8 h-8 rounded-full flex items-center justify-center font-bold font-mont">2</span>
+                    <div class="pt-2">
+                        <div class="bg-teal-light text-teal-deep w-14 h-14 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-people-arrows text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-teal-deep mb-3">ダブルチェック基準が曖昧</h3>
+                        <p class="text-[15px] font-medium text-slate-600 leading-relaxed">
+                            二重確認の役割や観点が明文化されておらず、結果的に同じ箇所だけを見て見落としが残る。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-teal-deep rounded-2xl p-6 shadow-md relative flex flex-col h-[300px]">
+                    <span class="absolute -top-4 left-6 bg-teal-deep text-white w-8 h-8 rounded-full flex items-center justify-center font-bold font-mont">3</span>
+                    <div class="pt-2">
+                        <div class="bg-teal-light text-teal-deep w-14 h-14 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-gears text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-teal-deep mb-3">システムで検知できない</h3>
+                        <p class="text-[15px] font-medium text-slate-600 leading-relaxed">
+                            既存システムは金額や件数の異常値を自動判定しないため、入力ミスがそのまま通過してしまう。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+                <div class="flex flex-col items-center mt-0">
+                    <i class="fa-solid fa-chevron-down text-2xl text-teal-mint mb-2"></i>
+
+                    <div class="bg-red-50 border-2 border-red-300 rounded-xl px-8 py-3 shadow-sm">
+                      <p class="text-lg font-bold text-red-600">
+                           結果：誤請求発生
+                     </p>
+                    </div>
+                </div>
+
+            <!-- Bottom Takeaway Frame -->
+            <div class="bg-teal-deep text-white py-4 px-6 rounded-xl flex items-center gap-4 shadow-md">
+                <div class="bg-teal-mint rounded-full p-2 flex items-center justify-center w-8 h-8">
+                    <i class="fa-solid fa-magnifying-glass text-sm text-teal-deep"></i>
+                </div>
+                <p class="text-lg font-semibold">「個人の注意力」ではなく「仕組み」で防ぐ発想への転換が必要です。</p>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 4: IMPROVEMENT MEASURE
+             ========================================== -->
+        <div class="slide-container p-12 justify-between" id="slide-4">
+            <div class="flex justify-between items-start border-b-2 border-teal-deep/20 pb-4">
+                <div class="flex items-center gap-4">
+                    <span class="bg-teal-deep text-white w-10 h-10 rounded flex items-center justify-center font-bold font-mont">03</span>
+                    <div>
+                        <h2 class="text-3xl font-bold text-teal-deep">改善提案</h2>
+                        <p class="text-sm text-teal-mint font-semibold mt-0.5">スプレッドシート関数による自動チェック</p>
+                    </div>
+                </div>
+                <span class="text-sm font-semibold text-slate-400 font-mont">請求業務チェック体制の改善 / 04</span>
+            </div>
+
+            <!-- Content Area -->
+            <div class="grid grid-cols-12 gap-8 my-auto items-center">
+                <!-- Left: Proposal statement -->
+                <div class="col-span-5">
+                    <div class="bg-white border-2 border-teal-deep rounded-2xl p-8 shadow-lg shadow-teal-deep/5">
+                        <span class="bg-teal-mint text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider">提案内容</span>
+                        <div class="bg-teal-light text-teal-deep w-16 h-16 rounded-full flex items-center justify-center my-5">
+                            <i class="fa-solid fa-table-list text-3xl"></i>
+                        </div>
+                        <p class="text-2xl font-black text-teal-deep leading-relaxed">
+                            スプレッドシート関数を活用した<br>チェックツールを作成
+                        </p>
+                        <p class="text-base font-medium text-slate-600 mt-4 leading-relaxed">
+                            金額・件数・取引先などの異常値を関数で自動抽出し、人の確認を「全件」から「異常分のみ」へ集中させます。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right: New flow diagram -->
+                <div class="col-span-7 bg-teal-light border-2 border-teal-border rounded-2xl p-6">
+                    <p class="text-sm font-bold text-teal-deep mb-4 tracking-wide"><i class="fa-solid fa-diagram-project mr-2"></i>改善後の業務フロー</p>
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="bg-white border border-teal-deep/40 rounded-lg w-64 py-2.5 text-center font-bold text-slate-700 shadow-sm">請求データ</div>
+                        <i class="fa-solid fa-chevron-down text-teal-mint"></i>
+                        <div class="bg-teal-mint text-white rounded-lg w-64 py-2.5 text-center font-bold shadow-md flex items-center justify-center gap-2"><i class="fa-solid fa-bolt"></i>自動チェック</div>
+                        <i class="fa-solid fa-chevron-down text-teal-mint"></i>
+                        <div class="bg-teal-mint text-white rounded-lg w-64 py-2.5 text-center font-bold shadow-md flex items-center justify-center gap-2"><i class="fa-solid fa-filter"></i>異常値抽出</div>
+                        <i class="fa-solid fa-chevron-down text-teal-mint"></i>
+                        <div class="bg-white border border-teal-deep/40 rounded-lg w-64 py-2.5 text-center font-bold text-slate-700 shadow-sm">目視確認</div>
+                        <i class="fa-solid fa-chevron-down text-teal-deep"></i>
+                        <div class="bg-teal-deep text-white rounded-lg w-64 py-2.5 text-center font-bold shadow-md">請求書発行</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Takeaway Frame -->
+            <div class="bg-teal-deep text-white py-4 px-6 rounded-xl flex items-center gap-4 shadow-md">
+                <div class="bg-teal-mint rounded-full p-2 flex items-center justify-center w-8 h-8">
+                    <i class="fa-solid fa-lightbulb text-sm text-teal-deep"></i>
+                </div>
+                <p class="text-lg font-semibold">新規システム導入なし。既存のスプレッドシート環境のまま、低コストで実現できます。</p>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 5: BEFORE / AFTER (大きく見せる)
+             ========================================== -->
+        <div class="slide-container p-12 justify-between" id="slide-5">
+            <div class="flex justify-between items-start border-b-2 border-teal-deep/20 pb-4">
+                <div class="flex items-center gap-4">
+                    <span class="bg-teal-deep text-white w-10 h-10 rounded flex items-center justify-center font-bold font-mont">04</span>
+                    <div>
+                        <h2 class="text-3xl font-bold text-teal-deep">改善効果 Before / After</h2>
+                        <p class="text-sm text-teal-mint font-semibold mt-0.5">仕組み化による劇的な変化</p>
+                    </div>
+                </div>
+                <span class="text-sm font-semibold text-slate-400 font-mont">請求業務チェック体制の改善 / 05</span>
+            </div>
+
+            <!-- Content Area: Big Before / After -->
+            <div class="flex items-stretch justify-center gap-6 my-auto px-2">
+                <!-- BEFORE -->
+                <div class="flex-1 bg-red-50 border-2 border-red-200 rounded-3xl p-8 flex flex-col">
+                    <div class="text-center mb-6">
+                        <span class="inline-block bg-red-500 text-white text-2xl font-black font-mont px-8 py-2 rounded-full tracking-widest shadow-md">BEFORE</span>
+                    </div>
+                    <div class="flex flex-col gap-4 my-auto">
+                        <div class="bg-white rounded-2xl px-6 py-5 flex items-center gap-4 shadow-sm">
+                            <span class="text-2xl">🔴</span>
+                            <p class="text-2xl font-black text-slate-700">月平均<span class="text-red-500">2件</span>の誤請求</p>
+                        </div>
+                        <div class="bg-white rounded-2xl px-6 py-5 flex items-center gap-4 shadow-sm">
+                            <span class="text-2xl">🔴</span>
+                            <p class="text-2xl font-black text-slate-700">属人化</p>
+                        </div>
+                        <div class="bg-white rounded-2xl px-6 py-5 flex items-center gap-4 shadow-sm">
+                            <span class="text-2xl">🔴</span>
+                            <p class="text-2xl font-black text-slate-700">目視確認のみ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="flex flex-col items-center justify-center">
+                    <div class="bg-teal-deep text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg shadow-teal-deep/20">
+                        <i class="fa-solid fa-arrow-right text-3xl"></i>
+                    </div>
+                </div>
+
+                <!-- AFTER -->
+                <div class="flex-1 bg-teal-light border-2 border-teal-mint rounded-3xl p-8 flex flex-col">
+                    <div class="text-center mb-6">
+                        <span class="inline-block bg-teal-mint text-white text-2xl font-black font-mont px-8 py-2 rounded-full tracking-widest shadow-md">AFTER</span>
+                    </div>
+                    <div class="flex flex-col gap-4 my-auto">
+                        <div class="bg-white rounded-2xl px-6 py-5 flex items-center gap-4 shadow-sm">
+                            <span class="text-2xl">🟢</span>
+                            <p class="text-2xl font-black text-slate-700">誤請求<span class="text-teal-mint">0件</span></p>
+                        </div>
+                        <div class="bg-white rounded-2xl px-6 py-5 flex items-center gap-4 shadow-sm">
+                            <span class="text-2xl">🟢</span>
+                            <p class="text-2xl font-black text-slate-700">標準化</p>
+                        </div>
+                        <div class="bg-white rounded-2xl px-6 py-5 flex items-center gap-4 shadow-sm">
+                            <span class="text-2xl">🟢</span>
+                            <p class="text-2xl font-black text-slate-700">自動チェック導入</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Takeaway Frame -->
+            <div class="bg-teal-deep text-white py-4 px-6 rounded-xl flex items-center gap-4 shadow-md">
+                <div class="bg-teal-mint rounded-full p-2 flex items-center justify-center w-8 h-8">
+                    <i class="fa-solid fa-circle-check text-sm text-teal-deep"></i>
+                </div>
+                <p class="text-lg font-semibold">業務品質の向上・確認時間の短縮・属人化の防止を同時に達成しました。</p>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 6: ROLE & KEY POINTS
+             ========================================== -->
+        <div class="slide-container p-12 justify-between" id="slide-6">
+            <div class="flex justify-between items-start border-b-2 border-teal-deep/20 pb-4">
+                <div class="flex items-center gap-4">
+                     <span class="bg-teal-deep text-white w-10 h-10 rounded flex items-center justify-center font-bold font-mont">05</span>
+                     <div>
+                         <h2 class="text-3xl font-bold text-teal-deep">担当内容・工夫したポイント</h2>
+                         <p class="text-sm text-teal-mint font-semibold mt-0.5">業務改善を定着させるための設計</p>
+                     </div>
+                 </div>
+                 <span class="text-sm font-semibold text-slate-400 font-mont">請求業務チェック体制の改善 / 06</span>
+             </div>
+
+    <div class="grid grid-cols-2 gap-8 my-auto px-2">
+        <!-- 担当内容 -->
+        <div class="bg-white border-2 border-teal-deep rounded-2xl p-8 shadow-md">
+            <h3 class="text-2xl font-bold text-teal-deep mb-6 flex items-center gap-3">
+                <i class="fa-solid fa-user-check text-teal-mint"></i>
+                担当内容
+            </h3>
+
+            <div class="flex flex-col gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="bg-teal-mint text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">1</span>
+                    <p class="text-lg font-bold text-slate-700">課題整理・原因分析</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="bg-teal-mint text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">2</span>
+                    <p class="text-lg font-bold text-slate-700">チェック項目の洗い出し</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="bg-teal-mint text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">3</span>
+                    <p class="text-lg font-bold text-slate-700">スプレッドシート関数によるチェックツール作成</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="bg-teal-mint text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">4</span>
+                    <p class="text-lg font-bold text-slate-700">運用フロー・確認手順の整理</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 工夫したポイント -->
+        <div class="bg-teal-light border-2 border-teal-border rounded-2xl p-8 shadow-md">
+            <h3 class="text-2xl font-bold text-teal-deep mb-6 flex items-center gap-3">
+                <i class="fa-solid fa-lightbulb text-teal-mint"></i>
+                工夫したポイント
+            </h3>
+
+            <div class="flex flex-col gap-4">
+                <div class="bg-white rounded-xl p-4 shadow-sm">
+                    <p class="text-lg font-bold text-teal-deep">現場運用を変更しすぎない</p>
+                    <p class="text-sm text-slate-600 mt-1">既存の流れを活かし、導入時の負担を抑えました。</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-4 shadow-sm">
+                    <p class="text-lg font-bold text-teal-deep">誰でも使える仕組み化</p>
+                    <p class="text-sm text-slate-600 mt-1">担当者が変わっても同じ品質で確認できる構成にしました。</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-4 shadow-sm">
+                    <p class="text-lg font-bold text-teal-deep">チェック工程の標準化</p>
+                    <p class="text-sm text-slate-600 mt-1">確認観点を明確にし、属人化を防ぐ設計にしました。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-teal-deep text-white py-4 px-6 rounded-xl flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <i class="fa-solid fa-screwdriver-wrench text-teal-mint"></i>
+            <p class="text-lg font-semibold">【使用ツール】</p>
+        </div>
+        <span class="bg-white/10 px-4 py-1 rounded-full text-base font-semibold">
+            Googleスプレッドシート / Excel / 関数チェック
+        </span>
+    </div>
+</div>
+
+    <!-- Presentation Control Navigation Bar -->
+    <div class="w-full bg-[#F7F5F0] flex justify-center py-6">
+    <div class="flex items-center gap-6 bg-teal-deep text-white px-8 py-3 rounded-full shadow-lg">
+        <button onclick="prevSlide()" class="hover:text-teal-mint transition-colors w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10">
+            <i class="fa-solid fa-chevron-left text-xl"></i>
+        </button>
+
+        <span class="text-lg font-bold font-mont tracking-wider" id="slide-indicator">1 / 6</span>
+
+        <button onclick="nextSlide()" class="hover:text-teal-mint transition-colors w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10">
+            <i class="fa-solid fa-chevron-right text-xl"></i>
+        </button>
+    </div>
+</div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 6;
+
+        function showSlide(slideIndex) {
+            for (let i = 1; i <= totalSlides; i++) {
+                document.getElementById(`slide-${i}`).classList.remove('active');
+            }
+            document.getElementById(`slide-${slideIndex}`).classList.add('active');
+            document.getElementById('slide-indicator').innerText = `${slideIndex} / ${totalSlides}`;
+            currentSlide = slideIndex;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) { showSlide(currentSlide + 1); }
+            else { showSlide(1); }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) { showSlide(currentSlide - 1); }
+            else { showSlide(totalSlides); }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight') { nextSlide(); }
+            else if (event.key === 'ArrowLeft') { prevSlide(); }
+        });
+    </script>
+</body>
+</html>

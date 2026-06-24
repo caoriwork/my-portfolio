@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>AI活用講座 募集バナー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F2EC;
+    --text:#2F2F2F;
+    --text-muted:rgba(47,47,47,0.65);
+    --accent:#7A8B7A;
+    --accent-dark:#637363;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+
+  body{
+    background:var(--bg);
+    font-family:'Noto Sans JP',sans-serif;
+    color:var(--text);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+  }
+
+  .banner{
+    position:relative;
+    width:100%;
+    max-width:1180px;
+    display:flex;
+    align-items:center;
+    gap:clamp(28px,5vw,72px);
+    padding:clamp(44px,7vw,88px) clamp(24px,5vw,64px);
+    overflow:hidden;
+  }
+
+  .illust-col{
+    flex:0 0 auto;
+    width:clamp(220px,30vw,320px);
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .blob{
+    position:absolute;
+    width:340px;
+    height:340px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(122,139,122,0.22), rgba(122,139,122,0) 70%);
+    filter:blur(6px);
+    z-index:0;
+  }
+
+  .dot{position:absolute;border-radius:50%;background:var(--accent);z-index:2;}
+  .dot-a{width:12px;height:12px;top:6%;right:8%;opacity:.7;animation:fl 5s ease-in-out infinite;}
+  .dot-b{width:8px;height:8px;bottom:10%;left:6%;opacity:.5;animation:fl 4.5s ease-in-out infinite reverse;}
+  @keyframes fl{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+  @media(prefers-reduced-motion:reduce){.dot-a,.dot-b{animation:none;}}
+
+  .illust-card{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:300px;
+    background:#FFFFFF;
+    border-radius:22px;
+    padding:20px 18px 16px;
+    box-shadow:0 24px 48px rgba(47,47,47,0.14),0 6px 14px rgba(47,47,47,0.09);
+  }
+
+  .screen-bar{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    margin-bottom:14px;
+  }
+  .screen-bar .dot-ui{width:8px;height:8px;border-radius:50%;}
+  .screen-bar .dot-ui:nth-child(1){background:#E26060;}
+  .screen-bar .dot-ui:nth-child(2){background:#D4A627;}
+  .screen-bar .dot-ui:nth-child(3){background:#7A8B7A;}
+  .screen-bar .url-bar{
+    flex:1;
+    height:18px;
+    background:#F0EDE6;
+    border-radius:6px;
+    margin-left:6px;
+  }
+
+  .ai-cards{display:flex;flex-direction:column;gap:9px;}
+
+  .ai-card{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#F8F6F1;
+    border-radius:10px;
+    padding:9px 12px;
+    border:1px solid rgba(47,47,47,0.08);
+  }
+
+  .ai-logo{
+    width:28px;
+    height:28px;
+    border-radius:7px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 auto;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:-0.5px;
+  }
+  .logo-gpt{background:#10A37F;color:#fff;}
+  .logo-gem{background:#4285F4;color:#fff;}
+  .logo-claude{background:#7A8B7A;color:#fff;}
+
+  .ai-card-info{flex:1;}
+  .ai-card-name{font-size:12px;font-weight:500;color:#2F2F2F;margin:0 0 2px;}
+  .ai-card-sub{font-size:10px;color:rgba(47,47,47,0.55);margin:0;}
+
+  .ai-card-bar-wrap{width:50px;}
+  .ai-card-bar-bg{height:4px;background:#E8E4DC;border-radius:2px;}
+  .ai-card-bar-fill{height:4px;border-radius:2px;}
+  .fill-gpt{background:#10A37F;width:82%;}
+  .fill-gem{background:#4285F4;width:70%;}
+  .fill-claude{background:#7A8B7A;width:76%;}
+
+  .content-col{
+    flex:1 1 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    text-align:left;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    font-size:12px;
+    font-weight:500;
+    color:var(--accent-dark);
+    letter-spacing:.08em;
+    margin:0 0 16px;
+  }
+  .eyebrow::before{
+    content:"";
+    display:inline-block;
+    width:12px;
+    height:12px;
+    background:var(--accent);
+    border-radius:3px;
+  }
+
+  .headline{
+    font-family:'Shippori Mincho',serif;
+    font-weight:700;
+    font-size:clamp(28px,4vw,48px);
+    line-height:1.45;
+    letter-spacing:.02em;
+    color:var(--text);
+    margin:0 0 18px;
+  }
+
+  .subcopy{
+    font-size:clamp(13px,1.4vw,15px);
+    line-height:2;
+    color:var(--text-muted);
+    max-width:380px;
+    margin:0 0 32px;
+  }
+
+  .cta-btn{
+    border:none;
+    cursor:pointer;
+    background:var(--accent);
+    color:#fff;
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:15px;
+    font-weight:500;
+    letter-spacing:.04em;
+    padding:15px 38px;
+    border-radius:999px;
+    box-shadow:0 8px 22px rgba(122,139,122,0.36);
+    transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+  }
+  .cta-btn:hover{
+    background:var(--accent-dark);
+    transform:translateY(-2px);
+    box-shadow:0 12px 28px rgba(122,139,122,0.44);
+  }
+  .arrow{transition:transform .25s ease;}
+  .cta-btn:hover .arrow{transform:translateX(4px);}
+
+  .trust{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin:24px 0 0;
+    padding-top:14px;
+    border-top:1px solid rgba(47,47,47,0.13);
+    font-size:11px;
+    color:var(--text-muted);
+    letter-spacing:.04em;
+  }
+  .trust-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex:0 0 auto;}
+
+  @media(max-width:640px){
+    .banner{flex-direction:column;text-align:center;gap:32px;padding:36px 20px;}
+    .content-col{align-items:center;text-align:center;}
+    .illust-card{max-width:240px;}
+    .subcopy{max-width:280px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">
+
+  <div class="illust-col">
+    <div class="blob"></div>
+    <div class="dot dot-a"></div>
+    <div class="dot dot-b"></div>
+    <div class="illust-card">
+      <div class="screen-bar">
+        <div class="dot-ui"></div>
+        <div class="dot-ui"></div>
+        <div class="dot-ui"></div>
+        <div class="url-bar"></div>
+      </div>
+      <div class="ai-cards">
+        <div class="ai-card">
+          <div class="ai-logo logo-gpt">G</div>
+          <div class="ai-card-info">
+            <p class="ai-card-name">ChatGPT</p>
+            <p class="ai-card-sub">テキスト生成・要約</p>
+          </div>
+          <div class="ai-card-bar-wrap">
+            <div class="ai-card-bar-bg"><div class="ai-card-bar-fill fill-gpt"></div></div>
+          </div>
+        </div>
+        <div class="ai-card">
+          <div class="ai-logo logo-gem">G</div>
+          <div class="ai-card-info">
+            <p class="ai-card-name">Gemini</p>
+            <p class="ai-card-sub">検索連動・分析</p>
+          </div>
+          <div class="ai-card-bar-wrap">
+            <div class="ai-card-bar-bg"><div class="ai-card-bar-fill fill-gem"></div></div>
+          </div>
+        </div>
+        <div class="ai-card">
+          <div class="ai-logo logo-claude">C</div>
+          <div class="ai-card-info">
+            <p class="ai-card-name">Claude</p>
+            <p class="ai-card-sub">長文・資料作成</p>
+          </div>
+          <div class="ai-card-bar-wrap">
+            <div class="ai-card-bar-bg"><div class="ai-card-bar-fill fill-claude"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-col">
+    <span class="eyebrow">AIを仕事に活かしたい方へ</span>
+    <h1 class="headline">実務で使える<br>AI活用講座</h1>
+    <p class="subcopy">ChatGPT・Gemini・Claudeを活用し<br>業務効率化を実践的に学ぶ講座</p>
+    <button class="cta-btn">無料説明会受付中<span class="arrow">→</span></button>
+    <p class="trust"><span class="trust-dot"></span>初心者歓迎｜オンライン開催</p>
+  </div>
+
+</div>
+
+</body>
+</html>

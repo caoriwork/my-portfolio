@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>問い合わせ対応業務フロー図</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Noto Sans JP", sans-serif;
+    background: #f1f5f9;
+    color: #334155;
+    padding: 48px;
+  }
+
+  .flow-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 48px;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.08);
+  }
+
+  .title {
+    color: #005d64;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .lead {
+    color: #64748b;
+    margin-bottom: 40px;
+    line-height: 1.8;
+  }
+
+  .lane {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    border-top: 1px solid #dbe5e7;
+  }
+
+  .lane:last-child {
+    border-bottom: 1px solid #dbe5e7;
+  }
+
+  .lane-label {
+    background: #f0f9f9;
+    color: #005d64;
+    font-weight: 700;
+    padding: 28px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-right: 1px solid #dbe5e7;
+  }
+
+  .lane-content {
+    padding: 35px 28px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-height: 120px;
+    flex-wrap: nowrap;
+  }
+
+  .box {
+    min-width: 150px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: #fff;
+    border: 2px solid #005d64;
+    color: #005d64;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .start,
+  .end {
+    border-radius: 999px;
+    background: #005d64;
+    color: #fff;
+  }
+
+  .decision {
+    width: 125px;
+    height: 125px;
+    transform: rotate(45deg);
+    border: 2px solid #00a29a;
+    background: #f0f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  .decision span {
+    transform: rotate(-45deg);
+    color: #005d64;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.5;
+    font-size: 14px;
+  }
+
+  .tool {
+    border-style: dashed;
+    border-color: #94a3b8;
+    color: #64748b;
+    background: #f8fafc;
+  }
+
+  .arrow {
+    color: #00a29a;
+    font-size: 24px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .note {
+    margin-top: 32px;
+    background: #f0f9f9;
+    border-left: 5px solid #00a29a;
+    padding: 20px 24px;
+    color: #334155;
+    line-height: 1.8;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 12px;
+    color: #fff;
+    background: #00a29a;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="flow-wrap">
+  <div class="tag">業務フロー図サンプル</div>
+  <h1 class="title">問い合わせ対応業務フロー</h1>
+  <p class="lead">
+    問い合わせ受付から回答・完了までの流れを整理し、一次対応と専門部署へのエスカレーション判断を見える化した業務フロー図です。
+  </p>
+
+  <div class="lane">
+    <div class="lane-label">顧客</div>
+    <div class="lane-content">
+      <div class="box start">問い合わせ</div>
+      <div class="arrow">→</div>
+      <div class="box end">回答の受領</div>
+    </div>
+  </div>
+
+  <div class="lane">
+    <div class="lane-label">受付担当<br>一次対応</div>
+    <div class="lane-content">
+      <div class="box">内容確認<br><small>30分以内</small></div>
+      <div class="arrow">→</div>
+      <div class="decision"><span>FAQで<br>回答可能？</span></div>
+      <div class="arrow">YES →</div>
+      <div class="box">回答作成</div>
+      <div class="arrow">→</div>
+      <div class="box end">顧客へ返信<br>完了</div>
+    </div>
+  </div>
+
+  <div class="lane">
+    <div class="lane-label">専門部署<br>二次対応</div>
+    <div class="lane-content">
+      <div class="arrow">NO →</div>
+      <div class="box">担当部署へ<br>エスカレーション</div>
+      <div class="arrow">→</div>
+      <div class="box">調査・回答作成</div>
+      <div class="arrow">→</div>
+      <div class="box">受付担当へ<br>回答共有</div>
+    </div>
+  </div>
+
+  <div class="lane">
+    <div class="lane-label">使用ツール</div>
+    <div class="lane-content">
+      <div class="box tool">FAQ</div>
+      <div class="box tool">対応履歴DB</div>
+      <div class="box tool">チャット / メール</div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>業務設計のポイント：</strong><br>
+    ・対応担当ごとにレーンを分け、役割と責任範囲を明確化<br>
+    ・FAQで回答可能な案件とエスカレーション案件を判断できる構成<br>
+    ・対応漏れや属人化を防ぐため、引き継ぎポイントを可視化<br>
+  </div>
+</div>
+
+</body>
+</html>

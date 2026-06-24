@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>使える力 | AIオンライン講座</title>
+<style>
+  :root{
+    --navy-900:#0a1330;
+    --navy-800:#0f1c45;
+    --navy-700:#16265c;
+    --cyan:#22d3ee;
+    --cyan-light:#7ef0ff;
+    --purple:#7c4dff;
+    --purple-light:#a78bfa;
+    --ink:#1a2238;
+    --ink-soft:#56607a;
+    --line:#e4e8f2;
+    --bg-soft:#f5f7fc;
+    --white:#ffffff;
+    --grad-cta:linear-gradient(100deg,#7c4dff 0%,#22d3ee 100%);
+    --grad-text:linear-gradient(100deg,#7ef0ff 0%,#a78bfa 100%);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,"Noto Sans JP",sans-serif;
+    color:var(--ink);
+    line-height:1.85;
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  section{padding:96px 0}
+  .eyebrow{
+    display:inline-block;font-size:13px;letter-spacing:.18em;font-weight:700;
+    color:var(--purple);margin-bottom:18px;
+  }
+  h2.sec-title{
+    font-size:clamp(26px,4vw,38px);font-weight:800;line-height:1.4;
+    letter-spacing:.01em;margin-bottom:18px;
+  }
+  h2.sec-title .mark{color:var(--cyan);}
+  .sec-lead{color:var(--ink-soft);font-size:16px;max-width:680px;margin:0 auto 56px;text-align:center}
+  .center{text-align:center}
+
+  /* ===== CTA button ===== */
+  .cta{
+    display:inline-flex;align-items:center;justify-content:center;gap:12px;
+    background:var(--grad-cta);color:#fff;font-weight:800;font-size:18px;
+    padding:20px 44px;border-radius:999px;text-decoration:none;
+    box-shadow:0 14px 40px rgba(124,77,255,.45);
+    transition:transform .25s ease,box-shadow .25s ease;
+    letter-spacing:.02em;text-align:center;
+  }
+  @media(max-width:480px){.cta{font-size:16px;padding:18px 28px}}
+  .cta:hover{transform:translateY(-3px);box-shadow:0 20px 52px rgba(34,211,238,.5)}
+  .cta .arrow{font-size:20px;transition:transform .25s ease}
+  .cta:hover .arrow{transform:translateX(5px)}
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;overflow:hidden;
+    background:radial-gradient(120% 130% at 80% 20%,#1d2f6b 0%,var(--navy-800) 45%,var(--navy-900) 100%);
+    padding:0;
+  }
+  .hero-inner{
+    max-width:1120px;margin:0 auto;padding:120px 24px 130px;
+    display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;
+    position:relative;z-index:2;
+  }
+  .hero-copy .badge{
+    display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;
+    color:var(--cyan-light);border:1px solid rgba(126,240,255,.35);
+    padding:7px 16px;border-radius:999px;margin-bottom:28px;letter-spacing:.08em;
+    background:rgba(34,211,238,.06);
+  }
+  .hero-copy .badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+  .hero h1{
+    color:#eaf1ff;font-size:clamp(30px,4.6vw,52px);font-weight:800;line-height:1.32;
+    letter-spacing:0;margin-bottom:30px;
+  }
+  .hero h1 .line1{display:block;white-space:nowrap}
+  .hero h1 .power{
+    display:block;margin-top:10px;white-space:nowrap;
+    font-size:clamp(46px,7vw,82px);font-weight:900;line-height:1.1;
+    background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;
+    letter-spacing:.02em;
+  }
+  .hero .sub{
+    color:#b9c4e6;font-size:clamp(15px,1.6vw,18px);line-height:1.9;
+    max-width:540px;margin-bottom:40px;line-break:strict;
+  }
+  .hero-cta-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .hero-note{color:#8493bf;font-size:13px}
+  .hero-note b{color:#cdd7f5}
+
+  /* hero visual */
+  .hero-visual{position:relative;height:420px;display:flex;align-items:center;justify-content:center}
+  .orb{
+    position:absolute;width:330px;height:330px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,rgba(124,77,255,.55),rgba(34,211,238,.15) 60%,transparent 72%);
+    filter:blur(6px);animation:float 7s ease-in-out infinite;
+  }
+  .ring{position:absolute;border:1px solid rgba(126,240,255,.25);border-radius:50%}
+  .ring.r1{width:300px;height:300px;animation:spin 22s linear infinite}
+  .ring.r2{width:380px;height:380px;border-style:dashed;border-color:rgba(167,139,250,.22);animation:spin 30s linear infinite reverse}
+  .brain{position:relative;z-index:3;width:210px;height:210px;filter:drop-shadow(0 0 26px rgba(34,211,238,.55));animation:float 7s ease-in-out infinite}
+  .node{position:absolute;width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+  .node.n1{top:18%;left:22%;animation:blink 3s ease-in-out infinite}
+  .node.n2{top:30%;right:16%;background:var(--purple-light);box-shadow:0 0 12px var(--purple-light);animation:blink 3s ease-in-out .8s infinite}
+  .node.n3{bottom:24%;left:28%;animation:blink 3s ease-in-out 1.4s infinite}
+  .node.n4{bottom:18%;right:24%;background:var(--purple-light);box-shadow:0 0 12px var(--purple-light);animation:blink 3s ease-in-out 2s infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes blink{0%,100%{opacity:.3}50%{opacity:1}}
+  .hero-wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;display:block;z-index:1}
+
+  /* ===== Problem ===== */
+  .problem{background:var(--bg-soft)}
+  .prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:8px}
+  .prob-card{
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 26px;
+    position:relative;
+  }
+  .prob-card .q{font-size:34px;color:var(--purple-light);font-weight:900;line-height:1;margin-bottom:14px;font-style:italic}
+  .prob-card p{font-size:15px;color:var(--ink);font-weight:600}
+  .bridge{text-align:center;margin-top:48px;font-size:clamp(18px,2.4vw,24px);font-weight:800}
+  .bridge .mark{color:var(--cyan);background:linear-gradient(transparent 62%,rgba(34,211,238,.22) 62%)}
+
+  /* ===== Features ===== */
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .feat-card{
+    border-radius:18px;padding:38px 30px;color:#fff;position:relative;overflow:hidden;
+    box-shadow:0 16px 40px rgba(20,30,70,.12);
+  }
+  .feat-card:nth-child(1){background:linear-gradient(155deg,#7c4dff,#5b30d6)}
+  .feat-card:nth-child(2){background:linear-gradient(155deg,#3aa0ff,#1d6fe0)}
+  .feat-card:nth-child(3){background:linear-gradient(155deg,#22d3ee,#0aa6c4)}
+  .feat-card .fnum{font-size:13px;font-weight:700;letter-spacing:.15em;opacity:.7;margin-bottom:18px}
+  .feat-card h3{font-size:23px;font-weight:800;margin-bottom:14px}
+  .feat-card p{font-size:14.5px;line-height:1.9;color:rgba(255,255,255,.92)}
+  .feat-card .ficon{position:absolute;top:24px;right:24px;font-size:30px;opacity:.85}
+
+  /* ===== Curriculum ===== */
+  .curri{background:var(--bg-soft)}
+  .steps{max-width:760px;margin:0 auto}
+  .step{
+    display:grid;grid-template-columns:64px 1fr;gap:24px;align-items:flex-start;
+    padding:26px 0;border-bottom:1px solid var(--line);
+  }
+  .step:last-child{border-bottom:none}
+  .step .snum{
+    width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+    background:var(--grad-cta);color:#fff;font-weight:900;font-size:20px;
+  }
+  .step h4{font-size:18px;font-weight:800;margin-bottom:6px}
+  .step p{font-size:14.5px;color:var(--ink-soft)}
+
+  /* ===== Voices ===== */
+  .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:60px}
+  .voice-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 24px}
+  .voice-card .stars{color:#ffb020;font-size:15px;margin-bottom:14px;letter-spacing:2px}
+  .voice-card p{font-size:14.5px;line-height:1.9;margin-bottom:18px}
+  .voice-card .who{font-size:13px;color:var(--ink-soft);font-weight:700}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center}
+  .stat .num{
+    font-size:clamp(34px,5vw,52px);font-weight:900;line-height:1;
+    background:var(--grad-cta);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .stat .lbl{font-size:13.5px;color:var(--ink-soft);margin-top:8px;font-weight:600}
+
+  /* ===== Support ===== */
+  .support-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:860px;margin:0 auto}
+  .sup-card{
+    display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);
+    border-radius:16px;padding:30px 28px;position:relative;
+    border-left:4px solid var(--purple);
+  }
+  .sup-card .sicon{font-size:28px;margin-bottom:14px}
+  .sup-card h4{font-size:18px;font-weight:800;margin-bottom:8px}
+  .sup-card p{font-size:14px;color:var(--ink-soft);line-height:1.85}
+
+  /* ===== Future ===== */
+  .future{background:var(--bg-soft)}
+  .future-list{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:860px;margin:0 auto}
+  .future-list li{
+    display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);
+    border-radius:14px;padding:24px 26px;
+  }
+  .future-list .fcheck{
+    flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--grad-cta);
+    color:#fff;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;
+  }
+  .future-list b{display:block;font-size:16.5px;font-weight:800;margin-bottom:4px}
+  .future-list span{display:block;font-size:13.5px;color:var(--ink-soft);line-height:1.8}
+
+  /* ===== Trust ===== */
+  .trust{
+    background:radial-gradient(120% 130% at 80% 20%,#1d2f6b 0%,var(--navy-800) 45%,var(--navy-900) 100%);
+  }
+  .trust-box{
+    display:flex;align-items:center;justify-content:center;gap:54px;flex-wrap:wrap;
+    max-width:920px;margin:0 auto;
+  }
+  .trust-badge{
+    width:200px;height:225px;flex-shrink:0;position:relative;
+    background:linear-gradient(155deg,#22d3ee,#7c4dff);
+    clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;
+    box-shadow:0 22px 60px rgba(124,77,255,.5);
+  }
+  .trust-badge::before{
+    content:"";position:absolute;inset:8px;
+    clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+    border:1.5px solid rgba(255,255,255,.55);
+  }
+  .trust-badge .bt{font-size:30px;font-weight:900;letter-spacing:.04em;color:#fff;z-index:1}
+  .trust-badge .bs{font-size:12px;margin-top:8px;text-align:center;line-height:1.5;padding:0 14px;z-index:1;font-weight:600}
+  .trust-eyebrow{color:var(--cyan-light)!important;margin-bottom:14px}
+  .trust-text{max-width:460px}
+  .trust-text h3{font-size:clamp(22px,3vw,30px);font-weight:900;line-height:1.4;margin-bottom:16px;color:#eaf1ff}
+  .trust-text h3 .mark{
+    background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .trust-text p{font-size:15px;color:#b9c4e6;line-height:1.9;margin-bottom:22px}
+  .trust-points{display:flex;flex-direction:column;gap:10px}
+  .trust-points span{font-size:14.5px;font-weight:700;color:#cdd7f5}
+
+  /* ===== Pricing ===== */
+  .price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:760px;margin:0 auto}
+  .price-card{border:1px solid var(--line);border-radius:18px;padding:38px 32px;background:#fff;position:relative}
+  .price-card.feature{border:2px solid var(--purple);box-shadow:0 18px 44px rgba(124,77,255,.16)}
+  .price-card .tag{
+    position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+    background:var(--grad-cta);color:#fff;font-size:12px;font-weight:800;padding:5px 18px;border-radius:999px;letter-spacing:.05em;
+  }
+  .price-card h4{font-size:19px;font-weight:800;margin-bottom:8px}
+  .price-card .price{font-size:36px;font-weight:900;margin:10px 0 4px}
+  .price-card .price span{font-size:15px;font-weight:600;color:var(--ink-soft)}
+  .price-card ul{list-style:none;margin:22px 0 0;text-align:left}
+  .price-card li{font-size:14px;padding:9px 0 9px 28px;position:relative;color:var(--ink)}
+  .price-card li::before{content:"✓";position:absolute;left:0;color:var(--cyan);font-weight:900}
+
+  /* ===== FAQ ===== */
+  .faq-list{max-width:760px;margin:0 auto}
+  details{border-bottom:1px solid var(--line);padding:4px 0}
+  summary{
+    list-style:none;cursor:pointer;padding:22px 40px 22px 0;font-weight:700;font-size:16px;position:relative;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";position:absolute;right:6px;top:18px;font-size:24px;color:var(--purple);transition:transform .25s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{padding:0 40px 22px 0;color:var(--ink-soft);font-size:14.5px}
+
+  /* ===== Final CTA ===== */
+  .final{
+    background:radial-gradient(120% 140% at 50% 0%,#1d2f6b 0%,var(--navy-800) 50%,var(--navy-900) 100%);
+    text-align:center;color:#fff;
+  }
+  .final h2{font-size:clamp(26px,4.4vw,42px);font-weight:900;line-height:1.4;margin-bottom:18px;color:#eaf1ff}
+  .final h2 .mark{
+    background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .final p{color:#b9c4e6;font-size:16px;margin-bottom:40px}
+
+  /* footer */
+  footer{background:var(--navy-900);color:#6b7aa6;text-align:center;padding:34px 24px;font-size:13px}
+
+  /* ===== Responsive ===== */
+  @media(max-width:860px){
+    section{padding:68px 0}
+    .hero-inner{grid-template-columns:1fr;padding:96px 24px 100px;text-align:center}
+    .hero .sub{margin-left:auto;margin-right:auto}
+    .hero-cta-row{justify-content:center}
+    .hero-visual{height:300px;order:-1;margin-bottom:10px}
+    .hero h1 .line1{white-space:normal}
+    .hero h1 .power{white-space:normal}
+    .brain{width:150px;height:150px}
+    .orb{width:230px;height:230px}
+    .ring.r1{width:210px;height:210px}.ring.r2{width:270px;height:270px}
+    .prob-grid,.feat-grid,.voice-grid,.stats,.price-grid,.support-grid,.future-list{grid-template-columns:1fr}
+    .trust-text{text-align:center}
+    .trust-points{align-items:center}
+    .prob-card p br{display:none}
+    .price-grid{max-width:420px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <span class="badge">AI SKILL PROGRAM</span>
+      <h1>
+        <span class="line1">学ぶのは、知識ではなく</span>
+        <span class="power">「使える力」。</span>
+      </h1>
+      <p class="sub">実務に直結するAIスキルを、<br>わかりやすく習得。<br>未経験の会社員でも、<br>業務に活かせるレベルへ。</p>
+      <div class="hero-cta-row">
+        <a href="#trial" class="cta">無料体験はこちら（登録不要・1分で開始） <span class="arrow">→</span></a>
+        <span class="hero-note"><b>累計3,200名が受講</b>｜満足度96%</span>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="ring r2"></div>
+      <div class="ring r1"></div>
+      <div class="orb"></div>
+      <svg class="brain" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#7ef0ff"/>
+            <stop offset="1" stop-color="#a78bfa"/>
+          </linearGradient>
+        </defs>
+        <!-- left hemisphere -->
+        <path d="M96 44c-10-8-26-7-33 3-13-1-23 9-21 21-9 4-12 16-5 24-5 8-1 20 9 22-1 11 9 19 19 16 4 7 14 8 20 3"
+              stroke="url(#bg1)" stroke-width="2.4" stroke-linecap="round" opacity="0.95"/>
+        <!-- right hemisphere -->
+        <path d="M104 44c10-8 26-7 33 3 13-1 23 9 21 21 9 4 12 16 5 24 5 8 1 20-9 22 1 11-9 19-19 16-4 7-14 8-20 3"
+              stroke="url(#bg1)" stroke-width="2.4" stroke-linecap="round" opacity="0.95"/>
+        <!-- center stem -->
+        <path d="M100 50v104" stroke="url(#bg1)" stroke-width="2" opacity="0.55"/>
+        <!-- inner folds -->
+        <path d="M100 72c-12 2-16 12-28 12M100 100c-14 0-18 12-32 12M100 128c-10 2-14 8-24 8M100 72c12 2 16 12 28 12M100 100c14 0 18 12 32 12M100 128c10 2 14 8 24 8"
+              stroke="url(#bg1)" stroke-width="1.5" opacity="0.6"/>
+        <!-- circuit nodes -->
+        <g fill="#7ef0ff"><circle cx="72" cy="84" r="3.5"/><circle cx="68" cy="112" r="3.5"/><circle cx="76" cy="136" r="3.5"/></g>
+        <g fill="#a78bfa"><circle cx="128" cy="84" r="3.5"/><circle cx="132" cy="112" r="3.5"/><circle cx="124" cy="136" r="3.5"/></g>
+        <circle cx="100" cy="100" r="6" fill="#fff"/>
+      </svg>
+      <span class="node n1"></span><span class="node n2"></span>
+      <span class="node n3"></span><span class="node n4"></span>
+    </div>
+  </div>
+  <svg class="hero-wave" viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,80 L0,40 C360,80 1080,0 1440,40 L1440,80 Z" fill="#ffffff"/></svg>
+</header>
+
+<!-- ===== PROBLEM ===== -->
+<section class="problem">
+  <div class="wrap center">
+    <span class="eyebrow">SUCH A WASTE</span>
+    <h2 class="sec-title">AIを学んでも、<span class="mark">結局使えていない</span>。</h2>
+    <p class="sec-lead">ツールの名前は知っている。<br>でも、いざ自分の業務となると手が止まる。<br>そんな「学びっぱなし」で終わっていませんか？</p>
+    <div class="prob-grid">
+      <div class="prob-card"><div class="q">?</div><p>名前は知っている。でも、<br>業務にどう落とし込むか分からない</p></div>
+      <div class="prob-card"><div class="q">?</div><p>専門用語が多くて難しく、<br>途中で挫折してしまう</p></div>
+      <div class="prob-card"><div class="q">?</div><p>そもそも、何から<br>手をつければいいのか分からない</p></div>
+    </div>
+    <p class="bridge">だから、<span class="mark">「使える力」</span>に絞って学ぶ。</p>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="features">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">3 FEATURES</span>
+      <h2 class="sec-title">使える力が身につく、<span class="mark">3つの理由</span></h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <span class="ficon">🎯</span>
+        <div class="fnum">FEATURE 01</div>
+        <h3>実務直結</h3>
+        <p>架空の例題ではなく、明日の業務でそのまま使える題材だけを扱います。学んだその日から成果につながります。</p>
+      </div>
+      <div class="feat-card">
+        <span class="ficon">💡</span>
+        <div class="fnum">FEATURE 02</div>
+        <h3>わかりやすい</h3>
+        <p>専門用語に頼らず、初学者の目線で設計。「なぜそうするのか」まで腹落ちするから、応用が効きます。</p>
+      </div>
+      <div class="feat-card">
+        <span class="ficon">🤝</span>
+        <div class="fnum">FEATURE 03</div>
+        <h3>手厚いサポート</h3>
+        <p>質問し放題のサポート体制で、つまずいてもすぐ解決。ひとりで悩まず学習を続けられます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CURRICULUM ===== -->
+<section class="curri">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">CURRICULUM</span>
+      <h2 class="sec-title">基礎から実務応用まで、<span class="mark">4ステップ</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="snum">1</div>
+        <div><h4>生成AIの基礎と使いどころ</h4><p>AIが得意なこと・苦手なことを理解し、自分の業務のどこで使えるかを見極めます。</p></div>
+      </div>
+      <div class="step">
+        <div class="snum">2</div>
+        <div><h4>プロンプトの型と改善</h4><p>狙った出力を引き出す指示の作り方と、結果を磨き込む改善の手順を身につけます。</p></div>
+      </div>
+      <div class="step">
+        <div class="snum">3</div>
+        <div><h4>実務応用</h4><p>資料作成・文章作成・データ整理など、日々の業務シーン別に具体的な活用法を習得します。</p></div>
+      </div>
+      <div class="step">
+        <div class="snum">4</div>
+        <div><h4>注意点とリスク管理</h4><p>情報の扱い・著作権・誤情報（ハルシネーション）対策など、安全に使うための要点を押さえます。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SUPPORT ===== -->
+<section class="support">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">SUPPORT</span>
+      <h2 class="sec-title">学習を続けられる、<span class="mark">サポート体制</span></h2>
+    </div>
+    <div class="support-grid">
+      <div class="sup-card"><span class="sicon">💬</span><h4>チャット質問し放題</h4><p>疑問はその場で解消。回数制限なく、いつでも気軽に質問できます。</p></div>
+      <div class="sup-card"><span class="sicon">📅</span><h4>定期オンライン相談</h4><p>学習の進め方や業務での活用法を、講師に直接相談できます。</p></div>
+      <div class="sup-card"><span class="sicon">📝</span><h4>実践課題へのフィードバック</h4><p>提出した課題に個別の添削。改善点が明確になり、力が定着します。</p></div>
+      <div class="sup-card"><span class="sicon">👥</span><h4>受講生コミュニティ</h4><p>同じ目標を持つ仲間と情報交換。刺激を受けながら続けられます。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FUTURE ===== -->
+<section class="future">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">YOUR FUTURE</span>
+      <h2 class="sec-title">受講後の<span class="mark">未来</span></h2>
+      <p class="sec-lead">「使える力」が身につくと、日々の業務はこう変わります。</p>
+    </div>
+    <ul class="future-list">
+      <li><span class="fcheck">✓</span><div><b>議事録作成時間を短縮</b><span>会議の音声や走り書きから、整った議事録を数分で。</span></div></li>
+      <li><span class="fcheck">✓</span><div><b>資料作成を効率化</b><span>構成案も下書きもAIに任せ、仕上げに集中できる。</span></div></li>
+      <li><span class="fcheck">✓</span><div><b>アイデア出しを高速化</b><span>たたき台を量産し、企画の幅と速さが一気に広がる。</span></div></li>
+      <li><span class="fcheck">✓</span><div><b>日々の業務負担を軽減</b><span>定型作業を任せ、本当に大事な仕事に時間を使える。</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== VOICES ===== -->
+<section class="voices">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">VOICES</span>
+      <h2 class="sec-title">受講者の<span class="mark">変化</span></h2>
+    </div>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="stars">★★★★★</div>
+        <p>毎日1時間かけていた議事録づくりが10分に。学んだ翌日から効果を実感できました。</p>
+        <div class="who">営業職・30代</div>
+      </div>
+      <div class="voice-card">
+        <div class="stars">★★★★★</div>
+        <p>「難しそう」で避けていましたが、用語の説明が丁寧で最後まで挫折せず続けられました。</p>
+        <div class="who">事務職・40代</div>
+      </div>
+      <div class="voice-card">
+        <div class="stars">★★★★★</div>
+        <p>提案資料の下書きをAIに任せられるように。考える時間に集中できるようになりました。</p>
+        <div class="who">企画職・20代</div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">3,200<span style="font-size:20px">名</span></div><div class="lbl">累計受講者数</div></div>
+      <div class="stat"><div class="num">96<span style="font-size:20px">%</span></div><div class="lbl">受講後の満足度</div></div>
+      <div class="stat"><div class="num">40<span style="font-size:20px">%</span></div><div class="lbl">平均業務時間の削減</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST ===== -->
+<section class="trust">
+  <div class="wrap">
+    <div class="trust-box">
+      <div class="trust-badge">
+        <div class="bt">CERTIFIED</div>
+        <div class="bs">第三者機関<br>認定カリキュラム</div>
+      </div>
+      <div class="trust-text">
+        <span class="eyebrow trust-eyebrow">CERTIFIED PROGRAM</span>
+        <h3>第三者機関に認定された、<br><span class="mark">信頼のカリキュラム</span></h3>
+        <p>独自基準ではなく、外部の第三者機関による審査を通過したカリキュラムです。現場での指導実績を持つ講師陣が、実務で本当に役立つ内容だけを厳選して設計しています。</p>
+        <div class="trust-points">
+          <span>✓ 第三者機関による品質認定</span>
+          <span>✓ 現場経験のある講師陣が監修</span>
+          <span>✓ 実務直結のカリキュラム設計</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="pricing">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">PLAN</span>
+      <h2 class="sec-title">まずは<span class="mark">無料</span>で試せます</h2>
+      <p class="sec-lead">オンライン完結のため、低価格で提供しています。<br>自分に合うか、登録不要の無料体験で確かめてから。<br>続けたくなったら、プランを選ぶだけ。</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card">
+        <h4>ライトプラン</h4>
+        <div class="price">¥1,980<span>/月</span></div>
+        <ul>
+          <li>基礎カリキュラム見放題</li>
+          <li>プロンプトテンプレート集</li>
+          <li>月1回のオンラインQ&amp;A</li>
+        </ul>
+      </div>
+      <div class="price-card feature">
+        <span class="tag">人気No.1</span>
+        <h4>スタンダードプラン</h4>
+        <div class="price">¥3,980<span>/月</span></div>
+        <ul>
+          <li>全カリキュラム見放題</li>
+          <li>実務応用ワーク＆添削</li>
+          <li>質問し放題のサポート</li>
+          <li>修了認定証の発行</li>
+        </ul>
+      </div>
+    </div>
+    <div class="center" style="margin-top:48px">
+      <a href="#trial" class="cta">無料体験はこちら（登録不要・1分で開始） <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="sec-title">よくある質問</h2>
+    </div>
+    <div class="faq-list">
+      <details open><summary>初心者でも大丈夫ですか？</summary><p>はい。AIに初めて触れる方を想定して設計しています。専門用語はその都度わかりやすく解説するので、予備知識は不要です。</p></details>
+      <details><summary>受講期間に決まりはありますか？</summary><p>いつでも好きなタイミングで視聴できます。1本あたり数分の動画なので、スキマ時間で無理なく進められます。</p></details>
+      <details><summary>サポート体制はどうなっていますか？</summary><p>プランに応じて、オンラインQ&amp;Aや質問し放題のサポートをご用意しています。つまずいてもすぐに解決できます。</p></details>
+      <details><summary>途中で解約できますか？</summary><p>はい、いつでも解約可能です。違約金や継続の縛りは一切ありません。まずは無料体験からお試しください。</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final" id="trial">
+  <div class="wrap">
+    <h2>「<span class="mark">使える力</span>」は、<br>今日から身につく。</h2>
+    <p>登録不要・最短1分。<br>まずは無料体験で、「使える感覚」を体験してください。</p>
+    <a href="#" class="cta">無料体験はこちら（登録不要・1分で開始） <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<footer>© AI Online Course. All rights reserved.</footer>
+
+</body>
+</html>
