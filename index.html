@@ -106,9 +106,9 @@ header.on-navy .nav-links a.active::after{background:var(--gold-soft)}
 
 /* about */
 .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center}
-.about-photo{position:relative}
-.about-photo::before{content:"";position:absolute;inset:-10px -10px 10px 10px;border:1px solid var(--gold);opacity:.25;z-index:0;}
-.about-photo img{position:relative;z-index:1;width:80%;aspect-ratio:1/1;object-fit:cover;margin:0 auto;}
+.about-photo{position:relative;max-width:420px;}
+.about-photo::before{content:"";position:absolute;top:-20px;left:20px;right:-20px;bottom:20px;border:1px solid var(--gold);opacity:.25;z-index:0;}
+.about-photo img{position:relative;z-index:1;width:100%;aspect-ratio:1/1;object-fit:cover;display:block;}
 .about-lead{font-family:var(--mincho);font-size:24px;font-weight:500;line-height:1.7;letter-spacing:.04em;color:var(--navy);margin-bottom:34px}
 .about-text p{font-size:15.5px;color:#4d4d48;letter-spacing:.04em;margin-bottom:22px;line-height:2.05}
 .about-text p:last-child{margin-bottom:0}
