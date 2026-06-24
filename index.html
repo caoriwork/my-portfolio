@@ -107,8 +107,8 @@ header.on-navy .nav-links a.active::after{background:var(--gold-soft)}
 /* about */
 .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center}
 .about-photo{position:relative}
-.about-photo::before{content:"";position:absolute;inset:-18px -18px 18px 18px;border:1px solid var(--gold);opacity:.4;z-index:0}
-.about-photo img{position:relative;z-index:1;width:100%;aspect-ratio:1/1;object-fit:cover}
+.about-photo::before{content:"";position:absolute;inset:-10px -10px 10px 10px;border:1px solid var(--gold);opacity:.25;z-index:0;}
+.about-photo img{position:relative;z-index:1;width:80%;aspect-ratio:1/1;object-fit:cover;margin:0 auto;}
 .about-lead{font-family:var(--mincho);font-size:24px;font-weight:500;line-height:1.7;letter-spacing:.04em;color:var(--navy);margin-bottom:34px}
 .about-text p{font-size:15.5px;color:#4d4d48;letter-spacing:.04em;margin-bottom:22px;line-height:2.05}
 .about-text p:last-child{margin-bottom:0}
@@ -143,13 +143,14 @@ header.on-navy .nav-links a.active::after{background:var(--gold-soft)}
 .works-category p{font-size:14px;color:var(--muted);line-height:1.8;}
 .works-section{background:var(--paper-2)}
 .works-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:48px}
+.sns-grid{grid-template-columns:repeat(3,1fr);}
 .work{background:#fff;overflow:hidden;border:1px solid var(--line);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s ease}
 .work:hover{transform:translateY(-8px);box-shadow:0 28px 64px rgba(27,42,65,.12)}
 .work-img .ph{font-family:var(--mincho);font-size:54px;color:var(--gold-soft);opacity:.6;letter-spacing:.1em}
 .work-img .sample{position:absolute;top:16px;left:16px;font-family:var(--serif);font-size:12px;letter-spacing:.2em;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);padding:3px 13px;backdrop-filter:blur(2px)}
 .work-img{aspect-ratio:16/10;background:#F7F5F0;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:18px;box-shadow:0 14px 30px rgba(27,42,65,.10);}
 .work-img img{width:100%;height:100%;object-fit:contain;display:block;}
-.work-body{padding:38px 40px 42px}
+.work-body{padding:28px 30px 32px;}
 .work-cat{font-family:var(--serif);font-size:14px;letter-spacing:.16em;color:var(--gold);margin-bottom:12px}
 .work-title{font-family:var(--mincho);font-size:23px;font-weight:500;letter-spacing:.04em;margin-bottom:12px}
 .work-desc{font-size:14px;color:var(--muted);margin-bottom:26px;line-height:1.9}
@@ -412,7 +413,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
       </article>
       </div>
     <div class="works-category reveal" style="margin-top:80px;"><h3>SNS Contents</h3><p>情報発信や集客を目的としたSNS投稿サンプル</p></div>    
-    <div class="works-grid"> 
+    <div class="works-grid sns-grid"> 
       <article class="work reveal">
         <div class="work-img">
           <img src="work/images/instagram_post1.jpg"
