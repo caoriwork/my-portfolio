@@ -146,6 +146,8 @@ header.on-navy .nav-links a.active::after{background:var(--gold-soft)}
 .sns-grid{grid-template-columns:repeat(3,1fr);}
 .work{background:#fff;overflow:hidden;border:1px solid var(--line);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s ease}
 .work:hover{transform:translateY(-8px);box-shadow:0 28px 64px rgba(27,42,65,.12)}
+.work[data-href]{cursor:pointer}
+.work-link:hover{color:var(--gold)}
 .work-img .ph{font-family:var(--mincho);font-size:54px;color:var(--gold-soft);opacity:.6;letter-spacing:.1em}
 .work-img .sample{position:absolute;top:16px;left:16px;font-family:var(--serif);font-size:12px;letter-spacing:.2em;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);padding:3px 13px;backdrop-filter:blur(2px)}
 .work-img{aspect-ratio:16/10;background:#F7F5F0;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:18px;box-shadow:0 14px 30px rgba(27,42,65,.10);}
@@ -336,7 +338,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
     <div class="sec-head reveal"><span class="sec-en">Works</span><span class="sec-ja">制作実績</span></div>
     <div class="works-category reveal"><h3>Landing Page</h3><p>構成設計からデザイン・実装まで担当したLP制作実績</p></div>
     <div class="works-grid">
-      <article class="work reveal">
+      <article class="work reveal" data-href="work/lp_online_hisho_mine.html">
         <div class="work-img">
           <img src="work/images/lp_online-hisyo.jpg"
                alt="オンライン秘書LP">
@@ -346,9 +348,10 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
           <h3 class="work-title">オンライン秘書LP</h3>
           <p class="work-desc">オンライン秘書サービスを想定し、信頼感と安心感を重視して制作。<br>サービス内容や対応範囲が伝わる構成を意識しました。</p>
           <div class="work-tags"><span>構成設計</span><span>デザイン</span><span>実装</span></div>
+          <a class="work-link" href="work/lp_online_hisho_mine.html">View Project <span class="arrow">&rarr;</span></a>
         </div>
       </article>
-      <article class="work reveal">
+      <article class="work reveal" data-href="work/lp_ai_course.html">
         <div class="work-img">
           <img src="work/images/lp_ai_course.jpg"
                alt="AI講座LP">
@@ -358,9 +361,10 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
           <h3 class="work-title">AI講座LP</h3>
           <p class="work-desc">AI学習を検討している会社員向けに制作。<br>講座の特徴やサポート内容が伝わる導線設計を意識しました。</p>
           <div class="work-tags"><span>構成設計</span><span>デザイン</span><span>実装</span></div>
+          <a class="work-link" href="work/lp_ai_course.html">View Project <span class="arrow">&rarr;</span></a>
         </div>
       </article>
-      <article class="work reveal">
+      <article class="work reveal" data-href="work/lp_morinoyado.html">
         <div class="work-img">
           <img src="work/images/lp_hotel.jpg"
                alt="架空ホテルLP">
@@ -370,12 +374,13 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
           <h3 class="work-title">架空ホテルLP</h3>
           <p class="work-desc">全8室限定のプライベートリゾートを想定した宿泊施設向けLP。<br>快適な滞在体験を提供するためのデザインと構成を意識しました。</p>
           <div class="work-tags"><span>構成設計</span><span>デザイン</span><span>HTML・CSSコーディング</span><span>実装</span></div>
+          <a class="work-link" href="work/lp_morinoyado.html">View Project <span class="arrow">&rarr;</span></a>
         </div>
       </article>
       </div>
     <div class="works-category reveal" style="margin-top:80px;"><h3>Design</h3><p>サービス訴求や採用募集を想定したバナー制作サンプル</p></div>    
     <div class="works-grid"> 
-      <article class="work reveal">
+      <article class="work reveal" data-href="work/banner%20_online_hisho.html">
         <div class="work-img">
           <img src="work/images/banner_online-hisyo.jpg"
                alt="オンライン秘書サービス広告">
@@ -385,9 +390,10 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
         <h3 class="work-title">オンライン秘書サービス広告</h3>
         <p class="work-desc">個人事業主・フリーランス向けに、事務作業の負担軽減を訴求した広告バナー。</p>
         <div class="work-tags"><span>Canva</span><span>広告バナー</span><span>構成設計</span></div>
+          <a class="work-link" href="work/banner%20_online_hisho.html">View Project <span class="arrow">&rarr;</span></a>
        </div>
       </article>
-      <article class="work reveal">
+      <article class="work reveal" data-href="work/banner_online_request.html">
         <div class="work-img">
           <img src="work/images/banner_online-bosyu.jpg"
                alt="オンライン秘書募集バナー">
@@ -397,9 +403,10 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
         <h3 class="work-title">オンライン秘書募集バナー</h3>
         <p class="work-desc">事務経験を活かしたい方向けに、在宅ワークの魅力が伝わるよう制作した採用バナー。</p>
         <div class="work-tags"><span>Canva</span><span>広告バナー</span><span>構成設計</span></div>
+          <a class="work-link" href="work/banner_online_request.html">View Project <span class="arrow">&rarr;</span></a>
        </div>
       </article>
-      <article class="work reveal">
+      <article class="work reveal" data-href="work/banner%20_AI_koza.html">
         <div class="work-img">
           <img src="work/images/banner_AI-katuyo.jpg"
                alt="AI活用講座バナー">
@@ -409,6 +416,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
         <h3 class="work-title">AI活用講座バナー</h3>
         <p class="work-desc">AI初心者向け講座を想定し、実務で使える内容であることが伝わるよう設計したバナー。</p>
         <div class="work-tags"><span>Canva</span><span>講座バナー</span><span>構成設計</span></div>
+          <a class="work-link" href="work/banner%20_AI_koza.html">View Project <span class="arrow">&rarr;</span></a>
         </div>
       </article>
       </div>
@@ -453,7 +461,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
       </div>
     <div class="works-category reveal" style="margin-top:80px;"><h3>Business Documents</h3><p>業務改善・マニュアル・議事録などのドキュメント作成サンプル</p></div>
     <div class="works-grid">
-      <article class="work reveal">
+      <article class="work reveal" data-href="work/teiansyo.html">
         <div class="work-img">
           <img src="work/images/work-teiansyo.jpg"
                alt="業務改善提案書">
@@ -463,9 +471,10 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
         <h3 class="work-title">業務改善提案書</h3>
         <p class="work-desc">請求業務の誤請求防止をテーマに、<br>原因分析から改善策までを提案。</p>
         <div class="work-tags"><span>業務改善</span><span>資料作成</span><span>課題分析</span></div>
+          <a class="work-link" href="work/teiansyo.html">View Project <span class="arrow">&rarr;</span></a>
        </div>
       </article>
-      <article class="work reveal">
+      <article class="work reveal" data-href="work/Instagram_manual.html">
         <div class="work-img">
           <img src="work/images/work-instagram-manual.jpg"
                alt="Instagram投稿運用マニュアル">
@@ -475,9 +484,10 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
         <h3 class="work-title">Instagram投稿運用マニュアル</h3>
         <p class="work-desc">Instagramの運用方法を文書化し、<br>従業員の教育・訓練に活用。</p>
         <div class="work-tags"><span>マニュアル作成</span><span>SNS運用</span><span>業務標準化</span></div>
+          <a class="work-link" href="work/Instagram_manual.html">View Project <span class="arrow">&rarr;</span></a>
         </div>
       </article>
-      <article class="work reveal">
+      <article class="work reveal" data-href="work/document_gijiroku.html">
         <div class="work-img">
           <img src="work/images/work-gijiroku.jpg"
                alt="定例会議議事録">
@@ -487,9 +497,10 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
         <h3 class="work-title">定例会議議事録</h3>
         <p class="work-desc">定例会議の内容を記録し、<br>決定事項やアクションアイテムを管理。</p>
         <div class="work-tags"><span>議事録</span><span>ToDo管理</span><span>会議運営</span></div>
+          <a class="work-link" href="work/document_gijiroku.html">View Project <span class="arrow">&rarr;</span></a>
        </div>
       </article>
-      <article class="work reveal">
+      <article class="work reveal" data-href="work/hikitugi_sheet.html">
         <div class="work-img">
           <img src="work/images/work-gyoumuhikitugi.jpg"
                alt="業務引継ぎシート">
@@ -499,12 +510,13 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
         <h3 class="work-title">業務引継ぎシート</h3>
         <p class="work-desc">問い合わせ対応業務の引継ぎを想定し、<br>業務概要からFAQまでを整理。</p>
         <div class="work-tags"><span>マニュアル作成</span><span>業務整理</span><span>引継ぎ資料</span></div>
+          <a class="work-link" href="work/hikitugi_sheet.html">View Project <span class="arrow">&rarr;</span></a>
        </div>
       </article>
       </div>
     <div class="works-category reveal" style="margin-top:80px;"><h3>Dashboard & Operations</h3><p>業務管理・進捗管理を目的とした業務設計サンプル</p></div>
     <div class="works-grid">
-      <article class="work reveal">
+      <article class="work reveal" data-href="work/dashboard_toiawasekannri.html">
         <div class="work-img">
           <img src="work/images/work-dashboard-toiawase.jpg"
                alt="問い合わせ管理ダッシュボード">
@@ -514,9 +526,10 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
         <h3 class="work-title">問い合わせ管理ダッシュボード</h3>
         <p class="work-desc">問い合わせ対応状況を可視化し、<br>進捗管理を効率化することを目的に制作。</p>
         <div class="work-tags"><span>Google Sheets</span><span>ダッシュボード設計</span><span>業務効率化</span></div>
+          <a class="work-link" href="work/dashboard_toiawasekannri.html">View Project <span class="arrow">&rarr;</span></a>
        </div>
       </article>
-      <article class="work reveal">
+      <article class="work reveal" data-href="work/dashboard_tasks.html">
         <div class="work-img">
           <img src="work/images/work-dashboard-task.jpg"
                alt="タスク管理ダッシュボード">
@@ -526,9 +539,10 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
         <h3 class="work-title">タスク管理ダッシュボード</h3>
         <p class="work-desc">タスクの進捗を可視化し、<br>効率的な管理を実現することを目的に制作。</p>
         <div class="work-tags"><span>Google Sheets</span><span>ダッシュボード設計</span><span>業務効率化</span></div>
+          <a class="work-link" href="work/dashboard_tasks.html">View Project <span class="arrow">&rarr;</span></a>
        </div>
       </article>
-      <article class="work reveal">
+      <article class="work reveal" data-href="work/dashboard_keiyakukanri.html">
         <div class="work-img">
           <img src="work/images/work-dashboard-keiyakukanri.jpg"
                alt="契約管理台帳ダッシュボード">
@@ -538,9 +552,10 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
         <h3 class="work-title">契約管理台帳ダッシュボード</h3>
         <p class="work-desc">契約情報を一元管理し、<br>更新期限の可視化による契約更新漏れ防止を目的に制作。</p>
         <div class="work-tags"><span>Google Sheets</span><span>ダッシュボード設計</span><span>業務効率化</span></div>
+          <a class="work-link" href="work/dashboard_keiyakukanri.html">View Project <span class="arrow">&rarr;</span></a>
        </div>
       </article>
-      <article class="work reveal">
+      <article class="work reveal" data-href="work/flow_toiawase.html">
         <div class="work-img">
           <img src="work/images/work-toiawase-flo.jpg"
                alt="問い合わせ対応フロー">
@@ -550,6 +565,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
         <h3 class="work-title">問い合わせ対応フロー</h3>
         <p class="work-desc">問い合わせ対応のプロセスを可視化し、<br>効率的な対応を実現することを目的に制作。</p>
         <div class="work-tags"><span>業務フロー</span><span>業務整理</span><span>業務標準化</span></div>
+          <a class="work-link" href="work/flow_toiawase.html">View Project <span class="arrow">&rarr;</span></a>
        </div>
       </article>
     </div>
@@ -651,6 +667,14 @@ cForm&&cForm.addEventListener('submit',async(ev)=>{
   }finally{
     btn.disabled=false;btn.textContent=label;
   }
+});
+
+/* work card click -> open project page */
+document.querySelectorAll('.work[data-href]').forEach(card=>{
+  card.addEventListener('click',(e)=>{
+    if(e.target.closest('a')) return; // 内部リンクは通常動作に任せる
+    window.location.href=card.dataset.href;
+  });
 });
 </script>
 </body>
