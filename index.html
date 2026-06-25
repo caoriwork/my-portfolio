@@ -192,10 +192,14 @@ header.on-navy .nav-links a.active::after{background:var(--gold-soft)}
 .form-status{text-align:center;margin-top:18px;font-size:14px;letter-spacing:.04em;min-height:1.4em}
 .form-status.ok{color:var(--gold-soft)}
 .form-status.ng{color:#e8a3a3}
-.socials{text-align:center;margin-top:54px;display:flex;gap:28px;justify-content:center}
-.socials a{font-family:var(--serif);font-size:15px;letter-spacing:.12em;color:rgba(255,255,255,.7);transition:color .3s}
-.socials a:hover{color:var(--gold-soft)}
-.request-links{display:flex;justify-content:center;gap:16px;margin:40px 0 30px;flex-wrap:nowrap;}
+.contact-option{
+  text-align:center;
+  margin:56px 0 20px;
+  color:rgba(255,255,255,.72);
+  font-size:14px;
+  letter-spacing:.08em;
+}
+.request-links{display:flex;justify-content:center;gap:16px;margin:24px 0 30px;flex-wrap:nowrap;}
 .request-links .btn{width:300px;padding:15px 24px;justify-content:center;white-space:nowrap;}
 
 /* footer */
@@ -559,14 +563,16 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
       <div class="field"><label for="msg">お問い合わせ内容</label><textarea id="msg" name="message" required></textarea></div>
       <div class="form-submit"><button type="submit" class="btn-submit">送信する</button></div>
       <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-
-      <!-- 依頼導線 -->
-      <div class="request-links">
-        <a href="https://www.lancers.jp/profile/caori_a" target="_blank" rel="noopener" class="btn btn-primary">ランサーズで相談する</a>
-        <a href="https://crowdworks.jp/public/employees/6248494?ref=login_header" target="_blank" rel="noopener" class="btn btn-primary">クラウドワークスで相談する</a>
-      </div>
-
     </form>
+
+    <!-- 依頼導線（フォーム外の別ルート） -->
+    <p class="contact-option reveal">
+      または、ご利用中のプラットフォームからご連絡いただくことも可能です。
+    </p>
+    <div class="request-links reveal">
+      <a href="https://www.lancers.jp/profile/caori_a" target="_blank" rel="noopener" class="btn btn-primary">ランサーズで相談する</a>
+      <a href="https://crowdworks.jp/public/employees/6248494?ref=login_header" target="_blank" rel="noopener" class="btn btn-primary">クラウドワークスで相談する</a>
+    </div>
   </div>
 </section>
 
