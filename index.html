@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="バックオフィス業務18年以上。業務整理・改善からLP制作・導線設計まで、事業がスムーズに回る環境づくりをサポートします。">
+<meta name="description" content="バックオフィス業務18年以上。業務整理・改善・マニュアル作成から、LP・広告クリエイティブ制作まで。実務経験を活かし、仕事が回る仕組みと、伝わる形をつくります。">
 <title>Caori | Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,13 +86,13 @@ header.on-navy .nav-links a.active::after{background:var(--gold-soft)}
 
 /* hero (navy) */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 0;background:var(--navy);color:#fff;overflow:hidden}
-.hero-bgphoto{position:absolute;inset:0;z-index:0;background-color:var(--navy);background-image:url("work/images/hero-bg.png"),radial-gradient(120% 90% at 80% 10%,rgba(169,140,90,.16) 0%,rgba(27,42,65,0) 55%),linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 55%,#22344d 100%);background-size:cover,cover,cover;background-position:center;background-repeat:no-repeat;}
-.hero-bgphoto::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(27,42,65,.92) 0%,rgba(27,42,65,.78) 46%,rgba(27,42,65,.5) 100%)}
+.hero-bgphoto{position:absolute;inset:0;z-index:0;background-color:var(--navy);background-image:url("work/images/hero-bg2.png"),radial-gradient(120% 90% at 80% 10%,rgba(169,140,90,.16) 0%,rgba(27,42,65,0) 55%),linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 55%,#22344d 100%);background-size:cover,cover,cover;background-position:center;background-repeat:no-repeat;}
+.hero-bgphoto::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(27,42,65,.60) 0%,rgba(27,42,65,.40) 46%,rgba(27,42,65,.10) 100%)}
 .hero-inner{max-width:640px;width:100%}
-.hero-eyebrow{font-family:var(--serif);font-size:17px;letter-spacing:.3em;color:var(--gold-soft);margin-bottom:30px;text-transform:uppercase}
+.hero-eyebrow{font-family:var(--serif);font-size:17px;letter-spacing:.3em;color:#8F7138;margin-bottom:30px;text-transform:uppercase}
 .hero-title{font-family:var(--mincho);font-size:clamp(34px,5.2vw,60px);font-weight:500;line-height:1.5;letter-spacing:.06em;margin-bottom:36px;color:#fff}
-.hero-title .accent{color:var(--gold-soft)}
-.hero-body{font-size:15.5px;color:rgba(255,255,255,.74);max-width:460px;letter-spacing:.05em;margin-bottom:52px}
+.hero-title .accent{color:#26384D}
+.hero-body{font-size:15.5px;color:rgba(255,255,255,.88);max-width:460px;letter-spacing:.05em;margin-bottom:52px}
 .hero-body strong{color:#fff;font-weight:500}
 .hero-cta{display:flex;gap:18px;flex-wrap:wrap}
 .btn{font-family:var(--serif);font-size:16px;letter-spacing:.1em;padding:15px 40px;border-radius:1px;transition:.35s ease;display:inline-flex;align-items:center;gap:10px}
@@ -166,6 +166,17 @@ header.on-navy .nav-links a.active::after{background:var(--gold-soft)}
 .work-soon .mark{font-family:var(--serif);font-size:40px;color:var(--line);margin-bottom:10px}
 .work-soon p{font-family:var(--serif);font-size:14px;letter-spacing:.16em}
 .work-note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px;margin-bottom:20px;}
+/* advertising gallery */
+.ad-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 28px;}
+.ad-item{background:#fff;border:1px solid var(--line);overflow:hidden;transition:transform .4s ease,box-shadow .4s ease;}
+.ad-item:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(27,42,65,.10);}
+.ad-thumb{aspect-ratio:1/1;background:#F7F5F0;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:14px;}
+.ad-thumb img{width:100%;height:100%;object-fit:contain;display:block;}
+.ad-info{padding:20px 22px 22px;}
+.ad-type{font-family:var(--serif);font-size:12px;letter-spacing:.14em;color:var(--gold);margin-bottom:5px;}
+.ad-title{font-family:var(--mincho);font-size:17px;font-weight:500;color:var(--navy);letter-spacing:.03em;line-height:1.6;}
+.ad-sub{font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.7;}
+.ad-gallery-note{font-size:12px;color:var(--muted);line-height:1.9;margin-top:28px;}
 
 /* tools */
 .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px}
@@ -192,32 +203,23 @@ header.on-navy .nav-links a.active::after{background:var(--gold-soft)}
 .form-status{text-align:center;margin-top:18px;font-size:14px;letter-spacing:.04em;min-height:1.4em}
 .form-status.ok{color:var(--gold-soft)}
 .form-status.ng{color:#e8a3a3}
-.contact-option{
-  text-align:center;
-  margin:56px 0 20px;
-  color:rgba(255,255,255,.72);
-  font-size:14px;
-  letter-spacing:.08em;
-}
-.request-links{display:flex;justify-content:center;gap:16px;margin:24px 0 30px;flex-wrap:nowrap;}
-.request-links .btn{width:300px;padding:15px 24px;justify-content:center;white-space:nowrap;}
 
 /* footer */
 footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center;padding:40px 0;font-family:var(--serif);font-size:14px;letter-spacing:.12em}
 
 @media (max-width:768px){
-  .request-links{flex-wrap:wrap;}
-  .request-links .btn{width:100%;}
   .section{padding:100px 0}.sec-head{margin-bottom:56px}
   .hero{padding:130px 0}.about-grid{grid-template-columns:1fr;gap:56px}
   .about-photo{max-width:260px}
   .service-grid,.tools-grid{grid-template-columns:1fr;gap:36px}
   .exp-grid{grid-template-columns:1fr;gap:40px}
   .works-grid{grid-template-columns:1fr}
+  .ad-gallery{grid-template-columns:repeat(2,1fr);gap:24px 18px;}
   .nav-links{display:none}.nav-toggle{display:flex}.contact{padding:100px 0}
 }
 @media (max-width:480px){
   .wrap{padding:0 24px}.hero-cta{flex-direction:column;align-items:flex-start}.btn{width:100%;justify-content:center}
+  .ad-gallery{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -244,8 +246,8 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
   <div class="wrap">
     <div class="hero-inner">
       <p class="hero-eyebrow reveal">— Online Assistant / Back Office Partner — </p>
-      <h1 class="hero-title reveal">事務から解放し、<br><span class="accent">業務が回る仕組み</span>をつくる。</h1>
-      <p class="hero-body reveal"><strong>バックオフィス業務18年以上。</strong><br>業務整理・改善・マニュアル作成・タスク管理から、LP制作・導線設計まで。事業がスムーズに回る環境づくりをサポートします。</p>
+      <h1 class="hero-title reveal">仕事を整え、<br><span class="accent">伝わる形をつくる。</span></h1>
+      <p class="hero-body reveal">バックオフィス業務18年以上。<br>業務整理・改善・マニュアル作成から、LP・広告クリエイティブ制作まで。実務経験を活かし、仕事が回る仕組みと、伝わる形をつくります。</p>
       <div class="hero-cta reveal">
         <a href="#works" class="btn btn-primary">Worksを見る <span class="arrow">→</span></a>
         <a href="#contact" class="btn btn-ghost">お問い合わせ</a>
@@ -303,6 +305,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
         <ul class="exp-list">
           <li>社会保険、雇用保険関係の手続き</li>
           <li>在庫管理、棚卸実務</li>
+          <li>電話・来客対応、各種庶務</li>
         </ul>
       </div>
     </div>
@@ -328,9 +331,9 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
       </div>
       <div class="svc reveal">
         <span class="svc-num">03</span>
-        <h3 class="svc-title">Web・コンテンツ制作</h3>
-        <p class="svc-sub">Web & Content</p>
-        <ul class="svc-list"><li>LP制作</li><li>HTML/CSS修正</li><li>導線設計</li></ul>
+        <h3 class="svc-title">Web・クリエイティブ制作</h3>
+        <p class="svc-sub">Web & Creative</p>
+        <ul class="svc-list"><li>LP制作</li><li>広告・バナー制作</li><li>HTML/CSS修正</li></ul>
       </div>
     </div>
   </div>
@@ -339,7 +342,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
 <!-- WORKS -->
 <section class="section works-section" id="works">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-en">Works</span><span class="sec-ja">制作実績</span></div>
+    <div class="sec-head reveal"><span class="sec-en">Works</span><span class="sec-ja">制作・作品例</span></div>
     <div class="works-category reveal"><h3>Business Documents</h3><p>業務改善・マニュアル・議事録などのドキュメント作成サンプル</p></div>
     <div class="works-grid">
       <article class="work reveal" data-href="work/teiansyo.html">
@@ -450,7 +453,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
        </div>
       </article>
     </div>
-    <div class="works-category reveal" style="margin-top:80px;"><h3>Landing Page</h3><p>構成設計からデザイン・実装まで担当したLP制作実績</p></div>
+    <div class="works-category reveal" style="margin-top:80px;"><h3>Landing Page</h3><p>構成設計からデザイン・実装まで行ったLP制作サンプル</p></div>
     <div class="works-grid">
       <article class="work reveal" data-href="work/lp_online_hisho_mine.html">
         <div class="work-img">
@@ -462,81 +465,124 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
           <h3 class="work-title">オンライン秘書LP</h3>
           <p class="work-desc">オンライン秘書サービスを想定し、信頼感と安心感を重視して制作。<br>サービス内容や対応範囲が伝わる構成を意識しました。</p>
           <p class="work-note">※自身のサービスを想定したサンプル制作</p>
-          <div class="work-tags"><span>構成設計</span><span>デザイン</span><span>実装</span></div>
+          <div class="work-tags"><span>構成設計</span><span>デザイン</span><span>HTML・CSSコーディング</span></div>
           <a class="work-link" href="work/lp_online_hisho_mine.html">View Project <span class="arrow">&rarr;</span></a>
         </div>
       </article>
-      <article class="work reveal" data-href="work/lp_ai_course.html">
+      <article class="work reveal" data-href="work/lp_cafe.html">
         <div class="work-img">
-          <img src="work/images/lp_ai_course.jpg"
-               alt="AI講座LP">
+          <img src="work/images/lp_cafe.png"
+               alt="カフェLP">
         </div>        
         <div class="work-body">
           <p class="work-cat">Landing Page</p>
-          <h3 class="work-title">AI講座LP</h3>
-          <p class="work-desc">AI学習を検討している会社員向けを想定して制作。<br>講座の特徴やサポート内容が伝わる導線設計を意識しました。</p>
-          <p class="work-note">※架空のAI講座を想定したサンプル制作</p>
-          <div class="work-tags"><span>構成設計</span><span>デザイン</span><span>実装</span></div>
-          <a class="work-link" href="work/lp_ai_course.html">View Project <span class="arrow">&rarr;</span></a>
+          <h3 class="work-title">カフェLP</h3>
+          <p class="work-desc">推し活を楽しむ女性向けのコンセプトカフェを想定して制作。<br>やわらかな世界観と余白を活かし、写真やサービス内容が自然に伝わる構成を意識しました。</p>
+          <p class="work-note">※架空のカフェを想定したサンプル制作</p>
+          <div class="work-tags"><span>構成設計</span><span>デザイン</span><span>HTML・CSSコーディング</span></div>
+          <a class="work-link" href="work/lp_cafe.html">View Project <span class="arrow">&rarr;</span></a>
         </div>
       </article>
       <article class="work reveal" data-href="work/lp_morinoyado.html">
         <div class="work-img">
-          <img src="work/images/lp_hotel.jpg"
+          <img src="work/images/lp_hotel.png"
                alt="ホテルLP">
         </div>        
         <div class="work-body">
           <p class="work-cat">Landing Page</p>
           <h3 class="work-title">ホテルLP</h3>
-          <p class="work-desc">全8室限定のプライベートリゾートを想定した宿泊施設向けLP。<br>快適な滞在体験を提供するためのデザインと構成を意識しました。</p>
+          <p class="work-desc">全8室限定のプライベートリゾートを想定した宿泊施設向けLP。<br>静けさや上質感が伝わるビジュアルと、宿の魅力を自然に伝える構成を意識しました。</p>
           <p class="work-note">※架空の宿泊施設を想定したサンプル制作</p>
-          <div class="work-tags"><span>構成設計</span><span>デザイン</span><span>HTML・CSSコーディング</span><span>実装</span></div>
+          <div class="work-tags"><span>構成設計</span><span>デザイン</span><span>HTML・CSSコーディング</span></div>
           <a class="work-link" href="work/lp_morinoyado.html">View Project <span class="arrow">&rarr;</span></a>
         </div>
       </article>
       </div>
-    <div class="works-category reveal" style="margin-top:80px;"><h3>Design</h3><p>サービス訴求や採用募集を想定したバナー制作サンプル</p></div>    
-    <div class="works-grid"> 
-      <article class="work reveal" data-href="work/banner%20_online_hisho.html">
-        <div class="work-img">
-          <img src="work/images/banner_online-hisyo.png"
-               alt="オンライン秘書サービス広告">
-        </div>        
-        <div class="work-body">
-        <p class="work-cat">Banner Design</p>
-        <h3 class="work-title">オンライン秘書サービス広告</h3>
-        <p class="work-desc">個人事業主・フリーランス向けに、事務作業の負担軽減を訴求した広告バナー。</p>
-        <div class="work-tags"><span>Canva</span><span>広告バナー</span><span>構成設計</span></div>
-          <a class="work-link" href="work/banner%20_online_hisho.html">View Project <span class="arrow">&rarr;</span></a>
-       </div>
-      </article>
-      <article class="work reveal" data-href="work/banner_online_request.html">
-        <div class="work-img">
-          <img src="work/images/banner_online-bosyu.jpg"
-               alt="オンライン秘書募集バナー">
-        </div>        
-        <div class="work-body">
-        <p class="work-cat">Banner Design</p>
-        <h3 class="work-title">オンライン秘書募集バナー</h3>
-        <p class="work-desc">事務経験を活かしたい方向けに、在宅ワークの魅力が伝わるよう制作した採用バナー。</p>
-        <div class="work-tags"><span>Canva</span><span>広告バナー</span><span>構成設計</span></div>
-          <a class="work-link" href="work/banner_online_request.html">View Project <span class="arrow">&rarr;</span></a>
-       </div>
-      </article>
-      <article class="work reveal" data-href="work/banner%20_AI_koza.html">
-        <div class="work-img">
-          <img src="work/images/banner_AI-katuyo.jpg"
-               alt="AI活用講座バナー">
-        </div>        
-        <div class="work-body">
-        <p class="work-cat">Banner Design</p>
-        <h3 class="work-title">AI活用講座バナー</h3>
-        <p class="work-desc">AI初心者向け講座を想定し、実務で使える内容であることが伝わるよう設計したバナー。</p>
-        <div class="work-tags"><span>Canva</span><span>講座バナー</span><span>構成設計</span></div>
-          <a class="work-link" href="work/banner%20_AI_koza.html">View Project <span class="arrow">&rarr;</span></a>
-        </div>
-      </article>
-      </div>
+    <div class="works-category reveal" style="margin-top:80px;"><h3>Advertising & Banner Design</h3><p>商品・サービスの魅力や目的に合わせ、ターゲットや媒体を意識して制作した広告クリエイティブ</p></div>
+    <div class="ad-gallery">
+
+  <!-- MORI NO YADO -->
+  <article class="ad-item reveal">
+    <div class="ad-thumb">
+      <img src="work/images/ad_mori-no-yado.png"
+           alt="MORI NO YADO 宿泊施設広告">
+    </div>
+    <div class="ad-info">
+      <p class="ad-type">HOTEL / WEB AD</p>
+      <h3 class="ad-title">MORI NO YADO</h3>
+      <p class="ad-sub">宿泊施設・リゾート広告</p>
+    </div>
+  </article>
+
+  <!-- LUMÉA SKIN -->
+  <article class="ad-item reveal">
+    <div class="ad-thumb">
+      <img src="work/images/ad_lumea-a.png"
+           alt="LUMÉA SKIN 美容SNS広告">
+    </div>
+    <div class="ad-info">
+      <p class="ad-type">BEAUTY / SNS AD</p>
+      <h3 class="ad-title">LUMÉA SKIN</h3>
+      <p class="ad-sub">美容・コスメ広告｜2パターン制作</p>
+    </div>
+  </article>
+
+  <!-- ÉLANE -->
+  <article class="ad-item reveal">
+    <div class="ad-thumb">
+      <img src="work/images/ad_elane.png"
+           alt="ÉLANE ファッションEC広告">
+    </div>
+    <div class="ad-info">
+      <p class="ad-type">FASHION / EC AD</p>
+      <h3 class="ad-title">ÉLANE</h3>
+      <p class="ad-sub">ファッション・EC広告</p>
+    </div>
+  </article>
+
+  <!-- THE RESIDENCE AOYAMA -->
+  <article class="ad-item reveal">
+    <div class="ad-thumb">
+      <img src="work/images/ad_residence-aoyama.png"
+           alt="THE RESIDENCE AOYAMA 不動産広告">
+    </div>
+    <div class="ad-info">
+      <p class="ad-type">REAL ESTATE / WEB AD</p>
+      <h3 class="ad-title">THE RESIDENCE AOYAMA</h3>
+      <p class="ad-sub">高級不動産広告</p>
+    </div>
+  </article>
+
+  <!-- NEON PULSE -->
+  <article class="ad-item reveal">
+    <div class="ad-thumb">
+      <img src="work/images/ad_neon-pulse.png"
+           alt="NEON PULSE 音楽イベント広告">
+    </div>
+    <div class="ad-info">
+      <p class="ad-type">EVENT / PROMOTION</p>
+      <h3 class="ad-title">NEON PULSE</h3>
+      <p class="ad-sub">音楽イベント・フェス広告</p>
+    </div>
+  </article>
+
+  <!-- ONLINE ASSISTANT -->
+  <article class="ad-item reveal">
+    <div class="ad-thumb">
+      <img src="work/images/ad_online-assistant.png"
+           alt="完全在宅オンライン事務スタッフ採用広告">
+    </div>
+    <div class="ad-info">
+      <p class="ad-type">RECRUIT / SNS AD</p>
+      <h3 class="ad-title">オンライン事務スタッフ募集</h3>
+      <p class="ad-sub">採用・求人広告</p>
+    </div>
+  </article>
+
+</div>
+
+<p class="ad-gallery-note reveal">
+  ※掲載作品はポートフォリオ用のサンプルです。一部のビジュアル素材にはAI生成画像を使用しています。</p>  
   </div>
 </section>
 
@@ -556,7 +602,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="sec-head center reveal"><span class="sec-en">Contact</span><span class="sec-ja">お問い合わせ</span></div>
-    <p class="contact-lead reveal">業務整理やバックオフィスサポート、LP制作について、まずはお気軽にご相談ください。<br>お問い合わせ内容を確認後、2営業日以内を目安にご返信いたします。</p>
+    <p class="contact-lead reveal">業務整理やバックオフィスサポート、LP・広告クリエイティブ制作について、<br>まずはお気軽にご相談ください。<br>お問い合わせ内容を確認後、2営業日以内を目安にご返信いたします。</p>
     <form class="form reveal" id="contact-form" action="https://formspree.io/f/mpqgqpen" method="POST">
       <div class="field"><label for="name">お名前</label><input type="text" id="name" name="name" required></div>
       <div class="field"><label for="email">メールアドレス</label><input type="email" id="email" name="email" required></div>
@@ -565,15 +611,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
       <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
     </form>
 
-    <!-- 依頼導線（フォーム外の別ルート） -->
-    <p class="contact-option reveal">
-      または、ご利用中のプラットフォームからご連絡いただくことも可能です。
-    </p>
-    <div class="request-links reveal">
-      <a href="https://www.lancers.jp/profile/caori_a" target="_blank" rel="noopener" class="btn btn-primary">ランサーズで相談する</a>
-      <a href="https://crowdworks.jp/public/employees/6248494?ref=login_header" target="_blank" rel="noopener" class="btn btn-primary">クラウドワークスで相談する</a>
-    </div>
-  </div>
+     </div>
 </section>
 
 <footer><div class="wrap">© 2026 Caori Portfolio. All Rights Reserved.</div></footer>
