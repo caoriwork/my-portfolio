@@ -172,8 +172,14 @@ header.on-navy .nav-links a.active::after{background:var(--gold-soft)}
 .ad-item:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(27,42,65,.10);}
 .ad-thumb{aspect-ratio:1/1;background:#F7F5F0;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:14px;}
 .ad-thumb img{width:100%;height:100%;object-fit:contain;display:block;}
-.ad-info{padding:20px 22px 22px;}
-.ad-type{font-family:var(--serif);font-size:12px;letter-spacing:.14em;color:var(--gold);margin-bottom:5px;}
+.ad-thumb-switch{position:relative;}
+.ad-thumb-switch .ad-img-main,.ad-thumb-switch .ad-img-hover{position:absolute;width:calc(100% - 28px);height:calc(100% - 28px);object-fit:contain;transition:opacity .45s ease;}
+.ad-thumb-switch .ad-img-main{opacity:1;}
+.ad-thumb-switch .ad-img-hover{opacity:0;}
+.ad-thumb-switch:hover .ad-img-main{opacity:0;}
+.ad-thumb-switch:hover .ad-img-hover{opacity:1;}
+.ad-more{position:absolute;right:12px;top:10px;bottom:auto;z-index:3;background:rgba(255,255,255,.88);color:var(--navy);border:1px solid rgba(27,42,65,.18);font-family:var(--serif);font-size:10px;letter-spacing:.12em;padding:4px 8px;}.ad-type{font-family:var(--serif);font-size:12px;letter-spacing:.14em;color:var(--gold);margin-bottom:5px;}
+.ad-more b{font-size:14px;font-weight:400;margin-left:3px;}
 .ad-title{font-family:var(--mincho);font-size:17px;font-weight:500;color:var(--navy);letter-spacing:.03em;line-height:1.6;}
 .ad-sub{font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.7;}
 .ad-gallery-note{font-size:12px;color:var(--muted);line-height:1.9;margin-top:28px;}
@@ -503,10 +509,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
 
   <!-- MORI NO YADO -->
   <article class="ad-item reveal">
-    <div class="ad-thumb">
-      <img src="work/images/ad_mori-no-yado.png"
-           alt="MORI NO YADO 宿泊施設広告">
-    </div>
+    <div class="ad-thumb"><img src="work/images/ad_mori-no-yado.png" alt="MORI NO YADO 宿泊施設広告"></div>
     <div class="ad-info">
       <p class="ad-type">HOTEL / WEB AD</p>
       <h3 class="ad-title">MORI NO YADO</h3>
@@ -516,10 +519,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
 
   <!-- LUMÉA SKIN -->
   <article class="ad-item reveal">
-    <div class="ad-thumb">
-      <img src="work/images/ad_lumea-a.png"
-           alt="LUMÉA SKIN 美容SNS広告">
-    </div>
+    <div class="ad-thumb ad-thumb-switch"><img src="work/images/ad_lumea-a.png" alt="LUMÉA SKIN 美容SNS広告 A" class="ad-img-main"><img src="work/images/ad_lumea-b.png" alt="LUMÉA SKIN 美容SNS広告 B" class="ad-img-hover"><span class="ad-more">VIEW 02 <b>↔</b></span></div>
     <div class="ad-info">
       <p class="ad-type">BEAUTY / SNS AD</p>
       <h3 class="ad-title">LUMÉA SKIN</h3>
@@ -529,10 +529,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
 
   <!-- ÉLANE -->
   <article class="ad-item reveal">
-    <div class="ad-thumb">
-      <img src="work/images/ad_elane.png"
-           alt="ÉLANE ファッションEC広告">
-    </div>
+    <div class="ad-thumb"><img src="work/images/ad_elane.png" alt="ÉLANE ファッションEC広告"></div>
     <div class="ad-info">
       <p class="ad-type">FASHION / EC AD</p>
       <h3 class="ad-title">ÉLANE</h3>
@@ -542,10 +539,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
 
   <!-- THE RESIDENCE AOYAMA -->
   <article class="ad-item reveal">
-    <div class="ad-thumb">
-      <img src="work/images/ad_residence-aoyama.png"
-           alt="THE RESIDENCE AOYAMA 不動産広告">
-    </div>
+    <div class="ad-thumb"><img src="work/images/ad_residence-aoyama.png" alt="THE RESIDENCE AOYAMA 不動産広告"></div>
     <div class="ad-info">
       <p class="ad-type">REAL ESTATE / WEB AD</p>
       <h3 class="ad-title">THE RESIDENCE AOYAMA</h3>
@@ -555,10 +549,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
 
   <!-- NEON PULSE -->
   <article class="ad-item reveal">
-    <div class="ad-thumb">
-      <img src="work/images/ad_neon-pulse.png"
-           alt="NEON PULSE 音楽イベント広告">
-    </div>
+    <div class="ad-thumb"><img src="work/images/ad_neon-pulse.png" alt="NEON PULSE 音楽イベント広告"></div>
     <div class="ad-info">
       <p class="ad-type">EVENT / PROMOTION</p>
       <h3 class="ad-title">NEON PULSE</h3>
@@ -568,10 +559,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
 
   <!-- ONLINE ASSISTANT -->
   <article class="ad-item reveal">
-    <div class="ad-thumb">
-      <img src="work/images/ad_online-assistant.png"
-           alt="完全在宅オンライン事務スタッフ採用広告">
-    </div>
+    <div class="ad-thumb"><img src="work/images/ad_online-assistant.png" alt="完全在宅オンライン事務スタッフ採用広告"></div>
     <div class="ad-info">
       <p class="ad-type">RECRUIT / SNS AD</p>
       <h3 class="ad-title">オンライン事務スタッフ募集</h3>
