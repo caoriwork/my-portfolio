@@ -143,6 +143,7 @@ header.on-navy .nav-links a.active::after{background:var(--gold-soft)}
 .works-category p{font-size:14px;color:var(--muted);line-height:1.8;}
 .works-section{background:var(--paper-2)}
 .works-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:48px}
+.presentation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
 .sns-grid{grid-template-columns:repeat(3,1fr);}
 .work{background:#fff;overflow:hidden;border:1px solid var(--line);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s ease}
 .work:hover{transform:translateY(-8px);box-shadow:0 28px 64px rgba(27,42,65,.12)}
@@ -223,6 +224,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
   .works-grid{grid-template-columns:1fr}
   .ad-gallery{grid-template-columns:repeat(2,1fr);gap:24px 18px;}
   .nav-links{display:none}.nav-toggle{display:flex}.contact{padding:100px 0}
+  .presentation-grid{grid-template-columns:1fr;}
 }
 @media (max-width:480px){
   .wrap{padding:0 24px}.hero-cta{flex-direction:column;align-items:flex-start}.btn{width:100%;justify-content:center}
@@ -340,7 +342,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
         <span class="svc-num">03</span>
         <h3 class="svc-title">Web・クリエイティブ制作</h3>
         <p class="svc-sub">Web & Creative</p>
-        <ul class="svc-list"><li>LP制作</li><li>広告・バナー制作</li><li>HTML/CSS修正</li></ul>
+        <ul class="svc-list"><li>LP制作</li><li>広告・バナー制作</li><li>資料・スライド制作</li></ul>
       </div>
     </div>
   </div>
@@ -350,7 +352,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
 <section class="section works-section" id="works">
   <div class="wrap">
     <div class="sec-head reveal"><span class="sec-en">Works</span><span class="sec-ja">制作・作品例</span></div>
-    <div class="works-category reveal"><h3>Business Documents</h3><p>業務改善・マニュアル・議事録などのドキュメント作成サンプル</p></div>
+    <div class="works-category reveal"><h3>Business Documents</h3><p>業務改善・マニュアルなどのドキュメント作成サンプル</p></div>
     <div class="works-grid">
       <article class="work reveal" data-href="work/teiansyo.html">
         <div class="work-img">
@@ -373,36 +375,10 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
         <div class="work-body">
         <p class="work-cat">Documents</p>
         <h3 class="work-title">Instagram投稿運用マニュアル</h3>
-        <p class="work-desc">Instagramの運用方法を文書化し、<br>従業員の教育・訓練に活用。</p>
+        <p class="work-desc">Instagram投稿業務の属人化を防ぎ、<br>誰が担当しても同じ品質で運用できることを目的に制作。</p>
         <div class="work-tags"><span>マニュアル作成</span><span>SNS運用</span><span>業務標準化</span></div>
           <a class="work-link" href="work/Instagram_manual.html">View Project <span class="arrow">&rarr;</span></a>
         </div>
-      </article>
-      <article class="work reveal" data-href="work/document_gijiroku.html">
-        <div class="work-img">
-          <img src="work/images/work-gijiroku.jpg"
-               alt="定例会議議事録">
-        </div>        
-        <div class="work-body">
-        <p class="work-cat">Documents</p>
-        <h3 class="work-title">定例会議議事録</h3>
-        <p class="work-desc">定例会議の内容を記録し、<br>決定事項やアクションアイテムを管理。</p>
-        <div class="work-tags"><span>議事録</span><span>ToDo管理</span><span>会議運営</span></div>
-          <a class="work-link" href="work/document_gijiroku.html">View Project <span class="arrow">&rarr;</span></a>
-       </div>
-      </article>
-      <article class="work reveal" data-href="work/hikitugi_sheet.html">
-        <div class="work-img">
-          <img src="work/images/work-gyoumuhikitugi.jpg"
-               alt="業務引継ぎシート">
-        </div>        
-        <div class="work-body">
-        <p class="work-cat">Documents</p>
-        <h3 class="work-title">業務引継ぎシート</h3>
-        <p class="work-desc">問い合わせ対応業務の引継ぎを想定し、<br>業務概要からFAQまでを整理。</p>
-        <div class="work-tags"><span>マニュアル作成</span><span>業務整理</span><span>引継ぎ資料</span></div>
-          <a class="work-link" href="work/hikitugi_sheet.html">View Project <span class="arrow">&rarr;</span></a>
-       </div>
       </article>
       </div>
     <div class="works-category reveal" style="margin-top:80px;"><h3>Dashboard & Operations</h3><p>業務管理・進捗管理を目的とした業務設計サンプル</p></div>
@@ -415,8 +391,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
         <div class="work-body">
          <p class="work-cat">Dashboard</p>
         <h3 class="work-title">問い合わせ管理ダッシュボード</h3>
-        <p class="work-desc">問い合わせ対応状況を可視化し、<br>進捗管理を効率化することを目的に制作。</p>
-        <div class="work-tags"><span>Google Sheets</span><span>ダッシュボード設計</span><span>業務効率化</span></div>
+        <p class="work-desc">問い合わせ対応状況を可視化し、<br>対応漏れの防止と進捗共有の効率化を目的に制作。<br>検索・ステータス・優先度・担当者による絞り込み機能を実装。</p>        <div class="work-tags"><span>Google Sheets</span><span>ダッシュボード設計</span><span>業務効率化</span></div>
           <a class="work-link" href="work/dashboard_toiawasekannri.html">View Project <span class="arrow">&rarr;</span></a>
        </div>
       </article>
@@ -460,6 +435,41 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
        </div>
       </article>
     </div>
+
+<!-- PRESENTATION & SLIDE DESIGN -->
+<div class="works-category reveal" style="margin-top:80px;"><h3>Presentation & Slide Design</h3><p>営業資料・図解など、情報を整理し、伝わりやすさを意識して制作したスライドデザインサンプル</p></div>
+<div class="presentation-grid">
+  <article class="work reveal" data-href="work/pdf/redesk.pdf">
+    <div class="work-img"><img src="work/images/work-redesk.jpg" alt="Re:Desk サービス紹介・営業資料"></div>
+    <div class="work-body">
+      <p class="work-cat">Presentation</p>
+      <h3 class="work-title">サービス紹介・営業資料｜Re:Desk</h3>
+      <p class="work-desc">オンライン業務サポートサービスを想定した全7ページの営業資料。課題提起からサービス内容、料金、CTAまで、情報の流れを意識して構成・デザイン。</p>
+      <div class="work-tags"><span>営業資料</span><span>スライドデザイン</span><span>Canva</span></div>
+      <a class="work-link" href="work/pdf/redesk.pdf" target="_blank" rel="noopener">View PDF <span class="arrow">&rarr;</span></a>
+    </div>
+  </article>
+  <article class="work reveal" data-href="work/images/work-task-3step.png">
+    <div class="work-img"><img src="work/images/work-task-3step.png" alt="タスク整理 3STEP"></div>
+    <div class="work-body">
+      <p class="work-cat">Infographic</p>
+      <h3 class="work-title">タスク整理 3STEP</h3>
+      <p class="work-desc">タスクが増えたときの整理方法を、「出す・分ける・決める」の3ステップで視覚化。情報の優先順位と分かりやすさを意識して制作。</p>
+      <div class="work-tags"><span>図解</span><span>情報整理</span><span>Canva</span></div>
+      <a class="work-link" href="work/images/work-task-3step.png" target="_blank" rel="noopener">View Design <span class="arrow">&rarr;</span></a>
+    </div>
+  </article>
+  <article class="work reveal" data-href="work/images/work-task-before-after.png">
+    <div class="work-img"><img src="work/images/work-task-before-after.png" alt="タスク管理 Before After"></div>
+    <div class="work-body">
+      <p class="work-cat">Infographic</p>
+      <h3 class="work-title">タスク管理 Before / After</h3>
+      <p class="work-desc">タスク管理で起こりやすい4つの課題と改善後の状態を、Before / After形式で比較。変化がひと目で伝わる構成を意識して制作。</p>
+      <div class="work-tags"><span>図解</span><span>比較デザイン</span><span>Canva</span></div>
+      <a class="work-link" href="work/images/work-task-before-after.png" target="_blank" rel="noopener">View Design <span class="arrow">&rarr;</span></a>
+    </div>
+  </article>
+</div>
     <div class="works-category reveal" style="margin-top:80px;"><h3>Landing Page</h3><p>構成設計からデザイン・実装まで行ったLP制作サンプル</p></div>
     <div class="works-grid">
       <article class="work reveal" data-href="work/lp_online_hisho_mine.html">
@@ -484,7 +494,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
         <div class="work-body">
           <p class="work-cat">Landing Page</p>
           <h3 class="work-title">カフェLP</h3>
-          <p class="work-desc">推し活を楽しむ女性向けのコンセプトカフェを想定して制作。<br>やわらかな世界観と余白を活かし、写真やサービス内容が自然に伝わる構成を意識しました。</p>
+          <p class="work-desc">推し活を楽しむカフェを想定し、やわらかな世界観と上品さを意識して制作。<br>写真やサービス内容が自然に伝わる構成を意識しました。</p>
           <p class="work-note">※架空のカフェを想定したサンプル制作</p>
           <div class="work-tags"><span>構成設計</span><span>デザイン</span><span>HTML・CSSコーディング</span></div>
           <a class="work-link" href="work/lp_cafe.html">View Project <span class="arrow">&rarr;</span></a>
@@ -591,7 +601,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="sec-head center reveal"><span class="sec-en">Contact</span><span class="sec-ja">お問い合わせ</span></div>
-    <p class="contact-lead reveal">業務整理やバックオフィスサポート、LP・広告クリエイティブ制作について、<br>まずはお気軽にご相談ください。<br>お問い合わせ内容を確認後、2営業日以内を目安にご返信いたします。</p>
+    <p class="contact-lead reveal">業務整理やバックオフィスサポート、資料・スライド、LP・広告クリエイティブ制作について、<br>まずはお気軽にご相談ください。<br>お問い合わせ内容を確認後、2営業日以内を目安にご返信いたします。</p>
     <form class="form reveal" id="contact-form" action="https://formspree.io/f/mpqgqpen" method="POST">
       <div class="field"><label for="name">お名前</label><input type="text" id="name" name="name" required></div>
       <div class="field"><label for="email">メールアドレス</label><input type="email" id="email" name="email" required></div>
@@ -662,12 +672,7 @@ cForm&&cForm.addEventListener('submit',async(ev)=>{
 });
 
 /* work card click -> open project page */
-document.querySelectorAll('.work[data-href]').forEach(card=>{
-  card.addEventListener('click',(e)=>{
-    if(e.target.closest('a')) return; // 内部リンクは通常動作に任せる
-    window.location.href=card.dataset.href;
-  });
-});
+document.querySelectorAll('.work[data-href]').forEach(card=>{card.addEventListener('click',(e)=>{if(e.target.closest('a')) return;if(card.closest('.presentation-grid')){window.open(card.dataset.href,'_blank','noopener');}else{window.location.href=card.dataset.href;}});});
 </script>
 </body>
 </html>
