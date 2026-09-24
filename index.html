@@ -64,8 +64,8 @@ a{color:inherit;text-decoration:none}
 
 /* nav */
 header{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 0;transition:.4s ease}
-header.on-navy .logo,header.on-navy .nav-links a{color:rgba(255,255,255,.92)}
-header.on-navy .nav-toggle span{background:#fff}
+header.on-navy .logo,header.on-navy .nav-links a{color:var(--navy)}
+header.on-navy .nav-toggle span{background:var(--navy)}
 header.scrolled{background:rgba(251,250,247,.92);backdrop-filter:blur(14px);padding:16px 0;box-shadow:0 1px 0 var(--line)}
 header.scrolled .logo,header.scrolled .nav-links a{color:var(--navy)}
 header.scrolled .nav-toggle span{background:var(--navy)}
@@ -79,40 +79,39 @@ header.scrolled .nav-toggle span{background:var(--navy)}
 .nav-links a:hover::after{width:100%}
 .nav-links a.active{color:var(--gold)}
 .nav-links a.active::after{width:100%}
-header.on-navy .nav-links a.active{color:var(--gold-soft)}
-header.on-navy .nav-links a.active::after{background:var(--gold-soft)}
+header.on-navy .nav-links a.active{color:var(--gold)}
+header.on-navy .nav-links a.active::after{background:var(--gold)}
 .nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
 .nav-toggle span{width:24px;height:1.5px;background:var(--ink);display:block;transition:.3s}
 
 /* hero (navy) */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 0;background:var(--navy);color:#fff;overflow:hidden}
-.hero-bgphoto{position:absolute;inset:0;z-index:0;background-color:var(--navy);background-image:url("work/images/hero-bg2.png"),radial-gradient(120% 90% at 80% 10%,rgba(169,140,90,.16) 0%,rgba(27,42,65,0) 55%),linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 55%,#22344d 100%);background-size:cover,cover,cover;background-position:center;background-repeat:no-repeat;}
-.hero-bgphoto::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(27,42,65,.60) 0%,rgba(27,42,65,.40) 46%,rgba(27,42,65,.10) 100%)}
-.hero-inner{max-width:640px;width:100%}
-.hero-eyebrow{font-family:var(--serif);font-size:17px;letter-spacing:.3em;color:#8F7138;margin-bottom:30px;text-transform:uppercase}
-.hero-title{font-family:var(--mincho);font-size:clamp(34px,5.2vw,60px);font-weight:500;line-height:1.5;letter-spacing:.06em;margin-bottom:36px;color:#fff}
+.hero-bgphoto{position:absolute;inset:0;z-index:0;background-color:var(--navy);background-image:url("work/images/hero-bg3.png"),radial-gradient(120% 90% at 80% 10%,rgba(169,140,90,.16) 0%,rgba(27,42,65,0) 55%),linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 55%,#22344d 100%);background-size:cover,cover,cover;background-position:center;background-repeat:no-repeat;}
+.hero-eyebrow{font-family:var(--serif);font-size:17px;letter-spacing:.3em;color:#C4A66A;margin-bottom:30px;text-transform:uppercase}
+.hero-title{font-family:var(--mincho);font-size:clamp(34px,4.8vw,56px);font-weight:500;line-height:1.5;letter-spacing:.06em;margin-bottom:36px;color:#26384D}
 .hero-title .accent{color:#26384D}
-.hero-body{font-size:15.5px;color:rgba(255,255,255,.88);max-width:460px;letter-spacing:.05em;margin-bottom:52px}
-.hero-body strong{color:#fff;font-weight:500}
+.hero-body{font-size:15.5px;color:#26384D;max-width:460px;letter-spacing:.05em;margin-bottom:52px}
+.hero-body strong{color:#26384D;font-weight:500}
 .hero-cta{display:flex;gap:18px;flex-wrap:wrap}
 .btn{font-family:var(--serif);font-size:16px;letter-spacing:.1em;padding:15px 40px;border-radius:1px;transition:.35s ease;display:inline-flex;align-items:center;gap:10px}
 .btn-primary{background:var(--gold);color:#fff}
 .btn-primary:hover{background:#977b4c;transform:translateY(-2px)}
-.btn-ghost{border:1px solid rgba(255,255,255,.4);color:#fff}
+.btn-ghost{border:1px solid rgba(38,56,77,.4);color:#26384D}
 .btn-ghost:hover{border-color:var(--gold-soft);color:var(--gold-soft)}
 .btn .arrow{transition:transform .3s}.btn:hover .arrow{transform:translateX(4px)}
 .hero-mark{position:absolute;right:-3%;top:4%;font-family:var(--mincho);font-size:42vw;line-height:1;color:rgba(255,255,255,.04);pointer-events:none;user-select:none;z-index:0}
 .hero .wrap{position:relative;z-index:2}
 
 /* about */
-.about-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:80px;align-items:center}
-.about-photo{position:relative;max-width:300px;}
+.about-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap: 60px;align-items:center}
+.about-photo{position:relative;max-width:340px;}
 .about-photo::before{content:"";position:absolute;top:-20px;left:20px;right:-20px;bottom:20px;border:1px solid var(--gold);opacity:.25;z-index:0;}
 .about-photo img{position:relative;z-index:1;width:100%;aspect-ratio:1/1;object-fit:cover;display:block;}
 .about-lead{font-family:var(--mincho);font-size:24px;font-weight:500;line-height:1.7;letter-spacing:.04em;color:var(--navy);margin-bottom:34px}
 .about-text p{font-size:15.5px;color:#4d4d48;letter-spacing:.04em;margin-bottom:22px;line-height:2.05}
 .about-text p:last-child{margin-bottom:0}
 .about-text strong{color:var(--navy);font-weight:500}
+.about-name{font-size:28px;letter-spacing:.08em;}
 
 /* experience */
 .experience{background:var(--paper-2)}
@@ -271,10 +270,10 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
     <div class="sec-head reveal"><span class="sec-en">About</span><span class="sec-ja">わたしについて</span></div>
     <div class="about-grid">
       <div class="about-photo reveal">
-        <img src="work/images/photo4.jpeg" alt="プロフ画像" loading="lazy">
+        <img src="work/images/photo5.png" alt="プロフ画像" loading="lazy">
       </div>
       <div class="about-text reveal">
-        <p class="about-lead">かおり<br>Online Assistant / Back Office Partner</p>
+        <p class="about-lead"><span class="about-name">かおり</span><br>Back Office Partner / Creative Support</p>
         <p>「やるべきことは分かっているのに、手が回らない」。事業を続けるなかで、そんな場面は少なくないと思います。</p>
         <p>わたしが大切にしているのは、目の前の作業を代行するだけでなく、<strong>業務全体を整理し、「無理なく回る仕組み」をつくること</strong>。同じ手間を繰り返さない状態を一緒に整えていきます。</p>
         <p>細かな作業も最後まで正確に。そして、相手の状況やペースに合わせて柔軟に対応することを心がけています。</p>
