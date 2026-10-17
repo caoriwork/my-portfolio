@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="バックオフィス業務18年以上。業務整理・改善・マニュアル作成から、LP・広告クリエイティブ制作まで。実務経験を活かし、仕事が回る仕組みと、伝わる形をつくります。">
+<title>LP・Webデザイン | Caori Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1B2A41;
+  --navy-deep:#14202F;
+  --paper:#FBFAF7;
+  --paper-2:#F4F2EC;
+  --ink:#2B2B2B;
+  --muted:#7A7A74;
+  --line:#E6E3DB;
+  --gold:#A98C5A;
+  --gold-soft:#C9B388;
+  --serif:"Cormorant Garamond",serif;
+  --mincho:"Zen Old Mincho",serif;
+  --sans:"Noto Sans JP",sans-serif;
+  --maxw:1140px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:400;
+  line-height:2;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
+.section{padding:150px 0}
+.sec-head{margin-bottom:80px}
+.sec-en{
+  font-family:var(--serif);
+  font-size:clamp(34px,5vw,56px);
+  font-weight:500;letter-spacing:.04em;color:var(--navy);
+  line-height:1.1;display:inline-block;position:relative;
+}
+.sec-en::after{display:none}
+.sec-ja{
+  display:block;font-family:var(--sans);font-size:12px;letter-spacing:.34em;
+  color:var(--gold);text-transform:uppercase;margin-top:26px;font-weight:500;
+}
+.center{text-align:center}
+
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* nav */
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 0;transition:.4s ease}
+header.on-navy .logo,header.on-navy .nav-links a{color:var(--navy)}
+header.on-navy .nav-toggle span{background:var(--navy)}
+header.scrolled{background:rgba(251,250,247,.92);backdrop-filter:blur(14px);padding:16px 0;box-shadow:0 1px 0 var(--line)}
+header.scrolled .logo,header.scrolled .nav-links a{color:var(--navy)}
+header.scrolled .nav-toggle span{background:var(--navy)}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--serif);font-size:23px;letter-spacing:.14em;font-weight:600;transition:color .4s}
+.logo .sm{font-size:13px;letter-spacing:.18em;opacity:.7}
+.nav-links{display:flex;gap:40px;align-items:center}
+.nav-links a{font-family:var(--serif);font-size:15px;letter-spacing:.08em;position:relative;color:var(--muted);transition:color .3s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--gold);transition:width .35s}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
+.nav-links a.active{color:var(--gold)}
+.nav-links a.active::after{width:100%}
+header.on-navy .nav-links a.active{color:var(--gold)}
+header.on-navy .nav-links a.active::after{background:var(--gold)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+.nav-toggle span{width:24px;height:1.5px;background:var(--ink);display:block;transition:.3s}
+
+/* hero (navy) */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 0;background:var(--navy);color:#fff;overflow:hidden}
+.hero-bgphoto{position:absolute;inset:0;z-index:0;background-color:var(--navy);background-image:url("work/images/hero-bg3.png"),radial-gradient(120% 90% at 80% 10%,rgba(169,140,90,.16) 0%,rgba(27,42,65,0) 55%),linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 55%,#22344d 100%);background-size:cover,cover,cover;background-position:center;background-repeat:no-repeat;}
+.hero-eyebrow{font-family:var(--serif);font-size:17px;letter-spacing:.3em;color:#C4A66A;margin-bottom:30px;text-transform:uppercase}
+.hero-title{font-family:var(--mincho);font-size:clamp(34px,4.8vw,56px);font-weight:500;line-height:1.5;letter-spacing:.06em;margin-bottom:36px;color:#26384D}
+.hero-title .accent{color:#26384D}
+.hero-body{font-size:15.5px;color:#26384D;max-width:460px;letter-spacing:.05em;margin-bottom:52px}
+.hero-body strong{color:#26384D;font-weight:500}
+.hero-cta{display:flex;gap:18px;flex-wrap:wrap}
+.btn{font-family:var(--serif);font-size:16px;letter-spacing:.1em;padding:15px 40px;border-radius:1px;transition:.35s ease;display:inline-flex;align-items:center;gap:10px}
+.btn-primary{background:var(--gold);color:#fff}
+.btn-primary:hover{background:#977b4c;transform:translateY(-2px)}
+.btn-ghost{border:1px solid rgba(38,56,77,.4);color:#26384D}
+.btn-ghost:hover{border-color:var(--gold-soft);color:var(--gold-soft)}
+.btn .arrow{transition:transform .3s}.btn:hover .arrow{transform:translateX(4px)}
+.hero-mark{position:absolute;right:-3%;top:4%;font-family:var(--mincho);font-size:42vw;line-height:1;color:rgba(255,255,255,.04);pointer-events:none;user-select:none;z-index:0}
+.hero .wrap{position:relative;z-index:2}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap: 60px;align-items:center}
+.about-photo{position:relative;max-width:340px;}
+.about-photo::before{content:"";position:absolute;top:-20px;left:20px;right:-20px;bottom:20px;border:1px solid var(--gold);opacity:.25;z-index:0;}
+.about-photo img{position:relative;z-index:1;width:100%;aspect-ratio:1/1;object-fit:cover;display:block;}
+.about-lead{font-family:var(--mincho);font-size:24px;font-weight:500;line-height:1.7;letter-spacing:.04em;color:var(--navy);margin-bottom:34px}
+.about-text p{font-size:15.5px;color:#4d4d48;letter-spacing:.04em;margin-bottom:22px;line-height:2.05}
+.about-text p:last-child{margin-bottom:0}
+.about-text strong{color:var(--navy);font-weight:500}
+.about-name{font-size:28px;letter-spacing:.08em;}
+
+/* experience */
+.experience{background:var(--paper-2)}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.exp{position:relative;padding-top:34px;border-top:1px solid var(--line)}
+.exp-years{font-family:var(--serif);font-size:34px;font-weight:500;color:var(--gold);line-height:1;margin-bottom:18px}
+.exp-years .u{font-size:.45em;letter-spacing:.08em;margin-left:4px;color:var(--muted)}
+.exp-title{font-family:var(--mincho);font-size:18px;font-weight:500;letter-spacing:.04em;line-height:1.6;margin-bottom:22px;min-height:2.4em}
+.exp-list{list-style:none}
+.exp-list li{font-size:14px;color:var(--muted);padding:8px 0 8px 18px;position:relative;line-height:1.8}
+.exp-list li::before{content:"";position:absolute;left:0;top:16px;width:5px;height:5px;background:var(--gold-soft);transform:rotate(45deg)}
+
+/* service */
+.service{background:var(--paper-2);border-top:1px solid var(--line)}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px}
+.svc{background:#fff;padding:48px 40px 52px;border-top:2px solid var(--gold);box-shadow:0 2px 24px rgba(27,42,65,.04)}
+.svc-num{font-family:var(--serif);font-size:30px;color:var(--gold);display:block;margin-bottom:20px}
+.svc-title{font-family:var(--mincho);font-size:21px;font-weight:500;letter-spacing:.05em;margin-bottom:6px}
+.svc-sub{font-family:var(--serif);font-size:14px;letter-spacing:.14em;color:var(--gold);margin-bottom:28px}
+.svc-list{list-style:none}
+.svc-list li{font-size:14.5px;color:var(--muted);padding:10px 0 10px 20px;position:relative;border-bottom:1px dotted var(--line)}
+.svc-list li:last-child{border-bottom:none}
+.svc-list li::before{content:"";position:absolute;left:0;top:19px;width:6px;height:6px;background:var(--gold-soft);transform:rotate(45deg)}
+
+/* works */
+.works-category{margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--line);}
+.works-category h3{font-family:var(--serif);font-size:22px;color:var(--navy);margin-bottom:10px;}
+.works-category p{font-size:14px;color:var(--muted);line-height:1.8;}
+.works-section{background:var(--paper-2)}
+.works-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:48px}
+.presentation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+.sns-grid{grid-template-columns:repeat(3,1fr);}
+.work{background:#fff;overflow:hidden;border:1px solid var(--line);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s ease}
+.work:hover{transform:translateY(-8px);box-shadow:0 28px 64px rgba(27,42,65,.12)}
+.work[data-href]{cursor:pointer}
+.work-link:hover{color:var(--gold)}
+.work-img .ph{font-family:var(--mincho);font-size:54px;color:var(--gold-soft);opacity:.6;letter-spacing:.1em}
+.work-img .sample{position:absolute;top:16px;left:16px;font-family:var(--serif);font-size:12px;letter-spacing:.2em;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);padding:3px 13px;backdrop-filter:blur(2px)}
+.work-img{aspect-ratio:16/10;background:#F7F5F0;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:18px;box-shadow:0 14px 30px rgba(27,42,65,.10);}
+.work-img img{width:100%;height:100%;object-fit:contain;display:block;}
+.work-body{padding:28px 30px 32px;}
+.work-cat{font-family:var(--serif);font-size:14px;letter-spacing:.16em;color:var(--gold);margin-bottom:12px}
+.work-title{font-family:var(--mincho);font-size:23px;font-weight:500;letter-spacing:.04em;margin-bottom:12px}
+.work-desc{font-size:14px;color:var(--muted);margin-bottom:26px;line-height:1.9}
+.work-tags{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:30px}
+.work-tags span{font-size:11.5px;letter-spacing:.06em;color:var(--gold);border:1px solid var(--line);padding:6px 14px}
+.work-link{font-family:var(--serif);font-size:15px;letter-spacing:.1em;color:var(--navy);display:inline-flex;align-items:center;gap:8px}
+.work-link .arrow{transition:transform .3s}.work:hover .work-link .arrow{transform:translateX(5px)}
+.work-soon{border:1px dashed var(--line);background:transparent;display:flex;align-items:center;justify-content:center}
+.work-soon:hover{transform:none;box-shadow:none}
+.work-soon .inner{text-align:center;padding:70px 20px;color:#B3AFA4}
+.work-soon .mark{font-family:var(--serif);font-size:40px;color:var(--line);margin-bottom:10px}
+.work-soon p{font-family:var(--serif);font-size:14px;letter-spacing:.16em}
+.work-note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px;margin-bottom:20px;}
+/* advertising gallery */
+.ad-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 28px;}
+.ad-item{background:#fff;border:1px solid var(--line);overflow:hidden;transition:transform .4s ease,box-shadow .4s ease;}
+.ad-item:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(27,42,65,.10);}
+.ad-thumb{aspect-ratio:1/1;background:#F7F5F0;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:14px;}
+.ad-thumb img{width:100%;height:100%;object-fit:contain;display:block;}
+.ad-thumb-switch{position:relative;}
+.ad-thumb-switch .ad-img-main,.ad-thumb-switch .ad-img-hover{position:absolute;width:calc(100% - 28px);height:calc(100% - 28px);object-fit:contain;transition:opacity .45s ease;}
+.ad-thumb-switch .ad-img-main{opacity:1;}
+.ad-thumb-switch .ad-img-hover{opacity:0;}
+.ad-thumb-switch:hover .ad-img-main{opacity:0;}
+.ad-thumb-switch:hover .ad-img-hover{opacity:1;}
+.ad-more{position:absolute;right:12px;top:10px;bottom:auto;z-index:3;background:rgba(255,255,255,.88);color:var(--navy);border:1px solid rgba(27,42,65,.18);font-family:var(--serif);font-size:10px;letter-spacing:.12em;padding:4px 8px;}.ad-type{font-family:var(--serif);font-size:12px;letter-spacing:.14em;color:var(--gold);margin-bottom:5px;}
+.ad-more b{font-size:14px;font-weight:400;margin-left:3px;}
+.ad-info{padding:24px 24px 28px;}
+.ad-title{font-family:var(--mincho);font-size:17px;font-weight:500;color:var(--navy);letter-spacing:.03em;line-height:1.6;}
+.ad-sub{font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.7;}
+.ad-gallery-note{font-size:12px;color:var(--muted);line-height:1.9;margin-top:28px;}
+
+/* tools */
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px}
+.tl-cat{font-family:var(--serif);font-size:19px;letter-spacing:.1em;color:var(--navy);margin-bottom:26px;padding-bottom:16px;border-bottom:1px solid var(--gold);display:inline-block}
+.tl-list{display:flex;flex-direction:column;gap:15px}
+.tl-list span{font-size:15.5px;letter-spacing:.04em;color:var(--ink)}
+
+/* contact (navy) */
+.contact{background:var(--navy);color:#fff;padding:150px 0}
+.contact .sec-en{color:#fff}
+.contact .sec-en::after{display:none}
+.contact .sec-ja{color:var(--gold-soft)}
+.contact-lead{font-size:15.5px;color:rgba(255,255,255,.76);max-width:700px;margin:0 auto 56px;letter-spacing:.05em;text-align:center;line-height:2}
+.form{max-width:820px;margin:0 auto}
+.field{margin-bottom:26px}
+.field label{display:block;font-family:var(--serif);font-size:15px;letter-spacing:.1em;color:var(--gold-soft);margin-bottom:10px}
+.field input,.field textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.22);color:#fff;font-family:var(--sans);font-size:15px;padding:14px 16px;border-radius:1px;transition:border-color .3s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold-soft)}
+.field textarea{min-height:130px;resize:vertical}
+.form-submit{text-align:center;margin-top:38px}
+.btn-submit{background:var(--gold);color:#fff;border:none;cursor:pointer;font-family:var(--serif);font-size:16px;letter-spacing:.12em;padding:16px 56px;transition:.35s ease}
+.btn-submit:hover{background:#977b4c;transform:translateY(-2px)}
+.btn-submit:disabled{opacity:.6;cursor:default;transform:none}
+.form-status{text-align:center;margin-top:18px;font-size:14px;letter-spacing:.04em;min-height:1.4em}
+.form-status.ok{color:var(--gold-soft)}
+.form-status.ng{color:#e8a3a3}
+
+/* footer */
+footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center;padding:40px 0;font-family:var(--serif);font-size:14px;letter-spacing:.12em}
+
+@media (max-width:768px){
+  .section{padding:100px 0}.sec-head{margin-bottom:56px}
+  .hero{padding:130px 0}.about-grid{grid-template-columns:1fr;gap:56px}
+  .about-photo{max-width:260px}
+  .service-grid,.tools-grid{grid-template-columns:1fr;gap:36px}
+  .exp-grid{grid-template-columns:1fr;gap:40px}
+  .works-grid{grid-template-columns:1fr}
+  .ad-gallery{grid-template-columns:repeat(2,1fr);gap:24px 18px;}
+  .nav-links{display:none}.nav-toggle{display:flex}.contact{padding:100px 0}
+  .presentation-grid{grid-template-columns:1fr;}
+}
+@media (max-width:480px){
+  .wrap{padding:0 24px}.hero-cta{flex-direction:column;align-items:flex-start}.btn{width:100%;justify-content:center}
+  .ad-gallery{grid-template-columns:1fr;}
+}
+
+/* category navigation */
+.category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.category-tile{display:block;background:#fff;border:1px solid var(--line);overflow:hidden;transition:transform .3s,box-shadow .3s}
+.category-tile:hover{transform:translateY(-5px);box-shadow:0 16px 42px rgba(27,42,65,.11)}
+.category-preview{height:225px;background:#EDEBE5;overflow:hidden;display:grid;grid-template-columns:repeat(2,1fr);gap:5px;padding:12px}
+.category-preview img{height:100%;width:100%;object-fit:contain;background:#F7F5F0}
+.category-tile-body{padding:28px 30px 32px}
+.category-tile h3{font-family:var(--mincho);font-size:23px;color:var(--navy);line-height:1.5;margin-bottom:12px}
+.category-tile p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:16px}
+.category-tile .category-action{color:var(--gold);font-size:14px;letter-spacing:.05em}
+.subpage-header{position:sticky;top:0;background:rgba(251,250,247,.97);box-shadow:0 1px 0 var(--line);padding:16px 0}
+.subpage-header .nav-links{display:flex;gap:20px}
+.subpage-header .nav-links a{font-size:14px}
+.subpage-intro{padding:80px 0 20px}
+.subpage-intro h1{font-family:var(--mincho);font-size:clamp(26px,3.5vw,42px);color:var(--navy);line-height:1.5}
+.subpage-intro p{font-size:15px;color:var(--muted);margin-top:12px}
+.subpage-content{padding:50px 0 110px}
+.subpage-content .works-category{display:none}
+.subpage-content .ad-gallery{margin-top:20px}
+.subpage-back{display:inline-block;margin-top:25px;color:var(--gold);font-size:14px}
+@media(max-width:768px){.category-grid{grid-template-columns:1fr}.category-preview{height:190px}.subpage-header .nav-links{display:flex}.subpage-content{padding:30px 0 80px}.subpage-intro{padding:55px 0 10px}}
+</style>
+<style>.portfolio-preview{background:linear-gradient(135deg,#f5f1e8 0%,#fcfbf7 65%,#e8e6de 100%);min-height:230px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:35px!important;color:#1B2A41}.preview-kicker{font-size:11px;letter-spacing:.2em;color:#a98c5a}.preview-title{font-family:var(--mincho);font-size:27px;line-height:1.5;margin:15px 0}.preview-sub{font-size:10px;letter-spacing:.08em}</style></head>
+<body><header class="subpage-header"><div class="wrap nav"><a href="index.html#works" class="logo">Caori<span class="sm"> | Portfolio</span></a><nav class="nav-links"><a href="index.html#works">Works一覧</a><a href="index.html#contact">Contact</a></nav></div></header><main><section class="subpage-intro"><div class="wrap"><span class="sec-en">Landing Page</span><h1>LP・Webデザイン</h1><p>サービスや店舗の魅力を伝えるLP制作サンプル。</p><a class="subpage-back" href="index.html#works">← カテゴリー一覧に戻る</a></div></section><section class="subpage-content"><div class="wrap">    <div class="works-category reveal" ><h3>Landing Page</h3><p>構成設計からデザイン・実装まで行ったLP制作サンプル</p></div>
+    <div class="works-grid">
+<article class="work reveal" data-href="works-myportfolio.html"><div class="work-img portfolio-preview"><div class="preview-kicker">CAORI | PORTFOLIO</div><div class="preview-title">伝わる形を、<br>整える。</div><div class="preview-sub">Back Office · Design · Web</div></div><div class="work-body"><p class="work-cat">Web Design / Portfolio</p><h3 class="work-title">My Portfolio Website</h3><p class="work-desc">自身の活動・制作実績を紹介するWebサイト。AIを活用しながら構成・デザイン検討、HTML/CSS調整、GitHub Pagesでの公開・更新を行いました。</p><div class="work-tags"><span>構成設計</span><span>HTML/CSS調整</span><span>GitHub Pages</span></div><a class="work-link" href="works-myportfolio.html">View Project <span class="arrow">→</span></a></div></article>
+      <article class="work reveal" data-href="work/lp_online_hisho_mine.html">
+        <div class="work-img">
+          <img src="work/images/lp_online-hisyo.png"
+               alt="オンライン秘書LP">
+        </div>        
+        <div class="work-body">
+          <p class="work-cat">Landing Page</p>
+          <h3 class="work-title">オンライン秘書LP</h3>
+          <p class="work-desc">オンライン秘書サービスを想定し、信頼感と安心感を重視して制作。<br>サービス内容や対応範囲が伝わる構成を意識しました。</p>
+          <p class="work-note">※自身のサービスを想定したサンプル制作</p>
+          <div class="work-tags"><span>構成設計</span><span>デザイン</span><span>HTML・CSSコーディング</span></div>
+          <a class="work-link" href="work/lp_online_hisho_mine.html">View Project <span class="arrow">&rarr;</span></a>
+        </div>
+      </article>
+      <article class="work reveal" data-href="work/lp_cafe.html">
+        <div class="work-img">
+          <img src="work/images/lp_cafe.png"
+               alt="カフェLP">
+        </div>        
+        <div class="work-body">
+          <p class="work-cat">Landing Page</p>
+          <h3 class="work-title">カフェLP</h3>
+          <p class="work-desc">推し活を楽しむカフェを想定し、やわらかな世界観と上品さを意識して制作。<br>写真やサービス内容が自然に伝わる構成を意識しました。</p>
+          <p class="work-note">※架空のカフェを想定したサンプル制作</p>
+          <div class="work-tags"><span>構成設計</span><span>デザイン</span><span>HTML・CSSコーディング</span></div>
+          <a class="work-link" href="work/lp_cafe.html">View Project <span class="arrow">&rarr;</span></a>
+        </div>
+      </article>
+      <article class="work reveal" data-href="work/lp_morinoyado.html">
+        <div class="work-img">
+          <img src="work/images/lp_hotel.png"
+               alt="ホテルLP">
+        </div>        
+        <div class="work-body">
+          <p class="work-cat">Landing Page</p>
+          <h3 class="work-title">ホテルLP</h3>
+          <p class="work-desc">全8室限定のプライベートリゾートを想定した宿泊施設向けLP。<br>静けさや上質感が伝わるビジュアルと、宿の魅力を自然に伝える構成を意識しました。</p>
+          <p class="work-note">※架空の宿泊施設を想定したサンプル制作</p>
+          <div class="work-tags"><span>構成設計</span><span>デザイン</span><span>HTML・CSSコーディング</span></div>
+          <a class="work-link" href="work/lp_morinoyado.html">View Project <span class="arrow">&rarr;</span></a>
+        </div>
+      </article>
+      </div>
+</div></section></main><footer><div class="wrap">© 2026 Caori Portfolio. All Rights Reserved.</div></footer><script>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));document.querySelectorAll('.work[data-href]').forEach(card=>card.addEventListener('click',e=>{if(e.target.closest('a'))return;const url=card.dataset.href;if(url.endsWith('.png')||url.endsWith('.pdf'))window.open(url,'_blank','noopener');else window.location.href=url;}));</script></body></html>
