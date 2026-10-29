@@ -1,0 +1,157 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Natural Beauty Salon — 朝、乾かすだけで決まる髪へ。はじめての方限定、カット＋トリートメント¥7,700。くせや朝の過ごし方まで伺う少人数制ヘアサロンのLPデザインサンプル（架空店舗）。"><meta property="og:title" content="Natural Beauty Salon | 乾かすだけで、きまる髪へ。"><meta property="og:description" content="朝のドライヤー3分で決まる髪型を。初回限定カット＋トリートメント¥7,700（架空店舗のデザインサンプル）。"><meta property="og:type" content="website"><meta property="og:image" content="assets/salon-interior.webp"><title>Natural Beauty Salon | 乾かすだけで、きまる髪へ。</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet"><style>
+:root{--green:#435747;--deep:#293d31;--gold:#b49a67;--cream:#f8f6f0;--white:#fff;--muted:#70766f;--rule:#ddd8ca;--line:#06c755;--mincho:'Shippori Mincho',serif;--gothic:'Zen Kaku Gothic New',sans-serif;--en:'Cormorant Garamond',serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:84px}body{margin:0;color:var(--deep);font-family:var(--gothic);font-weight:400;line-height:2;letter-spacing:.04em;font-feature-settings:"palt";-webkit-font-smoothing:antialiased;background:var(--cream)}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+
+/* header */
+.demo{background:#e9e5d8;text-align:center;padding:6px 14px;font-size:11px;letter-spacing:.07em}
+.header{position:sticky;top:0;z-index:40;height:84px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(22px,5vw,88px);background:rgba(252,251,248,.96);backdrop-filter:blur(6px);border-bottom:1px solid #eeebe2}
+.brand{font:500 24px/1 var(--en);letter-spacing:.12em;white-space:nowrap}.brand small{display:block;font:400 9px/1.5 var(--gothic);letter-spacing:.27em;margin-top:5px}
+.nav{display:flex;gap:28px;align-items:center;font-size:12px;letter-spacing:.1em}.nav a:hover{color:var(--gold)}.nav .reserve{background:var(--green);color:#fff;padding:10px 22px;line-height:1.5}.nav .reserve:hover{background:var(--deep);color:#fff}
+
+/* buttons */
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;min-width:245px;padding:15px 26px;background:var(--green);color:#fff;font-size:13px;letter-spacing:.12em;line-height:1.5;border:1px solid var(--green);transition:.2s}.btn:hover{background:var(--deep)}.btn.outline{background:rgba(255,255,255,.7);color:var(--green)}.btn.outline:hover{background:var(--green);color:#fff}.btn.line{background:var(--line);border-color:var(--line);font-weight:500}.btn.line:hover{background:#05a948}
+
+/* photo placeholder（差し替え用の写真枠） */
+.ph{position:relative;margin:0;background:linear-gradient(155deg,#e4e7de 0%,#cfd6c8 100%);overflow:hidden}.ph:before{content:'';position:absolute;inset:14px;border:1px solid rgba(255,255,255,.55)}.ph span{position:absolute;left:26px;bottom:22px;font-size:10px;letter-spacing:.18em;color:rgba(41,61,49,.55);line-height:1.6}
+
+/* common */
+.wrap{max-width:1120px;margin:auto;padding:0 28px}.sec{padding:130px 0}
+.chapter{display:flex;align-items:center;gap:14px;color:var(--gold);font-size:12px;letter-spacing:.22em;margin:0 0 22px}.chapter b{font:italic 500 32px/1 var(--en);letter-spacing:.04em}.chapter:after{content:'';width:56px;height:1px;background:var(--gold)}
+.h2{font-family:var(--mincho);font-weight:500;font-size:clamp(25px,3.1vw,40px);line-height:1.75;letter-spacing:.1em;margin:0}
+.mark{background:linear-gradient(transparent 68%,#e8dcc0 68%)}
+.mid-cta{margin-top:60px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px}.mid-cta p{font-size:13px;color:var(--muted);margin:0}
+
+/* hero */
+.hero{min-height:700px;position:relative;display:grid;align-items:center;isolation:isolate}.hero:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(248,246,240,.97) 0%,rgba(248,246,240,.9) 34%,rgba(248,246,240,.2) 68%,rgba(248,246,240,.05) 100%);z-index:-1}.hero:after{content:'';position:absolute;inset:0;background:url('assets/salon-interior.webp') center/cover;z-index:-2}
+.hero-inner{padding:80px clamp(24px,9vw,150px);max-width:980px;display:flex;align-items:flex-start;gap:clamp(36px,5vw,76px)}
+.hero h1{writing-mode:vertical-rl;font-family:var(--mincho);font-size:clamp(34px,3.6vw,52px);font-weight:500;letter-spacing:.2em;line-height:1.85;white-space:nowrap;margin:0;flex:none}
+.hero-lead{font-family:var(--mincho);font-size:clamp(18px,1.7vw,22px);font-weight:500;line-height:2;letter-spacing:.1em;margin:0}.hero-lead em{font:italic 500 1.5em/1 var(--en);color:var(--gold);font-style:italic;margin:0 2px}
+.hero-text{font-size:13px;line-height:2.3;letter-spacing:.08em;margin:16px 0 26px}
+.hero-offer{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 16px;background:#fff;border:1px solid var(--gold);padding:12px 22px;line-height:1.5}.hero-offer .tag{background:var(--gold);color:#fff;font-size:11px;font-weight:500;padding:3px 10px;letter-spacing:.1em}.hero-offer .what{font-size:13px;font-weight:500}.hero-offer s{color:var(--muted);font-size:13px}.hero-offer strong{font:600 32px/1 var(--en);color:var(--green)}.hero-offer strong small{font:400 11px var(--gothic);margin-left:2px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.trust{display:flex;flex-wrap:wrap;gap:4px 20px;margin:16px 0 0;padding:0;list-style:none;font-size:12px}.trust li:before{content:'✓ ';color:var(--gold);font-weight:500}
+
+/* 01 worries */
+.worries .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:end}
+.worry-lines{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}.worry-lines li{padding:20px 0 20px 46px;border-bottom:1px solid var(--rule);position:relative;font-size:15px;line-height:1.9}.worry-lines li:before{content:'';position:absolute;left:8px;top:50%;width:22px;height:1px;background:var(--gold)}
+.cause{grid-column:1/-1;margin-top:20px;background:#fff;padding:46px 56px;display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center}.cause .label{font:italic 500 22px/1.4 var(--en);color:var(--gold);letter-spacing:.06em}.cause p{font-family:var(--mincho);font-size:clamp(17px,1.8vw,22px);line-height:2;letter-spacing:.08em;margin:0}.cause small{display:block;font-family:var(--gothic);font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:.04em}
+
+/* 02 method */
+.method-sec{background:#fff;overflow:hidden}
+.method-list{margin-top:90px;display:grid;gap:120px}
+.method{display:grid;grid-template-columns:1.15fr 1fr;gap:80px;align-items:center}.method .ph{aspect-ratio:4/3;margin-left:-90px}.method:nth-child(even){grid-template-columns:1fr 1.15fr}.method:nth-child(even) .ph{order:2;margin:0 -90px 0 0}.method:nth-child(2) .method-body{padding-top:80px}
+.method-no{font:400 96px/1 var(--en);color:transparent;-webkit-text-stroke:1px var(--gold)}
+.method h3{font-family:var(--mincho);font-size:clamp(20px,2.1vw,26px);font-weight:500;letter-spacing:.08em;line-height:1.7;margin:14px 0 18px}.method h3 small{display:block;font:500 12px var(--gothic);color:var(--gold);letter-spacing:.18em;margin-bottom:6px}
+.method p{font-size:14px;line-height:2.3;margin:0}
+.method .point{display:inline-block;margin-top:18px;font-size:12px;color:var(--green);border-top:1px solid var(--green);padding-top:8px;letter-spacing:.08em}
+
+/* 03 styles */
+.style-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px;margin-top:70px;align-items:start}.style:nth-child(2){margin-top:110px}.style:nth-child(3){margin-top:40px}
+.style{margin:0}.style .ph{aspect-ratio:4/5}.style:first-child .ph{aspect-ratio:3/4}
+.style figcaption{padding-top:20px}.style h3{font-family:var(--mincho);font-size:18px;font-weight:500;letter-spacing:.08em;margin:0;line-height:1.7}
+.set-time{display:flex;align-items:baseline;gap:8px;margin:6px 0 12px;font-size:12px;color:var(--green)}.set-time b{font:500 36px/1 var(--en)}
+.style blockquote{margin:0;padding-left:16px;border-left:1px solid var(--gold);font-size:13px;line-height:2.1;color:#4f5a51}.style blockquote cite{display:block;font-style:normal;font-size:11px;color:var(--muted);margin-top:6px}
+.sample-note{font-size:11px;color:var(--muted);margin-top:40px}
+
+/* 04 owner */
+.owner{background:#fff}.owner .wrap{display:grid;grid-template-columns:.85fr 1.3fr;gap:90px;align-items:start}.owner .ph{aspect-ratio:3/4;margin-top:40px}
+.owner-body{display:flex;gap:56px;align-items:flex-start}.owner-body .h2{writing-mode:vertical-rl;flex:none;font-size:clamp(24px,2.6vw,32px);letter-spacing:.16em;line-height:2;white-space:nowrap}
+.owner-text p{font-size:14px;line-height:2.4;margin:0 0 20px}.sign{margin-top:30px;font-size:12px;color:var(--muted);line-height:1.8}.sign b{display:block;font-family:var(--mincho);font-size:20px;font-weight:500;color:var(--deep);letter-spacing:.14em}
+.sub-staff{margin-top:44px;padding-top:28px;border-top:1px solid var(--rule);display:flex;gap:20px;align-items:center}.sub-staff .avatar{flex:0 0 64px;height:64px;border-radius:50%;background:#e8eee7;display:grid;place-items:center;font:500 22px var(--en);color:var(--green)}.sub-staff p{font-size:13px;line-height:2;margin:0}.sub-staff b{font-family:var(--mincho);font-weight:500;font-size:15px;margin-right:10px;letter-spacing:.1em}
+
+/* offer */
+.offer{background:#e8eee7;padding:110px 24px}.offer-card{max-width:720px;margin:0 auto;background:#fff;text-align:center;padding:58px clamp(22px,5vw,60px);position:relative;box-shadow:0 18px 40px rgba(41,61,49,.07)}.offer-card .ribbon{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;font-size:12px;font-weight:500;letter-spacing:.16em;padding:4px 24px;white-space:nowrap}
+.offer h2{font-family:var(--mincho);font-weight:500;font-size:clamp(21px,2.6vw,30px);letter-spacing:.1em;line-height:1.8;margin:6px 0 12px}.offer .lead{font-size:14px;font-weight:500;letter-spacing:.08em;margin:0}
+.price-box{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:6px 18px;margin:18px 0 6px}.price-box s{color:var(--muted);font-size:15px}.price-box .arrow{color:var(--gold)}.price-box .now{font:600 56px/1 var(--en);color:var(--green)}.price-box .now small{font:400 12px var(--gothic);margin-left:4px}
+.off{display:inline-block;background:#f4efe3;color:#8c6f33;font-size:12px;font-weight:500;padding:2px 14px;letter-spacing:.08em}
+.offer-includes{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0;list-style:none}.offer-includes li{font-size:12px;border:1px solid #d8dfd6;padding:2px 14px;color:var(--green)}.offer-includes li.hl{background:var(--green);color:#fff;border-color:var(--green)}
+.offer-terms{text-align:left;font-size:12px;color:var(--muted);max-width:500px;margin:24px auto 0;padding:16px 20px 16px 2.4em;line-height:2;background:var(--cream)}.offer-card .btn{margin-top:28px}
+
+/* menu */
+.menu{background:#fff}.menu .wrap{display:grid;grid-template-columns:1fr 2.2fr;gap:70px;align-items:start}
+.menu-item{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid #e6e4dd;padding:21px 4px}.menu-item strong{font-weight:500;letter-spacing:.06em}.menu-item small{display:block;font-size:11px;color:var(--muted);line-height:1.6;margin-top:4px}.menu-item .time{display:inline-block;font-size:10px;color:var(--green);border:1px solid #cfdacd;padding:0 8px;margin-left:8px;vertical-align:2px;line-height:1.8;font-weight:400}.menu-item .price{white-space:nowrap;font-family:var(--en);font-size:24px}
+.menu-item.first{background:#f3f6f2;border:1px solid #cfdacd;padding:21px 20px;margin-bottom:8px}.menu-item.first .label{display:inline-block;background:var(--gold);color:#fff;font-size:10px;font-weight:500;padding:0 8px;margin-right:8px;letter-spacing:.08em;vertical-align:2px;line-height:1.9}.menu-item.first .price{color:var(--green);font-weight:600;font-size:28px}.menu-item.first .price s{font-size:15px;color:var(--muted);font-weight:400;margin-right:8px}
+.note{font-size:11px;color:var(--muted);margin-top:15px}
+
+/* flow */
+.flow{background:var(--cream)}.timeline{list-style:none;padding:0;margin:64px 0 0;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--gold)}.timeline li{padding:28px 22px 0 0;position:relative}.timeline li:before{content:'';position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--gold)}
+.timeline .t{font:500 30px/1 var(--en);color:var(--green)}.timeline .t small{font:400 11px var(--gothic);margin-left:3px}.timeline h3{font-family:var(--mincho);font-size:16px;font-weight:500;letter-spacing:.06em;margin:12px 0 6px}.timeline p{font-size:12px;line-height:2;color:var(--muted);margin:0}
+
+/* faq */
+.faq{background:#fff}.faq .wrap{display:grid;grid-template-columns:1fr 2.2fr;gap:70px;align-items:start}
+.faq details{border-bottom:1px solid #e5e2d9;padding:20px 8px}.faq details:first-child{border-top:1px solid #e5e2d9}.faq summary{cursor:pointer;font-family:var(--mincho);font-size:15px;font-weight:500;list-style:none;padding-left:2em;position:relative}.faq summary::-webkit-details-marker{display:none}.faq summary:before{content:'Q.';position:absolute;left:0;font:600 18px/1.7 var(--en);color:var(--gold)}.faq summary:after{content:'＋';float:right;color:var(--gold)}.faq details[open] summary:after{content:'−'}.faq details p{font-size:13px;color:var(--muted);padding:0 12px 0 2em;margin:8px 0 0}
+
+/* access */
+.access{background:var(--cream);overflow:hidden}.access-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:70px;align-items:start;margin-top:60px}.access-photo{margin-left:-90px}.access-photo img{width:100%;aspect-ratio:4/3;object-fit:cover}.access-photo figcaption{font-size:12px;color:var(--muted);margin-top:12px;padding-left:90px}
+.access dl{display:grid;grid-template-columns:96px 1fr;gap:12px 15px;font-size:13px;line-height:1.9;margin:0}.access dt{font-weight:500}.access dd{margin:0}.access dd small{display:block;font-size:11px;color:var(--muted)}
+.map{margin-top:30px;height:180px;background:repeating-linear-gradient(45deg,#efede6 0 12px,#f4f2ec 12px 24px);border:1px solid #e3dfd3;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:12px;line-height:1.9}
+
+/* reservation */
+.reservation{text-align:center;background:var(--green);color:#fff;padding:110px 25px}.reservation h2{font-family:var(--mincho);font-weight:500;letter-spacing:.15em;line-height:1.8;font-size:clamp(23px,3vw,36px);margin:0 0 10px}.reservation>p{font-size:13px}
+.reserve-offer{display:inline-block;border:1px solid rgba(216,199,163,.7);color:#f1e6cc;font-size:13px;padding:6px 20px;margin-top:4px;letter-spacing:.08em}
+.channels{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:44px auto 0}.channel{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.22);padding:32px 22px 28px;position:relative;display:flex;flex-direction:column}.channel.recommend{background:rgba(255,255,255,.13);border-color:#d8c7a3}.channel .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#d8c7a3;color:var(--deep);font-size:11px;font-weight:500;padding:1px 14px;letter-spacing:.1em;white-space:nowrap}
+.channel h3{font-family:var(--mincho);font-size:18px;font-weight:500;letter-spacing:.1em;margin:0}.channel .hours{font-size:11px;opacity:.8;margin:2px 0 10px}.channel p{font-size:12px;line-height:2;margin:0;opacity:.9;flex:1}.channel .btn{min-width:0;width:100%;margin-top:20px;background:#fff;color:var(--green);border-color:#fff;padding:14px 12px}.channel .btn:hover{background:#eee9de}.channel .btn.line{background:var(--line);border-color:var(--line);color:#fff}.channel .btn.line:hover{background:#05a948}
+.policy{max-width:700px;margin:34px auto 0;font-size:12px;line-height:2;text-align:left;background:rgba(0,0,0,.12);padding:18px 24px}.policy b{font-weight:500;color:#f1e6cc}.reservation small{display:block;font-size:11px;opacity:.8;margin-top:22px}
+
+.footer{padding:42px 20px;text-align:center;background:#fdfcf9}.footer .brand{display:block}.footer p{font-size:11px;color:var(--muted)}
+.sticky-cta{display:none}
+
+@media(max-width:1300px){.method .ph,.method:nth-child(even) .ph{margin:0}.access-photo{margin-left:0}.access-photo figcaption{padding-left:0}}
+@media(max-width:800px){
+html{scroll-padding-top:74px}.header{height:74px}.nav{gap:12px}.nav a:not(.reserve){display:none}
+.hero{min-height:610px}.hero:before{background:linear-gradient(90deg,rgba(248,246,240,.95),rgba(248,246,240,.72))}.hero-inner{padding:56px 24px 70px;flex-direction:column;gap:26px}
+.sec{padding:84px 0}.worries .wrap,.owner .wrap,.menu .wrap,.faq .wrap,.access-grid{grid-template-columns:1fr;gap:40px}
+.cause{grid-template-columns:1fr;gap:10px;padding:32px 26px}
+.method-list{margin-top:56px;gap:64px}.method,.method:nth-child(even){grid-template-columns:1fr;gap:28px}.method:nth-child(even) .ph{order:0}.method:nth-child(2) .method-body{padding-top:0}.method-no{font-size:72px}
+.style-grid{grid-template-columns:1fr 1fr;gap:28px 18px}.style:first-child{grid-column:1/-1}.style:first-child .ph{aspect-ratio:4/3}.style:nth-child(2){margin-top:0}.style:nth-child(3){margin-top:50px}
+.owner .ph{margin-top:0;aspect-ratio:4/3}.owner-body{gap:32px}
+.timeline{grid-template-columns:1fr;border-top:0;border-left:1px solid var(--gold);margin-left:4px}.timeline li{padding:0 0 30px 28px}.timeline li:before{top:6px;left:-5px}.timeline h3{margin-top:6px}
+.channels{grid-template-columns:1fr;gap:24px}.offer{padding:80px 18px}
+.sticky-cta{display:grid;grid-template-columns:1.4fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:50;box-shadow:0 -6px 18px rgba(41,61,49,.12)}.sticky-cta a{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:9px 8px;text-align:center;font-size:13px;font-weight:500;line-height:1.45;color:#fff;letter-spacing:.06em}.sticky-cta a small{font-size:10px;font-weight:400;opacity:.9}.sticky-cta .s-line{background:var(--line)}.sticky-cta .s-web{background:var(--green)}body{padding-bottom:58px}
+}
+@media(max-width:530px){
+.brand{font-size:19px}.nav .reserve{display:none}.hero{min-height:560px}.hero-inner{padding-top:44px}.hero h1{font-size:30px}.hero-offer{padding:10px 16px}.hero-offer strong{font-size:28px}.cta-row .btn,.mid-cta .btn{width:100%;min-width:0}
+.wrap{padding:0 22px}.worry-lines li{font-size:14px;padding-left:38px}
+.style-grid{grid-template-columns:1fr}.style:nth-child(3){margin-top:0}.style .ph{aspect-ratio:4/3}
+.owner-body{flex-direction:column}.owner-body .h2{writing-mode:horizontal-tb;white-space:normal;font-size:22px}
+.menu-item strong{font-size:13px}.menu-item .price{font-size:19px}.menu-item.first{padding:18px 14px}.menu-item.first .label{display:table;margin-bottom:6px}.menu-item.first .price{font-size:22px}.menu-item.first .price s{display:block;margin:0;font-size:12px;line-height:1.2;text-align:right}
+.price-box .now{font-size:44px}.access dl{grid-template-columns:80px 1fr}
+}
+.ph img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover}.ph:has(img):before{display:none}.style-description{margin:0;padding-left:16px;border-left:1px solid var(--gold);font-size:13px;line-height:2.1;color:#4f5a51}
+</style></head><body><div class="demo">PORTFOLIO SAMPLE｜架空のヘアサロンのデザイン・導線設計サンプルです</div><header class="header"><a class="brand" href="#top">Natural Beauty Salon<small>HAIR & RELAXATION</small></a><nav class="nav" aria-label="メインナビゲーション"><a href="#method">こだわり</a><a href="#styles">スタイル</a><a href="#menu">メニュー</a><a href="#access">アクセス</a><a href="#reservation" class="reserve">初回限定で予約する</a></nav></header><main id="top">
+
+<!-- FV：話の軸（乾かすだけで決まる髪）＋初回オファー＋予約導線 -->
+<section class="hero"><div class="hero-inner"><h1>乾かすだけで、<br>きまる髪へ。</h1><div class="hero-body"><p class="hero-lead">朝のドライヤー、<em>3</em>分。<br>それだけで、出かけたくなる髪に。</p><p class="hero-text">くせ、髪質、朝の過ごし方まで伺って、<br>おうちで再現できる髪型をつくる。<br>全3席、少人数制のヘアサロンです。</p><div class="hero-offer"><span class="tag">はじめての方限定</span><span class="what">カット＋トリートメント</span><s>¥9,900</s><strong>¥7,700<small>（税込）</small></strong></div><div class="cta-row"><a class="btn line" href="#reservation">LINE予約のご案内を見る</a><a class="btn outline" href="#offer">初回クーポンの詳細</a></div><ul class="trust"><li>○○駅 徒歩3分</li><li>LINE予約 24時間受付</li><li>当日予約OK</li></ul></div></div></section>
+
+<!-- 01 悩み -->
+<section class="sec worries" id="worries"><div class="wrap"><div><p class="chapter"><b>01</b>朝の髪の悩み</p><h2 class="h2">毎朝の髪に、<br>振り回されて<br>いませんか。</h2></div><ul class="worry-lines"><li>寝ぐせとうねりを直すだけで、朝の15分が消えていく。</li><li>アイロンで整えても、お昼にはうねりが戻ってしまう。</li><li>サロン帰りはきれいなのに、次の朝には再現できない。</li><li>「おまかせで」と言うと、思っていたのと違う髪型になる。</li></ul><div class="cause"><span class="label">Why?</span><p>まとまりにくさの理由は、髪質だけではありません。<br>大切なのは<span class="mark">「乾かしたときの形」を考えたカット</span>です。<small>髪質やくせの出方に合わせて、日常で扱いやすい形を目指します。</small></p></div></div></section>
+
+<!-- 02 解決 -->
+<section class="sec method-sec" id="method"><div class="wrap"><p class="chapter"><b>02</b>乾かすだけで決まる理由</p><h2 class="h2">大切なのは、切る前の<span class="mark">15分</span>と、<br>帰る前の<span class="mark">5分</span>。</h2><div class="method-list"><article class="method"><figure class="ph"><img src="assets/consultation.jpg" alt="スタイリストがお客様の髪の悩みを伺うカウンセリングの様子（AI生成イメージ）" loading="lazy"></figure><div class="method-body"><span class="method-no">01</span><h3><small>切る前の15分</small>朝の過ごし方から伺う<br>カウンセリング</h3><p>なりたい髪型だけでなく、毎朝かけられる時間、ドライヤーの使い方、結ぶ日の多さまで伺います。写真がなくても大丈夫。会話の中から「無理なく続く髪型」を一緒に見つけます。</p><span class="point">朝かけられる時間を、最初に決めます</span></div></article><article class="method"><figure class="ph"><img src="assets/cutting.jpg" alt="髪の生え方を確かめながらカットする様子（AI生成イメージ）" loading="lazy"></figure><div class="method-body"><span class="method-no">02</span><h3><small>くせを活かすカット</small>乾かしたときに<br>落ち着く位置で切る</h3><p>根元の生え方、毛量、骨格、くせの向き。乾いた状態で一度確認してから仕上げのカットを入れるので、伸びてきても形が崩れにくく、次のご来店まで扱いやすさが続きます。</p><span class="point">くせは「直す」より「活かす」</span></div></article><article class="method"><figure class="ph"><img src="assets/drying.jpg" alt="おうちで再現できる乾かし方を伝えるドライヤーレッスンの様子（AI生成イメージ）" loading="lazy"></figure><div class="method-body"><span class="method-no">03</span><h3><small>帰る前の5分</small>おうちで再現できる<br>ドライヤーレッスン</h3><p>根元から乾かす順番、風を当てる向き、仕上げの冷風。ご自宅のドライヤーでも再現できるよう、鏡の前で一緒に練習します。無理な商品販売はいたしません。</p><span class="point">翌朝から、ひとりで再現できるように</span></div></article></div></div></section>
+
+<!-- 03 実例 -->
+<section class="sec styles" id="styles"><div class="wrap"><p class="chapter"><b>03</b>スタイル実例</p><h2 class="h2">朝は、乾かすだけ。<br>それで、この仕上がり。</h2><div class="style-grid"><figure class="style"><div class="ph"><img src="assets/medium.jpg" alt="くせを活かしたミディアムボブのスタイル（AI生成イメージ）" loading="lazy"></div><figcaption><h3>くせを活かしたミディアムボブ</h3><p class="set-time">朝のセット 乾かすだけ<b>3</b>分</p><p class="style-description">自然な動きを活かしたミディアムボブ。やわらかな毛流れで、毎日のスタイリングをシンプルに。</p></figcaption></figure><figure class="style"><div class="ph"><img src="assets/short.jpg" alt="丸みのある大人のショートスタイル（AI生成イメージ）" loading="lazy"></div><figcaption><h3>大人のショート</h3><p class="set-time">朝のセット 乾かすだけ<b>2</b>分</p><p class="style-description">首元がすっきり見えるショートスタイル。丸みのあるシルエットで、上品な印象に。</p></figcaption></figure><figure class="style"><div class="ph"><img src="assets/long.jpg" alt="ツヤのある透明感カラーのロングスタイル（AI生成イメージ）" loading="lazy"></div><figcaption><h3>透明感カラーのロング</h3><p class="set-time">朝のセット 乾かすだけ<b>5</b>分</p><p class="style-description">ツヤ感を大切にしたロングスタイル。まとまりのよい毛先で、自然な美しさを演出。</p></figcaption></figure></div><p class="sample-note">※スタイル・施術・スタッフ写真はAI生成のイメージです。実際の施術事例ではありません。</p><div class="mid-cta"><a class="btn line" href="#reservation">LINE予約のご案内を見る</a><p>「この写真のように」とお伝えいただくだけでOKです</p></div></div></section>
+
+<!-- 04 オーナーの言葉 -->
+<section class="sec owner" id="staff"><div class="wrap"><figure class="ph"><img src="assets/owner.jpg" alt="オーナースタイリスト 森 みどりのイメージ写真（AI生成・架空の人物）" loading="lazy"></figure><div><p class="chapter"><b>04</b>オーナーより</p><div class="owner-body"><h2 class="h2">見てほしいのは、<br>次の朝の髪。</h2><div class="owner-text"><p>サロンで仕上げた髪がきれいなのは、ある意味あたりまえです。私がいちばん大切にしているのは、お客様がご自宅で、ひとりで乾かした次の朝の髪です。</p><p>だから、切る前にたくさんお話を伺いますし、帰る前にはドライヤーの練習もしていただきます。「朝がラクになった」と言っていただけることが、15年続けてきたいちばんの理由です。</p><p class="sign">オーナースタイリスト／スタイリスト歴15年<b>森 みどり</b></p></div></div><div class="sub-staff"><div class="avatar" aria-hidden="true">S</div><p><b>佐藤 そら</b>スタイリスト歴8年。透明感カラーと白髪ぼかしが得意です。色選びから、わかりやすくご説明します。</p></div><p class="sample-note" style="margin-top:20px">※スタッフ設定・写真は架空の制作サンプルです。</p></div></div></section>
+
+<!-- オファー -->
+<section class="offer" id="offer"><div class="offer-card"><span class="ribbon">はじめての方へ</span><h2>まずは一度、<br>「乾かすだけの朝」を体験してください。</h2><p class="lead">初回限定｜カット＋トリートメント</p><div class="price-box"><s>通常 ¥9,900</s><span class="arrow">→</span><span class="now">¥7,700<small>（税込）</small></span></div><span class="off">¥2,200 OFF</span><ul class="offer-includes"><li>カウンセリング15分</li><li>シャンプー</li><li>カット</li><li>トリートメント</li><li class="hl">ドライヤーレッスン</li></ul><ul class="offer-terms"><li>当店のご利用がはじめての方限定です</li><li>ご予約時に「初回クーポン」とお伝えください</li><li>所要時間の目安：約90分</li><li>他クーポンとの併用はできません</li></ul><a class="btn line" href="#reservation">初回クーポンでLINE予約する</a></div></section>
+
+<section class="sec menu" id="menu"><div class="wrap"><div><h2 class="h2">メニューと料金</h2><p class="note" style="font-size:13px;line-height:2">すべてのメニューに、カウンセリングとスタイリングのコツのご案内が含まれます。</p></div><div class="menu-list"><div class="menu-item first"><div><strong><span class="label">初回限定</span>カット＋トリートメント</strong><small>カウンセリング・ドライヤーレッスン込み／約90分</small></div><span class="price"><s>¥9,900</s>¥7,700</span></div><div class="menu-item"><div><strong>カット<span class="time">約60分</span></strong><small>カウンセリング・シャンプー・ブロー込み</small></div><span class="price">¥5,500</span></div><div class="menu-item"><div><strong>カット＋カラー<span class="time">約120分</span></strong><small>髪の長さや施術内容により料金が変わります</small></div><span class="price">¥11,000〜</span></div><div class="menu-item"><div><strong>トリートメント<span class="time">約30分</span></strong><small>髪の状態に合わせたケア</small></div><span class="price">¥4,400〜</span></div><div class="menu-item"><div><strong>ヘッドスパ<span class="time">約30分</span></strong><small>頭皮と髪をいたわるリラックスメニュー</small></div><span class="price">¥3,850〜</span></div><p class="note">※表示価格は税込・架空店舗のサンプル料金です。追加料金が発生する場合は、施術前に必ずご案内します。</p><div class="mid-cta" style="margin-top:36px"><a class="btn line" href="#reservation">LINEで相談・予約する</a><p>メニューに迷ったら、お気軽にご相談ください</p></div></div></div></section>
+
+<!-- 初回90分の流れ -->
+<section class="sec flow"><div class="wrap"><h2 class="h2">はじめての90分は、こんなふうに。</h2><ol class="timeline"><li><span class="t">0<small>分</small></span><h3>カウンセリング</h3><p>朝の過ごし方や、髪のお悩みを伺います。</p></li><li><span class="t">15<small>分</small></span><h3>シャンプー</h3><p>頭皮をほぐしながら、ていねいに。</p></li><li><span class="t">25<small>分</small></span><h3>カット</h3><p>乾かした状態で形を確かめながら仕上げます。</p></li><li><span class="t">65<small>分</small></span><h3>トリートメント</h3><p>髪の状態に合わせてケアします。</p></li><li><span class="t">80<small>分</small></span><h3>ドライヤーレッスン</h3><p>おうちで再現できる乾かし方を一緒に。</p></li></ol></div></section>
+
+<section class="sec faq"><div class="wrap"><h2 class="h2">よくあるご質問</h2><div><details><summary>初めてでも予約できますか？</summary><p>はい。ご希望のスタイルが決まっていなくても大丈夫です。カウンセリングで一緒に考えます。</p></details><details><summary>くせ毛でも、本当に乾かすだけでまとまりますか？</summary><p>くせの強さや髪の長さによって、仕上がりは変わります。カウンセリングで、どこまでラクにできるかを正直にお伝えします。</p></details><details><summary>初回クーポンはどうやって使えますか？</summary><p>ご予約時（LINE・Web・お電話）に「初回クーポン」とお伝えいただくだけでご利用いただけます。</p></details><details><summary>当日予約はできますか？</summary><p>空きがあれば当日のご予約も承ります。LINEまたはお電話で空き状況をお問い合わせください。</p></details><details><summary>商品の購入をすすめられませんか？</summary><p>無理な商品販売はいたしません。ご質問いただいた場合のみ、髪の状態に合うホームケアをご案内します。</p></details><details><summary>支払い方法は何が使えますか？</summary><p>現金・各種クレジットカード・QRコード決済をご利用いただける想定です。</p></details><details><summary>予約の変更・キャンセルはできますか？</summary><p>前日までにLINEまたはお電話でご連絡ください。実際の受付窓口はこのデモには接続されていません。</p></details></div></div></section>
+
+<section class="sec access" id="access"><div class="wrap"><h2 class="h2">窓辺の光とグリーンに包まれた、<br>全3席の小さなサロン。</h2><div class="access-grid"><figure class="access-photo" style="margin-top:0;margin-bottom:0"><img src="assets/salon-interior.webp" alt="自然光とグリーンに包まれた架空サロンの内観イメージ" loading="lazy"><figcaption>※画像は架空店舗のイメージです。</figcaption></figure><div><div class="brand" style="margin-bottom:24px">Natural Beauty Salon</div><dl><dt>アクセス</dt><dd>○○線「○○駅」東口より徒歩3分<small>※架空店舗のため住所は設定していません</small></dd><dt>営業時間</dt><dd>10:00〜19:00<small>最終受付：カット18:00／カラー17:00</small></dd><dt>定休日</dt><dd>火曜日（祝日は営業）</dd><dt>席数</dt><dd>3席（少人数制）</dd><dt>駐車場</dt><dd>なし（近隣にコインパーキングあり）</dd><dt>お支払い</dt><dd>現金・クレジットカード・QR決済</dd></dl><div class="map" role="img" aria-label="地図エリア（デモ）">Googleマップ埋め込みエリア<br>（架空店舗のため未設定）</div></div></div></div></section>
+
+<!-- クロージング：予約手段を3つ -->
+<section class="reservation" id="reservation"><h2>明日の朝を、<br>少しラクに。</h2><p>ご都合のよい方法でご予約ください。</p><span class="reserve-offer">ご予約時に「初回クーポン」で カット＋トリートメント ¥7,700</span><div class="channels"><div class="channel recommend"><span class="badge">おすすめ</span><h3>LINE予約</h3><p class="hours">24時間受付</p><p>友だち追加して、日時とメニューを送るだけ。髪のご相談もお気軽にどうぞ。</p><a class="btn line" href="#top" aria-label="LINE予約（デモ）">LINE予約（デモ）</a></div><div class="channel"><h3>Web予約</h3><p class="hours">24時間受付</p><p>空き状況を見ながら、その場で予約が完了します。</p><a class="btn" href="#top" aria-label="Web予約（デモ）">Web予約（デモ）</a></div><div class="channel"><h3>お電話</h3><p class="hours">10:00〜19:00（火曜定休）</p><p>当日のご予約や、施術内容のご相談はお電話で。<br>00-0000-0000（架空）</p><a class="btn" href="#top" aria-label="電話予約（デモ）">電話予約（デモ）</a></div></div><div class="policy"><b>キャンセル・変更について</b><br>前日までにLINEまたはお電話でご連絡ください。当日の遅刻は、施術内容を調整させていただく場合があります。</div><small>※架空店舗の制作サンプルです。実際のLINEアカウントや予約フォームには接続していません。</small></section></main>
+
+<footer class="footer"><img src="assets/salon-logo.webp" alt="Natural Beauty Salon ロゴ" style="width:94px;height:94px;object-fit:contain;margin:0 auto 14px"><span class="brand">Natural Beauty Salon</span><p>© Natural Beauty Salon — Fictional portfolio concept</p></footer>
+
+<!-- スマホ固定CTA -->
+<nav class="sticky-cta" aria-label="予約ボタン"><a class="s-line" href="#reservation">LINEで予約<small>初回 ¥7,700｜24時間受付</small></a><a class="s-web" href="#reservation">Web予約<small>空き状況を見る</small></a></nav>
+</body></html>

@@ -4,8 +4,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="バックオフィス業務18年以上。業務整理・改善・マニュアル作成から、LP・広告クリエイティブ制作まで。実務経験を活かし、仕事が回る仕組みと、伝わる形をつくります。" name="description"/>
+<meta content="事務職27年・バックオフィス業務18年以上の実務経験を活かした、資料・スライド・図解制作。業務整理・マニュアル作成、LP・広告クリエイティブ制作にも対応します。" name="description"/>
 <title>Caori | Portfolio</title>
+<meta content="Caori | Portfolio" property="og:title"/>
+<meta content="業務がわかるから、伝わる資料がつくれる。実務経験を活かした資料・スライド・図解制作。" property="og:description"/>
+<meta content="website" property="og:type"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231B2A41'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-size='38' fill='%23C9B388'%3EC%3C/text%3E%3C/svg%3E" rel="icon"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&amp;family=Noto+Sans+JP:wght@300;400;500;700&amp;family=Cormorant+Garamond:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
@@ -85,8 +89,9 @@ header.on-navy .nav-links a.active::after{background:var(--gold)}
 
 /* hero (navy) */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 0;background:var(--navy);color:#fff;overflow:hidden}
-.hero-bgphoto{position:absolute;inset:0;z-index:0;background-color:var(--navy);background-image:url("work/images/hero-bg3.png"),radial-gradient(120% 90% at 80% 10%,rgba(169,140,90,.16) 0%,rgba(27,42,65,0) 55%),linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 55%,#22344d 100%);background-size:cover,cover,cover;background-position:center;background-repeat:no-repeat;}
-.hero-eyebrow{font-family:var(--serif);font-size:17px;letter-spacing:.3em;color:#C4A66A;margin-bottom:30px;text-transform:uppercase}
+.hero-bgphoto{position:absolute;inset:0;z-index:0;background-color:var(--navy);background-image:url("work/images/hero-bg3.webp"),radial-gradient(120% 90% at 80% 10%,rgba(169,140,90,.16) 0%,rgba(27,42,65,0) 55%),linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 55%,#22344d 100%);background-size:cover,cover,cover;background-position:center;background-repeat:no-repeat;}
+.hero-bgphoto::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(251,250,247,.94) 0%,rgba(251,250,247,.85) 45%,rgba(251,250,247,.3) 70%,rgba(251,250,247,0) 85%)}
+.hero-eyebrow{font-family:var(--serif);font-size:17px;letter-spacing:.3em;color:#8E7243;margin-bottom:30px;text-transform:uppercase}
 .hero-title{font-family:var(--mincho);font-size:clamp(34px,4.8vw,56px);font-weight:500;line-height:1.5;letter-spacing:.06em;margin-bottom:36px;color:#26384D}
 .hero-title .accent{color:#26384D}
 .hero-body{font-size:15.5px;color:#26384D;max-width:460px;letter-spacing:.05em;margin-bottom:52px}
@@ -114,6 +119,7 @@ header.on-navy .nav-links a.active::after{background:var(--gold)}
 
 /* experience */
 .experience{background:var(--paper-2)}
+.exp-note{font-size:14px;color:var(--muted);margin:-44px 0 48px;letter-spacing:.04em}
 .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
 .exp{position:relative;padding-top:34px;border-top:1px solid var(--line)}
 .exp-years{font-family:var(--serif);font-size:34px;font-weight:500;color:var(--gold);line-height:1;margin-bottom:18px}
@@ -124,14 +130,14 @@ header.on-navy .nav-links a.active::after{background:var(--gold)}
 .exp-list li::before{content:"";position:absolute;left:0;top:16px;width:5px;height:5px;background:var(--gold-soft);transform:rotate(45deg)}
 
 /* service */
-.service{background:var(--paper-2);border-top:1px solid var(--line)}
-.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px}
-.svc{background:#fff;padding:48px 40px 52px;border-top:2px solid var(--gold);box-shadow:0 2px 24px rgba(27,42,65,.04)}
+.service{background:var(--paper)}
+.service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.svc{background:#fff;padding:44px 32px 48px;border-top:2px solid var(--gold);box-shadow:0 2px 24px rgba(27,42,65,.04)}
 .svc-num{font-family:var(--serif);font-size:30px;color:var(--gold);display:block;margin-bottom:20px}
-.svc-title{font-family:var(--mincho);font-size:21px;font-weight:500;letter-spacing:.05em;margin-bottom:6px}
+.svc-title{font-family:var(--mincho);font-size:clamp(18px,1.9vw,21px);word-break:keep-all;font-weight:500;letter-spacing:.05em;margin-bottom:6px}
 .svc-sub{font-family:var(--serif);font-size:14px;letter-spacing:.14em;color:var(--gold);margin-bottom:28px}
 .svc-list{list-style:none}
-.svc-list li{font-size:14.5px;color:var(--muted);padding:10px 0 10px 20px;position:relative;border-bottom:1px dotted var(--line)}
+.svc-list li{word-break:auto-phrase;font-size:14.5px;color:var(--muted);padding:10px 0 10px 20px;position:relative;border-bottom:1px dotted var(--line)}
 .svc-list li:last-child{border-bottom:none}
 .svc-list li::before{content:"";position:absolute;left:0;top:19px;width:6px;height:6px;background:var(--gold-soft);transform:rotate(45deg)}
 
@@ -210,12 +216,36 @@ header.on-navy .nav-links a.active::after{background:var(--gold)}
 .form-status.ok{color:var(--gold-soft)}
 .form-status.ng{color:#e8a3a3}
 
+/* featured case */
+.case{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;background:#fff;border:1px solid var(--line);padding:40px;margin-bottom:28px}
+.case.reverse{grid-template-columns:1fr 1.1fr}.case.reverse .case-img{order:2}
+.case-img img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;box-shadow:0 14px 30px rgba(27,42,65,.10)}
+.case-img.natural img{aspect-ratio:auto;height:auto}
+.case dd strong{color:var(--navy);font-weight:500}
+.case-links{display:flex;flex-wrap:wrap;gap:10px 28px}
+.case-label{font-family:var(--serif);font-size:14px;letter-spacing:.16em;color:var(--gold)}
+.case h3{font-family:var(--mincho);font-size:24px;font-weight:500;color:var(--navy);line-height:1.6;margin:8px 0 22px}
+.case h3 small{display:block;font-family:var(--sans);font-size:12px;color:var(--muted);letter-spacing:.06em;font-weight:400}
+.case dl{display:grid;grid-template-columns:4.5em 1fr;gap:10px 16px;font-size:14px;line-height:1.9;margin-bottom:24px}
+.case dt{color:var(--gold);font-weight:500}
+.case dd{color:#4d4d48}
+.works-sub{font-family:var(--mincho);font-size:19px;color:var(--navy);letter-spacing:.06em;margin:72px 0 24px}
+
+/* contact info */
+.contact-info{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px;margin:0 auto 64px}
+.ci{border:1px solid rgba(255,255,255,.18);padding:28px 26px}
+.ci h3{font-family:var(--mincho);font-size:15px;letter-spacing:.1em;color:var(--gold-soft);font-weight:500;margin-bottom:12px}
+.ci p,.ci li{font-size:14px;color:rgba(255,255,255,.82);line-height:1.9}
+.ci ol{list-style:none;counter-reset:s}.ci ol li{counter-increment:s;padding-left:1.6em;position:relative}.ci ol li::before{content:counter(s);position:absolute;left:0;font-family:var(--serif);color:var(--gold-soft)}
+.ci small{display:block;font-size:12px;color:rgba(255,255,255,.55);margin-top:8px;line-height:1.7}
+@media (max-width:768px){.case,.case.reverse{grid-template-columns:1fr;padding:22px;gap:26px}.case.reverse .case-img{order:0}.works-sub{margin-top:56px}.contact-info{grid-template-columns:1fr}}
+
 /* footer */
 footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center;padding:40px 0;font-family:var(--serif);font-size:14px;letter-spacing:.12em}
 
 @media (max-width:768px){
   .section{padding:100px 0}.sec-head{margin-bottom:56px}
-  .hero{padding:130px 0}.about-grid{grid-template-columns:1fr;gap:56px}
+  .hero{padding:130px 0}.hero-bgphoto::after{background:linear-gradient(180deg,rgba(251,250,247,.55) 0%,rgba(251,250,247,.88) 30%,rgba(251,250,247,.88) 75%,rgba(251,250,247,.55) 100%)}.about-grid{grid-template-columns:1fr;gap:56px}
   .about-photo{max-width:260px}
   .service-grid,.tools-grid{grid-template-columns:1fr;gap:36px}
   .exp-grid{grid-template-columns:1fr;gap:40px}
@@ -225,7 +255,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
   .presentation-grid{grid-template-columns:1fr;}
 }
 @media (max-width:480px){
-  .wrap{padding:0 24px}.hero-cta{flex-direction:column;align-items:flex-start}.btn{width:100%;justify-content:center}
+  .wrap{padding:0 24px}.hero-title{word-break:auto-phrase}.hero-eyebrow{font-size:13px;letter-spacing:.16em}.hero-cta{flex-direction:column;align-items:flex-start}.btn{width:100%;justify-content:center}
   .ad-gallery{grid-template-columns:1fr;}
 }
 
@@ -272,9 +302,9 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
 <div class="hero-bgphoto"></div>
 <div class="wrap">
 <div class="hero-inner">
-<p class="hero-eyebrow reveal">— Online Assistant / Back Office Partner — </p>
-<h1 class="hero-title reveal">仕事を整え、<br/><span class="accent">伝わる形をつくる。</span></h1>
-<p class="hero-body reveal">事務職として27年。バックオフィス業務18年以上。<br/>業務整理・改善・マニュアル作成から、LP・広告クリエイティブ制作まで。実務経験を活かし、仕事が回る仕組みと、伝わる形をつくります。</p>
+<p class="hero-eyebrow reveal">— Document &amp; Slide Design / Back Office Partner — </p>
+<h1 class="hero-title reveal">業務がわかるから、<br/><span class="accent">伝わる資料がつくれる。</span></h1>
+<p class="hero-body reveal">事務職として27年、そのうち18年以上をバックオフィス業務に携わってきました。<br/>その実務経験を活かして、資料・スライド・図解をつくります。業務の流れや課題を理解したうえで、「何をどう見せれば伝わるか」から組み立てます。</p>
 <div class="hero-cta reveal">
 <a class="btn btn-primary" href="#works">Worksを見る <span class="arrow">→</span></a>
 <a class="btn btn-ghost" href="#contact">お問い合わせ</a>
@@ -288,56 +318,64 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
 <div class="sec-head reveal"><span class="sec-en">About</span><span class="sec-ja">わたしについて</span></div>
 <div class="about-grid">
 <div class="about-photo reveal">
-<img alt="プロフ画像" loading="lazy" src="work/images/photo5.png"/>
+<img alt="デスクに置かれたノートとペンのイメージ写真" loading="lazy" src="work/images/photo5.webp"/>
 </div>
 <div class="about-text reveal">
-<p class="about-lead"><span class="about-name">かおり</span><br/>Back Office Partner / Creative Support</p>
-<p>「やるべきことは分かっているのに、手が回らない」。事業を続けるなかで、そんな場面は少なくないと思います。</p>
-<p>わたしが大切にしているのは、目の前の作業を代行するだけでなく、<strong>業務全体を整理し、「無理なく回る仕組み」をつくること</strong>。同じ手間を繰り返さない状態を一緒に整えていきます。</p>
-<p>細かな作業も最後まで正確に。そして、相手の状況やペースに合わせて柔軟に対応することを心がけています。</p>
-<p>「この人に任せておけば大丈夫」。そう感じていただけるパートナーであることを、いつも目指しています。</p>
+<p class="about-lead"><span class="about-name">かおり</span><br/>Document &amp; Slide Design / Back Office Partner</p>
+<p>事務職として27年。カスタマーサポートやセールスサポート、国内外の契約書の作成・締結、社会保険の手続きまで、会社の「裏側」を支える仕事を続けてきました。</p>
+<p>そのなかで力を入れてきたのが、<strong>業務の流れを整理して、誰が担当しても同じように回る形にすること</strong>。手順を見える化し、マニュアルや図解にまとめるのが得意です。</p>
+<p>いまは、その「整理して、伝わる形にする」力を活かして、<strong>資料・スライド・図解の制作</strong>を中心に活動しています。LPや広告クリエイティブの制作にも対応しています。</p>
+<p>契約書を11年扱ってきたので、細かな確認や期限の管理は得意分野です。途中経過をこまめにお伝えしながら進めます。</p>
 </div>
 </div>
 </div>
 </section>
-<!-- EXPERIENCE -->
+<!-- WORKS -->
 <section class="section works-section" id="works">
 <div class="wrap">
 <div class="sec-head reveal"><span class="sec-en">Works</span><span class="sec-ja">制作・作品例</span></div>
+<article class="case reveal"><div class="case-img natural"><img alt="請求業務チェック体制の改善提案書" loading="lazy" src="work/images/ppt-gallery/billing-01.jpg"/></div><div class="case-body"><p class="case-label">Featured Case 01｜Business Document</p><h3>請求業務チェック体制の改善提案<br/><small>実務経験をもとにした改善事例（社名などは伏せています）</small></h3><dl><dt>目的</dt><dd>上司に改善策を提案し、導入の判断をしてもらう</dd><dt>課題</dt><dd>確認漏れが多く、担当者によって確認のやり方がばらばらだった</dd><dt>工夫</dt><dd>AIを活用してチェック用のスプレッドシートを作り、確認の手順を統一。上司が判断しやすいよう、課題・改善策・導入後の効果を1つの資料にまとめました。</dd><dt>結果</dt><dd><strong>誤請求が月平均2件から0件に。</strong>確認にかかる作業時間も短縮されました。</dd></dl><div class="case-links"><a class="work-link" href="work/teiansyo.html">提案資料を見る <span class="arrow">→</span></a></div></div></article>
+<article class="case reverse reveal"><div class="case-img"><img alt="ヘアサロン「Natural Beauty Salon」のLP制作サンプル" loading="lazy" src="work/images/lp_natural_beauty_salon.webp"/></div><div class="case-body"><p class="case-label">Featured Case 02｜Landing Page × LINE</p><h3>ヘアサロンの新規予約LP<br/><small>架空店舗の制作サンプル</small></h3><dl><dt>目的</dt><dd>はじめてのお客様の来店予約を増やす</dd><dt>課題</dt><dd>よくある構成と言葉のままでは、ほかのサロンとの違いが伝わらない</dd><dt>工夫</dt><dd>話の軸を「乾かすだけで決まる髪」の1本に絞り、悩み → 理由 → 実例 → 予約の流れで構成。初回オファーを最初の画面に置き、スマホでは予約ボタンを画面下に固定しました。</dd><dt>デザイン</dt><dd>見出しに明朝体と縦書きを使い、落ち着いた日本のサロンらしさを表現しました。</dd><dt>LINE連動</dt><dd>LINEリッチメニューも同じ世界観でデザインし、LP → 友だち追加 → 予約までの流れがつながるように考えました。</dd></dl><div class="case-links"><a class="work-link" href="works-lp.html">LP作品を見る <span class="arrow">→</span></a><a class="work-link" href="works-line-richmenu.html">リッチメニューを見る <span class="arrow">→</span></a></div></div></article>
+<p class="works-sub reveal">カテゴリー別の作品一覧</p>
 <div class="category-grid">
-<a class="category-tile reveal" href="works-slides.html"><div class="category-preview"><img alt="" loading="lazy" src="work/images/work-approval-flow.png"/><img alt="" loading="lazy" src="work/images/work-improvement-effect.png"/></div><div class="category-tile-body"><p class="work-cat">Presentation &amp; Slide Design</p><h3>資料・スライド・図解制作</h3><p>業務フロー、データ比較、サービス構造図、営業資料など。</p><span class="category-action">作品一覧を見る →</span></div></a>
-<a class="category-tile reveal" href="works-documents.html"><div class="category-preview"><img alt="" loading="lazy" src="work/images/work-teiansyo.jpg"/><img alt="" loading="lazy" src="work/images/work-instagram-manual.jpg"/></div><div class="category-tile-body"><p class="work-cat">Business Documents</p><h3>業務資料・マニュアル</h3><p>業務改善提案書、運用マニュアルなど。</p><span class="category-action">作品一覧を見る →</span></div></a>
-<a class="category-tile reveal" href="works-ads.html"><div class="category-preview"><img alt="" loading="lazy" src="work/images/ad_lumea-a.png"/><img alt="Instagramカルーセル投稿制作" loading="lazy" src="work/images/instagram/vol20/1.png"/></div><div class="category-tile-body"><p class="work-cat">Advertising &amp; Banner Design</p><h3>SNS・広告デザイン</h3><p>広告・バナー・SNS向けクリエイティブの制作例。</p><span class="category-action">作品一覧を見る →</span></div></a>
-<a class="category-tile reveal" href="works-lp.html"><div class="category-preview"><img alt="" loading="lazy" src="work/images/lp_cafe.png"/><img alt="自作ポートフォリオサイト" loading="lazy" src="work/images/portfolio-website-preview.png"/></div><div class="category-tile-body"><p class="work-cat">Landing Page</p><h3>LP・Webデザイン</h3><p>サービスや店舗の魅力を伝えるLP制作サンプル。</p><span class="category-action">作品一覧を見る →</span></div></a>
+<a class="category-tile reveal" href="works-slides.html"><div class="category-preview"><img alt="承認フローの図解スライド" loading="lazy" src="work/images/work-approval-flow.webp"/><img alt="業務改善の効果をまとめたスライド" loading="lazy" src="work/images/work-improvement-effect.webp"/></div><div class="category-tile-body"><p class="work-cat">Presentation &amp; Slide Design</p><h3>資料・スライド・図解制作</h3><p>業務フロー、データ比較、サービス構造図、営業資料など。</p><span class="category-action">作品一覧を見る →</span></div></a>
+<a class="category-tile reveal" href="works-documents.html"><div class="category-preview"><img alt="業務改善提案書" loading="lazy" src="work/images/work-teiansyo.jpg"/><img alt="Instagram運用マニュアル" loading="lazy" src="work/images/work-instagram-manual.jpg"/></div><div class="category-tile-body"><p class="work-cat">Business Documents</p><h3>業務資料・マニュアル</h3><p>業務改善提案書、運用マニュアルなど。</p><span class="category-action">作品一覧を見る →</span></div></a>
+<a class="category-tile reveal" href="works-ads.html"><div class="category-preview"><img alt="スキンケア商品の広告バナー" loading="lazy" src="work/images/ad_lumea-a.webp"/><img alt="Instagramカルーセル投稿制作" loading="lazy" src="work/images/instagram/vol20/1.png"/></div><div class="category-tile-body"><p class="work-cat">Advertising &amp; Banner Design</p><h3>SNS・広告デザイン</h3><p>広告・バナー・SNS向けクリエイティブの制作例。</p><span class="category-action">作品一覧を見る →</span></div></a>
+<a class="category-tile reveal" href="works-lp.html"><div class="category-preview"><img alt="ヘアサロンのLP制作サンプル" loading="lazy" src="work/images/lp_natural_beauty_salon.webp"/><img alt="自作ポートフォリオサイト" loading="lazy" src="work/images/portfolio-website-preview.webp"/></div><div class="category-tile-body"><p class="work-cat">Landing Page</p><h3>LP・Webデザイン</h3><p>サービスや店舗の魅力を伝えるLP制作サンプル。</p><span class="category-action">作品一覧を見る →</span></div></a>
 </div>
 </div>
-</section><section class="section service" id="service">
+</section>
+<!-- SERVICE -->
+<section class="section service" id="service">
 <div class="wrap">
 <div class="sec-head reveal"><span class="sec-en">Service</span><span class="sec-ja">対応できること</span></div>
 <div class="service-grid">
 <div class="svc reveal">
 <span class="svc-num">01</span>
-<h3 class="svc-title">業務整理・改善</h3>
-<p class="svc-sub">Operations</p>
-<ul class="svc-list"><li>業務フロー整理</li><li>マニュアル作成</li><li>タスク管理</li></ul>
+<h3 class="svc-title">資料・スライド・<wbr/>図解制作</h3>
+<p class="svc-sub">Documents &amp; Slides</p>
+<ul class="svc-list"><li>業務フロー・仕組みの図解</li><li>提案書・社内向け資料</li><li>営業資料・サービス紹介</li></ul>
 </div>
 <div class="svc reveal">
 <span class="svc-num">02</span>
-<h3 class="svc-title">バックオフィス支援</h3>
-<p class="svc-sub">Back Office Support</p>
-<ul class="svc-list"><li>メール対応</li><li>スケジュール管理</li><li>各種事務サポート</li></ul>
+<h3 class="svc-title">業務整理・<wbr/>バックオフィス支援</h3>
+<p class="svc-sub">Operations &amp; Back Office</p>
+<ul class="svc-list"><li>業務フロー整理・マニュアル作成</li><li>タスク・スケジュール管理</li><li>メール対応・各種事務サポート</li></ul>
 </div>
 <div class="svc reveal">
 <span class="svc-num">03</span>
-<h3 class="svc-title">Web・クリエイティブ制作</h3>
+<h3 class="svc-title">Web・<wbr/>クリエイティブ制作</h3>
 <p class="svc-sub">Web &amp; Creative</p>
-<ul class="svc-list"><li>LP制作</li><li>広告・バナー制作</li><li>資料・スライド制作</li></ul>
+<ul class="svc-list"><li>LP制作</li><li>広告・バナー制作</li><li>SNS投稿・LINEリッチメニュー</li></ul>
 </div>
 </div>
 </div>
-</section><section class="section experience" id="experience">
+</section>
+<!-- EXPERIENCE -->
+<section class="section experience" id="experience">
 <div class="wrap">
 <div class="sec-head reveal"><span class="sec-en">Experience</span><span class="sec-ja">これまでの経験</span></div>
+<p class="exp-note reveal">事務職27年のなかで経験してきた分野と、それぞれの年数です。</p>
 <div class="exp-grid">
 <div class="exp reveal">
 <div class="exp-years">18+<span class="u">Years</span></div>
@@ -369,10 +407,6 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
 </div>
 </div>
 </section>
-<!-- SERVICE -->
-
-<!-- WORKS -->
-
 <!-- TOOLS -->
 <section class="section tools" id="tools">
 <div class="wrap">
@@ -388,7 +422,8 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.55);text-align:center
 <section class="contact" id="contact">
 <div class="wrap">
 <div class="sec-head center reveal"><span class="sec-en">Contact</span><span class="sec-ja">お問い合わせ</span></div>
-<p class="contact-lead reveal">業務整理やバックオフィスサポート、資料・スライド、LP・広告クリエイティブ制作について、<br/>まずはお気軽にご相談ください。<br/>お問い合わせ内容を確認後、2営業日以内を目安にご返信いたします。</p>
+<p class="contact-lead reveal">資料・スライド・図解制作、業務整理やバックオフィスサポート、LP・広告クリエイティブ制作について、<br/>まずはお気軽にご相談ください。<br/>お問い合わせ内容を確認後、2営業日以内を目安にご返信いたします。</p>
+<div class="contact-info reveal"><div class="ci"><h3>連絡手段</h3><p>メール／Chatwork／Slack</p><small>打ち合わせは Zoom・Google Meet で行います</small></div><div class="ci"><h3>対応時間</h3><p>平日 19:00以降<br/>土日 12:00以降</p></div><div class="ci"><h3>ご依頼の流れ</h3><ol><li>お問い合わせ</li><li>オンラインでヒアリング</li><li>ご提案・お見積もり</li><li>作業開始</li></ol></div></div>
 <form action="https://formspree.io/f/mpqgqpen" class="form reveal" id="contact-form" method="POST">
 <div class="field"><label for="name">お名前</label><input id="name" name="name" required="" type="text"/></div>
 <div class="field"><label for="email">メールアドレス</label><input id="email" name="email" required="" type="email"/></div>
@@ -424,6 +459,8 @@ window.addEventListener('scroll',onSpy);onSpy();
 
 const toggle=document.querySelector('.nav-toggle'),links=document.querySelector('.nav-links');
 toggle&&toggle.addEventListener('click',()=>{const open=links.style.display==='flex';links.style.display=open?'':'flex';links.style.position='absolute';links.style.flexDirection='column';links.style.top='100%';links.style.right='24px';links.style.gap='18px';links.style.background='var(--paper)';links.style.padding=open?'':'24px 28px';links.style.boxShadow=open?'':'0 14px 40px rgba(27,42,65,.16)';toggle.setAttribute('aria-expanded',String(!open));});
+/* close mobile menu after tapping a link */
+links&&links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{if(toggle&&toggle.getAttribute('aria-expanded')==='true')toggle.click();}));
 
 /* contact form submit (Formspree) */
 const cForm=document.getElementById('contact-form'),cStatus=document.getElementById('form-status');
