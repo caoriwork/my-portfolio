@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>AIで変わる、在宅ワークの始め方（セミナー資料）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #ef6f6c;
+    --coral-deep: #e2534f;
+    --coral-soft: #fde4e1;
+    --orange: #f59a3e;
+    --orange-soft: #feead6;
+    --peach: #fff6f1;
+    --ink: #4a3936;
+    --sub: #7b6763;
+    --gray: #a9a09e;
+    --gray-soft: #f2eeed;
+    --white: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #e9e3e1; font-family: "Zen Maru Gothic", sans-serif; color: var(--ink); }
+  .deck { display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 40px 0; }
+  body.export .deck { padding: 0; gap: 0; }
+  body.export .slide:not(.on) { display: none; }
+
+  /* ---------- 共通：4:3・方眼紙 ---------- */
+  .slide {
+    position: relative; width: 1440px; height: 1080px; overflow: hidden;
+    background-color: #fffcfa;
+    background-image:
+      linear-gradient(rgba(239, 111, 108, .09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(239, 111, 108, .09) 1px, transparent 1px);
+    background-size: 36px 36px; background-position: -1px -1px;
+    -webkit-font-smoothing: antialiased; font-feature-settings: "palt";
+  }
+  .slide::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 14px;
+    background: linear-gradient(90deg, var(--coral), var(--orange));
+  }
+  .top {
+    position: absolute; top: 48px; left: 88px; right: 88px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 19px; font-weight: 700; letter-spacing: .06em; color: var(--sub);
+  }
+  .top .series { display: flex; align-items: center; gap: 12px; }
+  .top .series::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--coral); }
+  .top .no { font-size: 20px; color: var(--coral); letter-spacing: .1em; }
+  .top .no b { font-size: 30px; font-weight: 900; }
+
+  .head { position: absolute; top: 112px; left: 88px; right: 88px; }
+  .eyebrow { font-size: 20px; font-weight: 900; letter-spacing: .2em; color: var(--orange); }
+  h2 { font-size: 58px; font-weight: 900; line-height: 1.35; letter-spacing: .04em; margin-top: 6px; }
+  h2 .mk { background: linear-gradient(transparent 62%, var(--orange-soft) 62%); padding: 0 4px; }
+  .lead { font-size: 23px; font-weight: 500; line-height: 1.7; color: var(--sub); margin-top: 10px; letter-spacing: .03em; }
+
+  .body { position: absolute; top: 300px; left: 88px; right: 88px; bottom: 74px; }
+
+  svg.ic { fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+
+  .msg {
+    display: flex; align-items: center; justify-content: center; gap: 28px;
+    font-size: 27px; font-weight: 700; letter-spacing: .05em;
+  }
+  .msg::before, .msg::after { content: ""; width: 90px; height: 2px; background: var(--coral); opacity: .5; }
+  .msg em { font-style: normal; color: var(--coral-deep); font-weight: 900; }
+
+  /* ---------- 1 3つの魅力 ---------- */
+  .merits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 52px; margin-top: 20px; }
+  .merit {
+    background: var(--white); border: 2px solid var(--coral-soft); border-radius: 32px;
+    padding: 54px 40px 46px; text-align: center; position: relative;
+    box-shadow: 0 10px 0 var(--coral-soft);
+  }
+  .merit .num {
+    position: absolute; top: -22px; left: 50%; transform: translateX(-50%);
+    background: var(--coral); color: #fff; font-size: 20px; font-weight: 900; letter-spacing: .12em;
+    padding: 6px 22px; border-radius: 999px;
+  }
+  .merit .circle {
+    width: 168px; height: 168px; border-radius: 50%; margin: 0 auto;
+    background: var(--peach); border: 2px dashed rgba(239, 111, 108, .45);
+    display: grid; place-items: center; color: var(--coral);
+  }
+  .merit:nth-child(2) .circle { color: var(--orange); border-color: rgba(245, 154, 62, .55); background: #fff8ef; }
+  .merit .circle svg { width: 92px; height: 92px; }
+  .merit h3 { font-size: 38px; font-weight: 900; letter-spacing: .06em; margin-top: 34px; }
+  .merit p { font-size: 21px; line-height: 1.75; color: var(--sub); margin-top: 16px; font-weight: 500; }
+  .merit .chips { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .chips span {
+    font-size: 17px; font-weight: 700; color: var(--coral-deep); background: var(--coral-soft);
+    padding: 5px 16px; border-radius: 999px;
+  }
+  .merit:nth-child(2) .chips span { color: #c96f12; background: var(--orange-soft); }
+  .s1 .msg { position: absolute; left: 0; right: 0; bottom: 18px; }
+
+  /* ---------- 2 5ステップ ---------- */
+  .phases { display: grid; grid-template-columns: 475px 475px 212px; column-gap: 51px; margin-top: 4px; }
+  .phase { text-align: center; font-size: 19px; font-weight: 900; letter-spacing: .14em; color: var(--sub); position: relative; padding-bottom: 14px; }
+  .phase::after {
+    content: ""; position: absolute; left: 10px; right: 10px; bottom: 0; height: 12px;
+    border: 2px solid currentColor; border-bottom: 0; border-radius: 10px 10px 0 0; opacity: .45;
+  }
+  .phase.p1 { color: var(--coral); } .phase.p2 { color: var(--orange); } .phase.p3 { color: var(--coral-deep); }
+  .flow { display: flex; align-items: stretch; margin-top: 18px; }
+  .step {
+    width: 212px; flex: none; background: var(--white); border: 2px solid var(--coral-soft); border-radius: 26px;
+    padding: 30px 18px 28px; text-align: center; display: flex; flex-direction: column; align-items: center;
+  }
+  .step .tag {
+    display: inline-block; font-size: 16px; font-weight: 900; letter-spacing: .14em; color: #fff;
+    background: var(--coral); padding: 4px 14px; border-radius: 999px;
+  }
+  .step.o .tag { background: var(--orange); }
+  .step .circle {
+    width: 112px; height: 112px; border-radius: 50%; margin: 22px auto 0; background: var(--peach);
+    display: grid; place-items: center; color: var(--coral);
+  }
+  .step.o .circle { background: #fff8ef; color: var(--orange); }
+  .step .circle svg { width: 62px; height: 62px; }
+  .step p + .q { margin-top: 18px; }
+  .step h3 { font-size: 29px; font-weight: 900; letter-spacing: .06em; margin-top: 22px; }
+  .step p { font-size: 18px; line-height: 1.7; color: var(--sub); margin-top: 12px; font-weight: 500; }
+  .step .q {
+    margin-top: auto; align-self: stretch; font-size: 16px; font-weight: 700; color: var(--coral-deep);
+    background: var(--coral-soft); border-radius: 12px; padding: 8px 10px; line-height: 1.5;
+  }
+  .step.o .q { color: #c96f12; background: var(--orange-soft); }
+  .arrow { width: 51px; flex: none; display: grid; place-items: center; color: var(--coral); }
+  .arrow svg { width: 30px; height: 30px; }
+  .loop { position: relative; margin-top: 6px; height: 104px; color: var(--coral); }
+  .loop svg { position: absolute; inset: 0; }
+  .loop .label {
+    position: absolute; left: 50%; top: 58px; transform: translateX(-50%); white-space: nowrap;
+    background: #fffcfa; padding: 4px 22px; font-size: 21px; font-weight: 900; color: var(--coral-deep); letter-spacing: .05em;
+  }
+
+  /* ---------- 3 仕事4選 ---------- */
+  .legend {
+    position: absolute; top: 152px; right: 88px; font-size: 17px; font-weight: 700; color: var(--sub);
+    background: var(--white); border: 1.5px solid var(--coral-soft); border-radius: 999px; padding: 8px 20px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .jobs { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 30px 34px; height: 680px; margin-top: -6px; }
+  .job {
+    background: var(--white); border: 2px solid var(--coral-soft); border-radius: 28px;
+    padding: 30px 34px; display: grid; grid-template-columns: minmax(0, 1fr) 250px; grid-template-rows: auto auto 1fr; gap: 18px 28px;
+  }
+  .job > div:first-child { display: contents; }
+  .job .hd { grid-column: 1 / -1; display: flex; align-items: center; gap: 20px; }
+  .job .circle {
+    width: 92px; height: 92px; flex: none; border-radius: 24px; background: var(--peach);
+    display: grid; place-items: center; color: var(--coral);
+  }
+  .job.o .circle { background: #fff8ef; color: var(--orange); }
+  .job .circle svg { width: 56px; height: 56px; }
+  .job small { font-size: 16px; font-weight: 900; letter-spacing: .16em; color: var(--coral); }
+  .job.o small { color: var(--orange); }
+  .job h3 { font-size: 36px; font-weight: 900; letter-spacing: .04em; line-height: 1.3; white-space: nowrap; }
+  .job p { font-size: 19px; line-height: 1.75; color: var(--sub); font-weight: 500; }
+  .job .who { align-self: start; font-size: 17px; font-weight: 700; color: var(--ink); display: flex; gap: 8px; align-items: baseline; }
+  .job .who::before { content: "こんな人に"; flex: none; font-size: 14px; color: #fff; background: var(--ink); border-radius: 6px; padding: 2px 8px; }
+  .rate {
+    background: var(--peach); border-radius: 18px; padding: 14px 18px; align-self: stretch;
+    grid-column: 2; grid-row: 2 / 4; display: flex; flex-direction: column; justify-content: center; gap: 12px;
+  }
+  .job.o .rate { background: #fff8ef; }
+  .rate div { display: flex; align-items: center; justify-content: space-between; }
+  .rate dt { white-space: nowrap; font-size: 15px; font-weight: 700; color: var(--sub); letter-spacing: .04em; }
+  .dots { display: flex; gap: 5px; }
+  .dots i { width: 17px; height: 17px; border-radius: 50%; border: 2px solid var(--coral-soft); background: var(--white); }
+  .dots i.on { background: var(--coral); border-color: var(--coral); }
+  .job.o .dots i { border-color: var(--orange-soft); }
+  .job.o .dots i.on { background: var(--orange); border-color: var(--orange); }
+
+  /* ---------- 4 Before / After ---------- */
+  .ba { display: grid; grid-template-columns: 1fr 150px 1.12fr; align-items: stretch; height: 560px; margin-top: 4px; }
+  .card { border-radius: 30px; padding: 34px 38px; display: flex; flex-direction: column; }
+  .card.before { background: var(--gray-soft); border: 2px solid #e3dcda; }
+  .card.after { background: var(--white); border: 3px solid var(--coral); box-shadow: 0 12px 0 var(--coral-soft); }
+  .card .lbl { display: flex; align-items: center; gap: 14px; }
+  .card .lbl b {
+    font-size: 22px; font-weight: 900; letter-spacing: .14em; color: #fff; padding: 5px 20px; border-radius: 999px; background: var(--gray);
+  }
+  .after .lbl b { background: var(--coral); }
+  .card .lbl span { font-size: 28px; font-weight: 900; letter-spacing: .04em; }
+  .before .lbl span { color: #857a77; }
+  .rows { margin-top: 26px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .row {
+    display: flex; align-items: center; gap: 18px; background: rgba(255, 255, 255, .7);
+    border-radius: 18px; padding: 14px 18px;
+  }
+  .row .ri { width: 62px; height: 62px; flex: none; border-radius: 50%; display: grid; place-items: center; background: #e7e1df; color: #8e8381; }
+  .row .ri svg { width: 36px; height: 36px; }
+  .row .rt { flex: 1; font-size: 24px; font-weight: 700; color: #6f6461; }
+  .row .rt small { display: block; font-size: 16px; font-weight: 500; color: var(--gray); margin-top: 2px; }
+  .row .who { font-size: 15px; font-weight: 900; color: #8e8381; border: 1.5px solid #cfc6c4; border-radius: 999px; padding: 3px 12px; }
+  .after .rows { gap: 0; }
+  .after .row { background: var(--peach); padding: 18px 20px; }
+  .after .row .ri { width: 76px; height: 76px; background: var(--white); color: var(--coral); border: 2px solid var(--coral-soft); }
+  .after .row.ai .ri { color: var(--orange); border-color: var(--orange-soft); }
+  .after .row .ri svg { width: 44px; height: 44px; }
+  .after .row .rt { color: var(--ink); font-size: 26px; }
+  .after .row .rt small { color: var(--sub); font-size: 17px; }
+  .after .row .who { color: #fff; border: 0; background: var(--coral); padding: 5px 14px; }
+  .after .row.ai .who { background: var(--orange); }
+  .after .row.ai { background: #fff8ef; }
+  .down { height: 40px; display: grid; place-items: center; color: var(--coral); }
+  .down svg { width: 28px; height: 28px; }
+  .time { margin-top: 18px; }
+  .time .tl { display: flex; justify-content: space-between; font-size: 17px; font-weight: 700; color: var(--sub); }
+  .time .bar { height: 22px; border-radius: 999px; background: rgba(255, 255, 255, .8); margin-top: 8px; overflow: hidden; }
+  .time .bar i { display: block; height: 100%; border-radius: 999px; }
+  .before .time .bar i { width: 100%; background: repeating-linear-gradient(45deg, #c9c0be 0 10px, #bdb3b1 10px 20px); }
+  .after .time .bar { background: var(--gray-soft); }
+  .after .time .bar i { width: 45%; background: linear-gradient(90deg, var(--coral), var(--orange)); }
+  .after .time .tl b { color: var(--coral-deep); font-weight: 900; }
+  .tip {
+    display: flex; align-items: center; gap: 12px; margin-top: 6px; padding: 12px 16px; border-radius: 14px;
+    border: 2px dashed var(--coral-soft); font-size: 17px; font-weight: 700; color: var(--ink);
+  }
+  .tip b { flex: none; font-size: 14px; letter-spacing: .1em; color: #fff; background: var(--orange); border-radius: 6px; padding: 2px 8px; }
+  .mid { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: var(--coral); }
+  .mid svg { width: 104px; height: 104px; }
+  .mid span { font-size: 20px; font-weight: 900; letter-spacing: .1em; color: var(--coral-deep); text-align: center; line-height: 1.4; }
+  .s4 .msg { margin-top: 44px; }
+  .s4 .msg .pill { font-size: 22px; padding: 4px 16px; border-radius: 10px; color: #fff; }
+
+  /* ---------- 5 スキルマップ ---------- */
+  .map { display: grid; grid-template-columns: 150px repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 24px 26px; height: 600px; margin-top: 4px; }
+  .cat {
+    border-radius: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    color: #fff; font-size: 23px; font-weight: 900; letter-spacing: .08em; text-align: center; line-height: 1.35;
+  }
+  .cat small { font-size: 14px; letter-spacing: .14em; opacity: .9; }
+  .cat.c1 { background: var(--coral); } .cat.c2 { background: var(--orange); }
+  .cat.c3 { background: linear-gradient(160deg, var(--coral), var(--orange)); }
+  .sk {
+    background: var(--white); border: 2px solid var(--coral-soft); border-radius: 24px;
+    display: flex; align-items: center; gap: 18px; padding: 0 22px; white-space: nowrap;
+  }
+  .sk .circle {
+    width: 86px; height: 86px; flex: none; border-radius: 50%; display: grid; place-items: center;
+    background: var(--peach); color: var(--coral);
+  }
+  .sk.o { border-color: var(--orange-soft); }
+  .sk.o .circle { background: #fff8ef; color: var(--orange); }
+  .sk .circle svg { width: 50px; height: 50px; }
+  .sk h3 { font-size: 27px; font-weight: 900; letter-spacing: .04em; }
+  .sk p { font-size: 16px; font-weight: 500; color: var(--sub); margin-top: 6px; line-height: 1.5; }
+  .sk.hl { border: 3px solid var(--orange); background: #fffaf4; position: relative; }
+  .sk.hl .circle { background: linear-gradient(150deg, var(--coral), var(--orange)); color: #fff; }
+  .sk.hl::after {
+    content: "どの仕事にも効く"; position: absolute; top: -16px; right: 20px; font-size: 15px; font-weight: 900;
+    color: #fff; background: var(--orange); padding: 4px 14px; border-radius: 999px; letter-spacing: .06em;
+  }
+  .s5 .msg { margin-top: 40px; }
+</style>
+</head>
+<body>
+
+<!-- アイコン（線画） -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-clock" viewBox="0 0 48 48"><circle cx="24" cy="25" r="16"/><path d="M24 16v9l6 4"/><path d="M19 5h10"/><path d="M24 5v4"/></symbol>
+    <symbol id="i-home" viewBox="0 0 48 48"><path d="M6 23 24 8l18 15"/><path d="M11 19v20h26V19"/><rect x="18" y="25" width="12" height="8" rx="1.5"/><path d="M16 39h16"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 48 48"><rect x="6" y="15" width="36" height="25" rx="4"/><path d="M17 15v-3a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3"/><path d="M6 25c11 4 25 4 36 0"/><path d="M21 27h6"/></symbol>
+    <symbol id="i-self" viewBox="0 0 48 48"><circle cx="19" cy="15" r="7"/><path d="M6 40c0-8 6-13 13-13 2 0 3.5.3 5 .9"/><circle cx="33" cy="32" r="7"/><path d="m38 37 5 5"/></symbol>
+    <symbol id="i-list" viewBox="0 0 48 48"><rect x="10" y="7" width="28" height="35" rx="4"/><path d="m16 18 2.5 2.5L23 16"/><path d="M27 18h5"/><path d="m16 28 2.5 2.5L23 26"/><path d="M27 28h5"/><path d="M16 36h16"/></symbol>
+    <symbol id="i-search" viewBox="0 0 48 48"><rect x="8" y="9" width="32" height="22" rx="3"/><path d="M4 37h40"/><circle cx="22" cy="19" r="5"/><path d="m26 23 4 4"/></symbol>
+    <symbol id="i-send" viewBox="0 0 48 48"><path d="M42 6 5 21l14 6 4 14 7-10 8 5z"/><path d="M19 27 42 6"/></symbol>
+    <symbol id="i-loop" viewBox="0 0 48 48"><path d="M38 19A15 15 0 0 0 11 15"/><path d="M10 7v8h8"/><path d="M10 29a15 15 0 0 0 27 4"/><path d="M38 41v-8h-8"/></symbol>
+    <symbol id="i-keyboard" viewBox="0 0 48 48"><rect x="4" y="13" width="40" height="23" rx="4"/><path d="M11 20h.01M17 20h.01M23 20h.01M29 20h.01M35 20h.01M14 26h.01M20 26h.01M26 26h.01M32 26h.01"/><path d="M15 31h18"/></symbol>
+    <symbol id="i-headset" viewBox="0 0 48 48"><path d="M9 28v-4a15 15 0 0 1 30 0v4"/><rect x="6" y="26" width="8" height="12" rx="3"/><rect x="34" y="26" width="8" height="12" rx="3"/><path d="M38 38c0 3.5-4 5-10 5h-3"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 48 48"><rect x="13" y="4" width="22" height="40" rx="5"/><path d="M21 39h6"/><path d="M24 29s-6.5-3.8-6.5-8a3.3 3.3 0 0 1 6.5-1.3 3.3 3.3 0 0 1 6.5 1.3c0 4.2-6.5 8-6.5 8z"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 48 48"><path d="M31 8 40 17 19 38H10v-9z"/><path d="m26 13 9 9"/><path d="M26 42h14"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 48 48"><path d="M12 5h17l9 9v29H12z"/><path d="M29 5v9h9"/><path d="M18 23h14M18 30h14M18 37h8"/></symbol>
+    <symbol id="i-layout" viewBox="0 0 48 48"><rect x="6" y="7" width="36" height="34" rx="4"/><path d="M6 17h36"/><path d="M19 17v24"/><path d="M25 25h11M25 32h7"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 48 48"><circle cx="18" cy="26" r="12"/><path d="M18 14v12h12"/><path d="M32 9a12 12 0 0 1 9 11h-9z"/></symbol>
+    <symbol id="i-ai" viewBox="0 0 48 48"><path d="M20 6l3.6 10.4L34 20l-10.4 3.6L20 34l-3.6-10.4L6 20l10.4-3.6z"/><path d="M36 28l1.8 5.2L43 35l-5.2 1.8L36 42l-1.8-5.2L29 35l5.2-1.8z"/><path d="M37 5v6M34 8h6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 48 48"><circle cx="18" cy="14" r="7"/><path d="M5 40c0-8 6-13 13-13 3 0 5.5.8 7.5 2.2"/><path d="m28 36 5 5 10-11"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 48 48"><circle cx="24" cy="15" r="8"/><path d="M9 42c0-9 6.5-15 15-15s15 6 15 15"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 48 48"><path d="M5 14a3 3 0 0 1 3-3h10l4 4h18a3 3 0 0 1 3 3v19a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3z"/><path d="M5 21h38"/></symbol>
+    <symbol id="i-calc" viewBox="0 0 48 48"><rect x="10" y="5" width="28" height="38" rx="4"/><rect x="15" y="10" width="18" height="8" rx="1.5"/><path d="M17 25h.01M24 25h.01M31 25h.01M17 31h.01M24 31h.01M31 31h.01M17 37h.01M24 37h.01M31 37h.01"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 48 48"><rect x="6" y="9" width="36" height="32" rx="4"/><path d="M6 18h36"/><path d="M15 5v8M33 5v8"/><path d="m17 29 5 5 9-9"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 48 48"><path d="M24 6C14 6 6 13.5 6 23c0 9 7 17 15.5 17 3 0 3.5-2.5 2.3-4.5-1.2-2-.2-4.5 2.7-4.5H31c6 0 11-4 11-10.5C42 12.5 34 6 24 6z"/><path d="M15 23h.01M19 15h.01M28 13h.01M35 20h.01"/></symbol>
+    <symbol id="i-video" viewBox="0 0 48 48"><rect x="5" y="9" width="38" height="26" rx="4"/><path d="M20 16v12l10-6z"/><path d="M14 42h20"/><path d="M24 35v7"/></symbol>
+    <symbol id="i-share" viewBox="0 0 48 48"><circle cx="12" cy="24" r="5"/><circle cx="35" cy="12" r="5"/><circle cx="35" cy="36" r="5"/><path d="m16.5 21.6 14-7.2M16.5 26.4l14 7.2"/></symbol>
+    <symbol id="i-web" viewBox="0 0 48 48"><rect x="4" y="8" width="40" height="32" rx="4"/><path d="M4 16h40"/><path d="M10 12h.01M15 12h.01"/><path d="m18 24-5 5 5 5M30 24l5 5-5 5M26 22l-4 14"/></symbol>
+    <symbol id="arr-r" viewBox="0 0 30 30"><path d="M10 5l10 10-10 10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="arr-d" viewBox="0 0 30 30"><path d="M5 10l10 10 10-10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="deck">
+
+  <!-- ===== 1 在宅ワークの3つの魅力 ===== -->
+  <section class="slide s1">
+    <div class="top"><div class="series">AIで変わる、在宅ワークの始め方</div><div class="no"><b>01</b> / 05</div></div>
+    <div class="head">
+      <div class="eyebrow">WHY REMOTE WORK</div>
+      <h2>在宅ワークの<span class="mk">3つの魅力</span></h2>
+      <p class="lead">暮らしに合わせて、働き方を「自分で選べる」のが在宅ワークです。</p>
+    </div>
+    <div class="body">
+      <div class="merits">
+        <div class="merit">
+          <span class="num">POINT 1</span>
+          <div class="circle"><svg class="ic"><use href="#i-clock"/></svg></div>
+          <h3>時間を選べる</h3>
+          <p>家事や育児のすきまなど、<br>自分のペースで働けます。</p>
+          <div class="chips"><span>朝だけ</span><span>夜だけ</span><span>週3日</span></div>
+        </div>
+        <div class="merit">
+          <span class="num">POINT 2</span>
+          <div class="circle"><svg class="ic"><use href="#i-home"/></svg></div>
+          <h3>場所を選べる</h3>
+          <p>通勤ゼロ。PCとネットがあれば<br>自宅でもカフェでも。</p>
+          <div class="chips"><span>自宅</span><span>実家</span><span>旅先</span></div>
+        </div>
+        <div class="merit">
+          <span class="num">POINT 3</span>
+          <div class="circle"><svg class="ic"><use href="#i-bag"/></svg></div>
+          <h3>経験を活かせる</h3>
+          <p>事務・接客・子育てなど、<br>これまでの経験が強みに。</p>
+          <div class="chips"><span>事務</span><span>接客</span><span>趣味</span></div>
+        </div>
+      </div>
+      <p class="msg"><span>3つの「<em>選べる</em>」が、在宅ワークのいちばんの魅力</span></p>
+    </div>
+  </section>
+
+  <!-- ===== 2 在宅ワークを始める5ステップ ===== -->
+  <section class="slide s2">
+    <div class="top"><div class="series">AIで変わる、在宅ワークの始め方</div><div class="no"><b>02</b> / 05</div></div>
+    <div class="head">
+      <div class="eyebrow">5 STEPS</div>
+      <h2>在宅ワークを始める<span class="mk">5ステップ</span></h2>
+      <p class="lead">いきなり応募せず、「準備 → 行動 → 成長」の順に進めるのが近道です。</p>
+    </div>
+    <div class="body">
+      <div class="phases">
+        <div class="phase p1">準 備</div>
+        <div class="phase p2">行 動</div>
+        <div class="phase p3">成 長</div>
+      </div>
+      <div class="flow">
+        <div class="step">
+          <span class="tag">STEP 1</span>
+          <div class="circle"><svg class="ic"><use href="#i-self"/></svg></div>
+          <h3>自己分析</h3>
+          <p>働ける時間や<br>得意なことを<br>書き出す</p>
+          <div class="q">週に何時間<br>働ける？</div>
+        </div>
+        <div class="arrow"><svg><use href="#arr-r"/></svg></div>
+        <div class="step">
+          <span class="tag">STEP 2</span>
+          <div class="circle"><svg class="ic"><use href="#i-list"/></svg></div>
+          <h3>スキル整理</h3>
+          <p>経験を<br>「できること」に<br>言いかえる</p>
+          <div class="q">何が<br>できる？</div>
+        </div>
+        <div class="arrow"><svg><use href="#arr-r"/></svg></div>
+        <div class="step o">
+          <span class="tag">STEP 3</span>
+          <div class="circle"><svg class="ic"><use href="#i-search"/></svg></div>
+          <h3>仕事探し</h3>
+          <p>求人サイトで<br>条件に合う案件を<br>比べる</p>
+          <div class="q">条件に<br>合う？</div>
+        </div>
+        <div class="arrow"><svg><use href="#arr-r"/></svg></div>
+        <div class="step o">
+          <span class="tag">STEP 4</span>
+          <div class="circle"><svg class="ic"><use href="#i-send"/></svg></div>
+          <h3>応 募</h3>
+          <p>相手に合わせた<br>提案文で<br>ていねいに応募</p>
+          <div class="q">伝わる<br>文章？</div>
+        </div>
+        <div class="arrow"><svg><use href="#arr-r"/></svg></div>
+        <div class="step">
+          <span class="tag">STEP 5</span>
+          <div class="circle"><svg class="ic"><use href="#i-loop"/></svg></div>
+          <h3>振り返り</h3>
+          <p>結果を見直し<br>次の応募や<br>学びに活かす</p>
+          <div class="q">次は<br>どうする？</div>
+        </div>
+      </div>
+      <div class="loop">
+        <svg viewBox="0 0 1264 104" width="1264" height="104">
+          <path d="M1158 6 V44 Q1158 72 1130 72 H134 Q106 72 106 44 V14" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round"/>
+          <path d="M94 24 106 8 118 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="label">振り返りを、次の自己分析へ。くり返すほど仕事が選べるように</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3 未経験から始めやすい仕事4選 ===== -->
+  <section class="slide s3">
+    <div class="top"><div class="series">AIで変わる、在宅ワークの始め方</div><div class="no"><b>03</b> / 05</div></div>
+    <div class="head">
+      <div class="eyebrow">BEGINNER FRIENDLY</div>
+      <h2>未経験から始めやすい<span class="mk">仕事4選</span></h2>
+      <p class="lead">特徴を比べて、自分に合いそうなものから試してみましょう。</p>
+    </div>
+    <div class="legend"><span style="display:flex;gap:4px"><i style="width:14px;height:14px;border-radius:50%;background:var(--coral);display:block"></i></span>＝目安（5段階）</div>
+    <div class="body">
+      <div class="jobs">
+        <div class="job">
+          <div>
+            <div class="hd">
+              <div class="circle"><svg class="ic"><use href="#i-keyboard"/></svg></div>
+              <div><small>JOB 01</small><h3>データ入力</h3></div>
+            </div>
+            <p>名簿や伝票の情報を<br>Excelやフォームに<br>正確に入力する仕事。</p>
+            <div class="who">コツコツ作業が好き</div>
+          </div>
+          <dl class="rate">
+            <div><dt>始めやすさ</dt><dd class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></dd></div>
+            <div><dt>時間の自由度</dt><dd class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></dd></div>
+            <div><dt>AIとの相性</dt><dd class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></dd></div>
+          </dl>
+        </div>
+        <div class="job o">
+          <div>
+            <div class="hd">
+              <div class="circle"><svg class="ic"><use href="#i-headset"/></svg></div>
+              <div><small>JOB 02</small><h3>オンライン秘書</h3></div>
+            </div>
+            <p>メール対応・日程調整・<br>資料準備など、<br>事務全般をサポート。</p>
+            <div class="who">事務・調整が得意</div>
+          </div>
+          <dl class="rate">
+            <div><dt>始めやすさ</dt><dd class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></dd></div>
+            <div><dt>時間の自由度</dt><dd class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></dd></div>
+            <div><dt>AIとの相性</dt><dd class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></dd></div>
+          </dl>
+        </div>
+        <div class="job o">
+          <div>
+            <div class="hd">
+              <div class="circle"><svg class="ic"><use href="#i-phone"/></svg></div>
+              <div><small>JOB 03</small><h3>SNSサポート</h3></div>
+            </div>
+            <p>投稿の作成・予約や<br>コメント返信など、<br>アカウント運用を手伝う。</p>
+            <div class="who">SNSをよく見る</div>
+          </div>
+          <dl class="rate">
+            <div><dt>始めやすさ</dt><dd class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></dd></div>
+            <div><dt>時間の自由度</dt><dd class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></dd></div>
+            <div><dt>AIとの相性</dt><dd class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></dd></div>
+          </dl>
+        </div>
+        <div class="job">
+          <div>
+            <div class="hd">
+              <div class="circle"><svg class="ic"><use href="#i-pen"/></svg></div>
+              <div><small>JOB 04</small><h3>ライティング</h3></div>
+            </div>
+            <p>ブログ記事や<br>商品紹介文など、<br>読みやすい文章を書く仕事。</p>
+            <div class="who">文章を書くのが好き</div>
+          </div>
+          <dl class="rate">
+            <div><dt>始めやすさ</dt><dd class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></dd></div>
+            <div><dt>時間の自由度</dt><dd class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></dd></div>
+            <div><dt>AIとの相性</dt><dd class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4 AI活用で変わる資料作成 ===== -->
+  <section class="slide s4">
+    <div class="top"><div class="series">AIで変わる、在宅ワークの始め方</div><div class="no"><b>04</b> / 05</div></div>
+    <div class="head">
+      <div class="eyebrow">BEFORE / AFTER</div>
+      <h2>AI活用で変わる<span class="mk">資料作成</span></h2>
+      <p class="lead">ゼロから作るのはAI、仕上げるのは人。役割を分けると、作業がぐっと軽くなります。</p>
+    </div>
+    <div class="body">
+      <div class="ba">
+        <div class="card before">
+          <div class="lbl"><b>BEFORE</b><span>すべて手作業</span></div>
+          <div class="rows">
+            <div class="row"><div class="ri"><svg class="ic"><use href="#i-doc"/></svg></div><div class="rt">文章整理<small>メモを読み返して要点をまとめる</small></div><span class="who">人</span></div>
+            <div class="row"><div class="ri"><svg class="ic"><use href="#i-layout"/></svg></div><div class="rt">構成づくり<small>話の順番やページ割りを考える</small></div><span class="who">人</span></div>
+            <div class="row"><div class="ri"><svg class="ic"><use href="#i-chart"/></svg></div><div class="rt">図解<small>図や表を一つずつ手で描く</small></div><span class="who">人</span></div>
+          </div>
+          <div class="time"><div class="tl"><span>作業時間（イメージ）</span><span>100%</span></div><div class="bar"><i></i></div></div>
+        </div>
+        <div class="mid">
+          <svg viewBox="0 0 104 104"><circle cx="52" cy="52" r="50" fill="var(--coral)"/><path d="M40 30l24 22-24 22" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>AIを<br>取り入れる</span>
+        </div>
+        <div class="card after">
+          <div class="lbl"><b>AFTER</b><span>AIで下案 → 人が仕上げ</span></div>
+          <div class="rows">
+            <div class="row ai"><div class="ri"><svg class="ic"><use href="#i-ai"/></svg></div><div class="rt">① 下案づくり<small>文章・構成・図解のたたき台を作成</small></div><span class="who">AI</span></div>
+            <div class="down"><svg><use href="#arr-d"/></svg></div>
+            <div class="row"><div class="ri"><svg class="ic"><use href="#i-check"/></svg></div><div class="rt">② 確認・調整<small>正しさを確かめ、言葉や見た目を整える</small></div><span class="who">人</span></div>
+          </div>
+          <div class="tip"><b>POINT</b>下案はそのまま使わず、必ず人の目でチェック</div>
+          <div class="time"><div class="tl"><span>作業時間（イメージ）</span><span>約 <b>半分</b> に</span></div><div class="bar"><i></i></div></div>
+        </div>
+      </div>
+      <p class="msg"><span>AIは「<em>下書き係</em>」。判断と仕上げは「<em>人</em>」の役割</span></p>
+    </div>
+  </section>
+
+  <!-- ===== 5 在宅ワークのスキルマップ ===== -->
+  <section class="slide s5">
+    <div class="top"><div class="series">AIで変わる、在宅ワークの始め方</div><div class="no"><b>05</b> / 05</div></div>
+    <div class="head">
+      <div class="eyebrow">SKILL MAP</div>
+      <h2>在宅ワークの<span class="mk">スキルマップ</span></h2>
+      <p class="lead">まずは1つから。組み合わせるほど、できる仕事の幅が広がります。</p>
+    </div>
+    <div class="body">
+      <div class="map">
+        <div class="cat c1"><small>BASIC</small>事務・<br>サポート</div>
+        <div class="sk"><div class="circle"><svg class="ic"><use href="#i-folder"/></svg></div><div><h3>事務</h3><p>データ入力・資料作成</p></div></div>
+        <div class="sk"><div class="circle"><svg class="ic"><use href="#i-calc"/></svg></div><div><h3>経理サポート</h3><p>請求書・経費の整理</p></div></div>
+        <div class="sk"><div class="circle"><svg class="ic"><use href="#i-cal"/></svg></div><div><h3>秘書業務</h3><p>日程調整・メール対応</p></div></div>
+
+        <div class="cat c2"><small>CREATIVE</small>制作</div>
+        <div class="sk o"><div class="circle"><svg class="ic"><use href="#i-palette"/></svg></div><div><h3>デザイン</h3><p>バナー・資料デザイン</p></div></div>
+        <div class="sk o"><div class="circle"><svg class="ic"><use href="#i-video"/></svg></div><div><h3>動画編集</h3><p>カット・テロップ入れ</p></div></div>
+        <div class="sk o"><div class="circle"><svg class="ic"><use href="#i-pen"/></svg></div><div><h3>ライティング</h3><p>記事・紹介文の作成</p></div></div>
+
+        <div class="cat c3"><small>DIGITAL</small>発信・<br>デジタル</div>
+        <div class="sk"><div class="circle"><svg class="ic"><use href="#i-share"/></svg></div><div><h3>SNS運用</h3><p>投稿作成・分析</p></div></div>
+        <div class="sk"><div class="circle"><svg class="ic"><use href="#i-web"/></svg></div><div><h3>Web制作</h3><p>ノーコードでサイト作成</p></div></div>
+        <div class="sk hl"><div class="circle"><svg class="ic"><use href="#i-ai"/></svg></div><div><h3>AI活用</h3><p>下案づくり・効率化</p></div></div>
+      </div>
+      <p class="msg"><span>得意な1つ ＋ <em>AI活用</em> で、在宅ワークの可能性はもっと広がる</span></p>
+    </div>
+  </section>
+
+</div>
+<script>
+  // ?p=3 で3枚目だけを表示（PNG書き出し用）
+  const p = new URLSearchParams(location.search).get("p");
+  if (p) {
+    document.body.classList.add("export");
+    document.querySelectorAll(".slide")[Number(p) - 1].classList.add("on");
+  }
+</script>
+</body>
+</html>
