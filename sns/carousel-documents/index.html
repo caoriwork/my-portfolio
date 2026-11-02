@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>資料制作ポートフォリオ（Instagramカルーセル）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1b2e4e;
+    --navy-2: #24395e;
+    --cream: #f7f4ec;
+    --paper: #fcfbf7;
+    --gold: #c8b88a;
+    --gold-soft: #e3d9bd;
+    --ink: #1b2e4e;
+    --muted: #5d6a80;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #d9d5cc; font-family: "Noto Sans JP", sans-serif; color: var(--ink); }
+  .deck { display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 40px 0; }
+  body.export .deck { padding: 0; gap: 0; }
+  body.export .slide:not(.on) { display: none; }
+
+  .slide {
+    position: relative; width: 1080px; height: 1350px; overflow: hidden;
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    font-variant-numeric: lining-nums;
+  }
+  /* 既存フィードと共通の上下ネイビー帯 */
+  .slide::before, .slide::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 56px; background: var(--navy); z-index: 2;
+  }
+  .slide::before { top: 0; }
+  .slide::after { bottom: 0; }
+  .slide.dark { background: var(--navy); color: var(--cream); }
+  .slide.dark::before, .slide.dark::after { background: #13223b; }
+
+  .frame {
+    position: absolute; inset: 104px 80px; border: 2px solid var(--gold-soft);
+    background: var(--paper);
+  }
+  .dark .frame { background: transparent; border-color: rgba(200, 184, 138, .45); }
+
+  .inner { position: absolute; inset: 104px 80px; padding: 72px 64px 0; display: flex; flex-direction: column; }
+
+  .meta {
+    position: absolute; left: 80px; right: 80px; bottom: 64px; z-index: 3;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: "Cormorant Garamond", serif; font-size: 22px; letter-spacing: .12em; color: var(--muted);
+  }
+  .dark .meta { color: rgba(247, 244, 236, .6); }
+
+  .label {
+    font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 26px; letter-spacing: .3em;
+    color: #a8935a; display: flex; align-items: center; gap: 18px;
+  }
+  .label::after { content: ""; width: 56px; height: 1.5px; background: var(--gold); }
+  .dark .label { color: var(--gold); }
+
+  .mincho { font-family: "Shippori Mincho B1", serif; }
+  h2 { font-family: "Shippori Mincho B1", serif; font-weight: 800; font-size: 60px; line-height: 1.4; letter-spacing: .04em; margin-top: 22px; }
+  .lead { font-size: 26px; line-height: 1.8; color: var(--muted); margin-top: 18px; letter-spacing: .04em; }
+  .dark .lead { color: rgba(247, 244, 236, .78); }
+
+  /* ---------- 1 表紙 ---------- */
+  .cover .inner { padding: 0; align-items: center; justify-content: center; text-align: center; }
+  .cover .pill {
+    border: 1.5px solid var(--gold); color: var(--gold); border-radius: 999px;
+    padding: 12px 40px; font-size: 26px; letter-spacing: .3em; font-family: "Shippori Mincho B1", serif; font-weight: 700;
+  }
+  .cover h1 {
+    font-family: "Shippori Mincho B1", serif; font-weight: 800; font-size: 104px; line-height: 1.45;
+    letter-spacing: .06em; margin-top: 64px;
+  }
+  .cover .rule { width: 88px; height: 2px; background: var(--gold); margin: 64px auto 52px; }
+  .cover .sub { font-size: 30px; line-height: 1.9; letter-spacing: .08em; color: rgba(247, 244, 236, .85); }
+  .cover .sub b { color: var(--gold); font-weight: 500; }
+  .cover .swipe { position: absolute; bottom: 64px; right: 64px; font-family: "Cormorant Garamond", serif; font-size: 26px; letter-spacing: .2em; color: var(--gold); display: flex; align-items: center; gap: 14px; }
+  .cover .swipe::after { content: ""; width: 64px; height: 1.5px; background: var(--gold); }
+
+  /* ---------- 2 対応内容 ---------- */
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 64px; }
+  .card { background: var(--cream); border: 1.5px solid var(--gold-soft); padding: 40px 32px 38px; min-height: 290px; }
+  .card svg { width: 44px; height: 44px; stroke: #a8935a; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .card h3 { font-family: "Shippori Mincho B1", serif; font-weight: 800; font-size: 36px; margin-top: 22px; letter-spacing: .06em; }
+  .card p { font-size: 23px; line-height: 1.75; color: var(--muted); margin-top: 14px; }
+  .tools { margin-top: 48px; text-align: center; font-size: 22px; letter-spacing: .08em; color: var(--muted); }
+  .tools span { display: inline-block; border-bottom: 1.5px solid var(--gold); padding: 0 6px 6px; }
+
+  /* ---------- 3-5 事例 ---------- */
+  .work .inner { padding: 0 0 24px; justify-content: center; }
+  .work .head { padding: 0 56px; }
+  .work h2 { font-size: 54px; }
+  .shot {
+    margin: 60px -40px 0; background: #fff; border: 1px solid #e6e1d4;
+    box-shadow: 0 18px 40px rgba(27, 46, 78, .14); line-height: 0;
+  }
+  .shot img { width: 100%; display: block; }
+  .points { padding: 0 56px; margin-top: 68px; display: grid; gap: 26px; }
+  .pt { display: grid; grid-template-columns: 112px 1fr; align-items: baseline; font-size: 25px; line-height: 1.7; }
+  .pt em {
+    font-style: normal; font-family: "Shippori Mincho B1", serif; font-weight: 800; font-size: 22px; letter-spacing: .1em;
+    color: #fff; background: var(--navy); text-align: center; padding: 4px 0; border-radius: 2px;
+  }
+  .pt.after em { background: #a8935a; }
+  .pt span { padding-left: 22px; }
+  .note { padding: 0 56px; margin-top: 18px; font-size: 18px; color: #8b93a3; }
+
+  /* マニュアルは重ねて「冊子感」を出す */
+  .stack { position: relative; height: 680px; margin: 60px 0 0; }
+  .stack .pg {
+    position: absolute; width: 700px; background: #fff; border: 1px solid #e6e1d4;
+    box-shadow: 0 16px 36px rgba(27, 46, 78, .16); line-height: 0;
+  }
+  .stack .pg img { width: 100%; display: block; }
+  .stack .p1 { left: 0; top: 0; transform: rotate(-2.5deg); }
+  .stack .p2 { left: 110px; top: 140px; transform: rotate(1.2deg); }
+  .stack .p3 { right: -20px; top: 280px; }
+
+  /* ---------- 6 強み ---------- */
+  .num { display: flex; align-items: baseline; gap: 18px; margin-top: 96px; }
+  .num b { font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 260px; line-height: .9; color: var(--gold); }
+  .num i { font-style: normal; font-family: "Shippori Mincho B1", serif; font-weight: 700; font-size: 56px; color: var(--gold); }
+  .num-cap { font-size: 30px; letter-spacing: .1em; margin-top: 26px; }
+  .divider { height: 1px; background: rgba(200, 184, 138, .45); margin: 76px 0 68px; }
+  .strengths { display: grid; gap: 60px; }
+  .st h3 { font-family: "Shippori Mincho B1", serif; font-weight: 800; font-size: 38px; letter-spacing: .06em; display: flex; gap: 20px; align-items: baseline; }
+  .st h3 small { font-family: "Cormorant Garamond", serif; font-size: 30px; color: var(--gold); font-weight: 600; }
+  .st p { font-size: 25px; line-height: 1.8; color: rgba(247, 244, 236, .78); margin-top: 10px; padding-left: 52px; }
+
+  /* ---------- 7 お問い合わせ ---------- */
+  .contact .inner { text-align: center; align-items: center; }
+  .contact .label { justify-content: center; }
+  .contact .label::before { content: ""; width: 56px; height: 1.5px; background: var(--gold); }
+  .wants { margin-top: 52px; display: grid; gap: 18px; width: 100%; }
+  .wants li {
+    list-style: none; font-size: 27px; letter-spacing: .04em; padding: 22px 0;
+    border-bottom: 1px dashed var(--gold-soft);
+  }
+  .wants li:first-child { border-top: 1px dashed var(--gold-soft); }
+  .cta { margin-top: 64px; width: 100%; background: var(--navy); color: var(--cream); padding: 52px 40px 48px; }
+  .cta .t { font-family: "Shippori Mincho B1", serif; font-weight: 800; font-size: 40px; letter-spacing: .06em; line-height: 1.5; }
+  .cta .acc { font-family: "Cormorant Garamond", serif; font-size: 34px; letter-spacing: .1em; color: var(--gold); margin-top: 14px; }
+  .cta .dm { margin-top: 26px; padding-top: 24px; border-top: 1px solid rgba(200, 184, 138, .4); font-size: 24px; color: rgba(247, 244, 236, .82); }
+  .cta .dm b { color: var(--gold); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- 1｜表紙 -->
+  <section class="slide dark cover">
+    <div class="frame"></div>
+    <div class="inner">
+      <div class="pill">資料制作</div>
+      <h1>伝わる資料を、<br>つくります。</h1>
+      <div class="rule"></div>
+      <p class="sub">提案書・業務フロー・マニュアル<br><b>事務歴27年</b>の実務目線で整理します</p>
+      <div class="swipe">SWIPE</div>
+    </div>
+    <div class="meta"><span>@caori_support</span><span>01 / 07</span></div>
+  </section>
+
+  <!-- 2｜対応内容 -->
+  <section class="slide">
+    <div class="frame"></div>
+    <div class="inner">
+      <div class="label">SERVICE</div>
+      <h2>こんな資料を、<br>おつくりします</h2>
+      <div class="cards">
+        <div class="card">
+          <svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h5"/></svg>
+          <h3>提案書</h3>
+          <p>伝えたいことを、<br>相手が判断しやすい順番に。</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M12 16v4M8 20h8M7 12l3-3 2 2 4-4"/></svg>
+          <h3>スライド</h3>
+          <p>報告や説明の資料を、<br>ひと目で分かる形に。</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="5" rx="1"/><rect x="14" y="16" width="7" height="5" rx="1"/><path d="M6.5 8v5.5h11V16"/></svg>
+          <h3>業務フロー図</h3>
+          <p>担当と分岐を整理して、<br>業務の流れを一枚に。</p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24"><path d="M4 5c3-1 6-1 8 1 2-2 5-2 8-1v14c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6v14"/></svg>
+          <h3>マニュアル</h3>
+          <p>誰が読んでも、<br>同じ手順で進められる形に。</p>
+        </div>
+      </div>
+      <p class="tools"><span>PowerPoint ・ Googleスライド ・ Canva に対応</span></p>
+    </div>
+    <div class="meta"><span>@caori_support</span><span>02 / 07</span></div>
+  </section>
+
+  <!-- 3｜制作事例① 業務フロー -->
+  <section class="slide work">
+    <div class="frame"></div>
+    <div class="inner">
+      <div class="head">
+        <div class="label">WORKS 01｜業務フロー図</div>
+        <h2>複雑な流れを、一枚で。</h2>
+      </div>
+      <div class="shot"><img src="../../work/images/work-approval-flow.png" alt="申請・承認の業務フロー図"></div>
+      <div class="points">
+        <div class="pt"><em>課題</em><span>誰が・どこで判断するのかが分かりにくい</span></div>
+        <div class="pt after"><em>工夫</em><span>担当者ごとのレーンで、分岐と差し戻しまで整理</span></div>
+      </div>
+    </div>
+    <div class="meta"><span>@caori_support</span><span>03 / 07</span></div>
+  </section>
+
+  <!-- 4｜制作事例② データ比較 -->
+  <section class="slide work">
+    <div class="frame"></div>
+    <div class="inner">
+      <div class="head">
+        <div class="label">WORKS 02｜改善効果の資料</div>
+        <h2>改善の成果を、数字で伝える。</h2>
+      </div>
+      <div class="shot"><img src="../../work/images/work-improvement-effect.png" alt="業務改善の導入効果スライド"></div>
+      <div class="points">
+        <div class="pt"><em>課題</em><span>「良くなった」が、言葉だけでは伝わらない</span></div>
+        <div class="pt after"><em>工夫</em><span>改善前後をグラフで並べ、削減率をひと目で</span></div>
+      </div>
+      <p class="note">※掲載資料の数値は、ポートフォリオ用の架空データです</p>
+    </div>
+    <div class="meta"><span>@caori_support</span><span>04 / 07</span></div>
+  </section>
+
+  <!-- 5｜制作事例③ マニュアル -->
+  <section class="slide work">
+    <div class="frame"></div>
+    <div class="inner">
+      <div class="head">
+        <div class="label">WORKS 03｜業務マニュアル</div>
+        <h2>誰がやっても、同じ品質に。</h2>
+      </div>
+      <div class="stack">
+        <div class="pg p1"><img src="../../work/images/ppt-gallery/instagram-01.jpg" alt="マニュアル表紙"></div>
+        <div class="pg p2"><img src="../../work/images/ppt-gallery/instagram-03.jpg" alt="全体の流れページ"></div>
+        <div class="pg p3"><img src="../../work/images/ppt-gallery/instagram-04.jpg" alt="手順ページ"></div>
+      </div>
+      <div class="points">
+        <div class="pt"><em>課題</em><span>担当者によって、手順や仕上がりがばらつく</span></div>
+        <div class="pt after"><em>工夫</em><span>全体の流れ → 手順 → チェックの順で、迷わない構成に</span></div>
+      </div>
+    </div>
+    <div class="meta"><span>@caori_support</span><span>05 / 07</span></div>
+  </section>
+
+  <!-- 6｜私の強み -->
+  <section class="slide dark">
+    <div class="frame"></div>
+    <div class="inner">
+      <div class="label">STRENGTH</div>
+      <div class="num"><b>27</b><i>年</i></div>
+      <p class="num-cap mincho">事務職として、現場で働いてきた経験</p>
+      <div class="divider"></div>
+      <div class="strengths">
+        <div class="st">
+          <h3><small>01</small>つくる前に、整理する</h3>
+          <p>見た目を整える前に、業務の流れと<br>伝える目的を整理します。</p>
+        </div>
+        <div class="st">
+          <h3><small>02</small>使う人の目線で、つくる</h3>
+          <p>現場の実務が分かるから、<br>読まれて、使われる資料になります。</p>
+        </div>
+      </div>
+    </div>
+    <div class="meta"><span>@caori_support</span><span>06 / 07</span></div>
+  </section>
+
+  <!-- 7｜お問い合わせ -->
+  <section class="slide contact">
+    <div class="frame"></div>
+    <div class="inner">
+      <div class="label">CONTACT</div>
+      <h2>資料づくり、<br>ご相談ください。</h2>
+      <ul class="wants">
+        <li>社内資料を、もっと見やすくしたい</li>
+        <li>業務の流れを、図にまとめたい</li>
+        <li>引き継ぎ用のマニュアルを整えたい</li>
+      </ul>
+      <div class="cta">
+        <p class="t">ほかの制作実績は<br>プロフィールのリンクから</p>
+        <p class="acc">@caori_support</p>
+        <p class="dm">ご相談は、DMで<b>「資料」</b>とお送りください</p>
+      </div>
+    </div>
+    <div class="meta"><span>@caori_support</span><span>07 / 07</span></div>
+  </section>
+
+</div>
+<script>
+  // ?p=3 で3枚目だけを表示（PNG書き出し用）
+  const p = new URLSearchParams(location.search).get("p");
+  if (p) {
+    document.body.classList.add("export");
+    document.querySelectorAll(".slide")[Number(p) - 1].classList.add("on");
+  }
+</script>
+</body>
+</html>
