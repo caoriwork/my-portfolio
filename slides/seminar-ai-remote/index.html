@@ -257,6 +257,65 @@
     color: #fff; background: var(--orange); padding: 4px 14px; border-radius: 999px; letter-spacing: .06em;
   }
   .s5 .msg { margin-top: 40px; }
+
+  /* ---------- 0 表紙 ---------- */
+  .cover .badge {
+    position: absolute; top: 56px; left: 100px; display: flex; align-items: center; gap: 12px;
+    font-size: 19px; font-weight: 900; letter-spacing: .18em; color: var(--coral);
+  }
+  .cover .badge::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--coral); }
+  .cover .main { position: absolute; top: 150px; left: 100px; width: 800px; }
+  .cover .pill {
+    display: inline-block; font-size: 22px; font-weight: 900; letter-spacing: .14em; color: #fff;
+    background: linear-gradient(90deg, var(--coral), var(--orange)); padding: 8px 26px; border-radius: 999px;
+  }
+  .cover h1 { font-size: 88px; font-weight: 900; line-height: 1.32; letter-spacing: .03em; margin-top: 34px; }
+  .cover h1 .ai { color: var(--coral); }
+  .cover h1 .mk { background: linear-gradient(transparent 64%, var(--orange-soft) 64%); padding: 0 4px; }
+  .cover .sub { font-size: 29px; font-weight: 700; color: var(--sub); letter-spacing: .06em; margin-top: 28px; line-height: 1.6; }
+  .cover .topics { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+  .cover .topics span {
+    font-size: 19px; font-weight: 700; color: var(--coral-deep); background: var(--white);
+    border: 2px solid var(--coral-soft); padding: 6px 18px; border-radius: 999px;
+  }
+  .cover .topics span:nth-child(even) { color: #c96f12; border-color: var(--orange-soft); }
+  .cover .art { position: absolute; top: 130px; right: 70px; width: 560px; height: 600px; }
+  .cover .ring {
+    position: absolute; left: 50%; top: 50%; width: 420px; height: 420px; transform: translate(-50%, -50%);
+    border-radius: 50%; background: var(--peach); border: 3px dashed rgba(239, 111, 108, .4);
+  }
+  .cover .ring::after {
+    content: ""; position: absolute; inset: 44px; border-radius: 50%; background: var(--white);
+    box-shadow: 0 12px 0 var(--coral-soft);
+  }
+  .cover .pc { position: absolute; left: 50%; top: 50%; width: 230px; height: 230px; transform: translate(-50%, -52%); color: var(--coral); z-index: 1; }
+  .cover .bub {
+    position: absolute; width: 112px; height: 112px; border-radius: 50%; background: var(--white);
+    display: grid; place-items: center; z-index: 2; border: 2px solid var(--coral-soft); color: var(--coral);
+    box-shadow: 0 8px 0 var(--coral-soft);
+  }
+  .cover .bub.o { color: var(--orange); border-color: var(--orange-soft); box-shadow: 0 8px 0 var(--orange-soft); }
+  .cover .bub svg { width: 58px; height: 58px; }
+  .cover .bub span {
+    position: absolute; bottom: -38px; left: 50%; transform: translateX(-50%); white-space: nowrap;
+    font-size: 17px; font-weight: 900; color: var(--sub); letter-spacing: .06em;
+  }
+  .cover .b1 { left: 10px; top: 40px; } .cover .b2 { right: 10px; top: 40px; }
+  .cover .b3 { left: 10px; bottom: 70px; } .cover .b4 { right: 10px; bottom: 70px; }
+  .cover .b4 { background: linear-gradient(150deg, var(--coral), var(--orange)); color: #fff; border: 0; }
+  .cover .spark { position: absolute; color: var(--orange); }
+  .cover .info {
+    position: absolute; left: 100px; right: 100px; bottom: 72px; height: 118px;
+    background: var(--white); border: 2px solid var(--coral-soft); border-radius: 28px;
+    display: grid; grid-template-columns: repeat(3, 1fr); align-items: center;
+  }
+  .cover .info div { display: flex; align-items: center; justify-content: center; gap: 18px; font-size: 25px; font-weight: 700; }
+  .cover .info div + div { border-left: 2px dashed var(--coral-soft); }
+  .cover .info b {
+    font-size: 16px; font-weight: 900; letter-spacing: .12em; color: #fff; background: var(--coral);
+    padding: 4px 14px; border-radius: 8px;
+  }
+  .cover .info div:nth-child(2) b { background: var(--orange); }
 </style>
 </head>
 <body>
@@ -289,12 +348,39 @@
     <symbol id="i-video" viewBox="0 0 48 48"><rect x="5" y="9" width="38" height="26" rx="4"/><path d="M20 16v12l10-6z"/><path d="M14 42h20"/><path d="M24 35v7"/></symbol>
     <symbol id="i-share" viewBox="0 0 48 48"><circle cx="12" cy="24" r="5"/><circle cx="35" cy="12" r="5"/><circle cx="35" cy="36" r="5"/><path d="m16.5 21.6 14-7.2M16.5 26.4l14 7.2"/></symbol>
     <symbol id="i-web" viewBox="0 0 48 48"><rect x="4" y="8" width="40" height="32" rx="4"/><path d="M4 16h40"/><path d="M10 12h.01M15 12h.01"/><path d="m18 24-5 5 5 5M30 24l5 5-5 5M26 22l-4 14"/></symbol>
+    <symbol id="i-laptop" viewBox="0 0 48 48"><rect x="8" y="9" width="32" height="22" rx="3"/><path d="M3 37h42l-3 4H6z"/><path d="M24 14l1.6 4.4L30 20l-4.4 1.6L24 26l-1.6-4.4L18 20l4.4-1.6z"/></symbol>
     <symbol id="arr-r" viewBox="0 0 30 30"><path d="M10 5l10 10-10 10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="arr-d" viewBox="0 0 30 30"><path d="M5 10l10 10 10-10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </defs>
 </svg>
 
 <div class="deck">
+
+  <!-- ===== 0 表紙 ===== -->
+  <section class="slide cover">
+    <div class="badge">AI × REMOTE WORK SEMINAR</div>
+    <div class="main">
+      <span class="pill">はじめての在宅ワーク講座</span>
+      <h1><span class="ai">AI</span>で変わる、<br><span class="mk">在宅ワーク</span>の<br>始め方</h1>
+      <p class="sub">未経験からでも大丈夫。<br>AIを味方に、自分らしい働き方を見つけよう。</p>
+      <div class="topics"><span>3つの魅力</span><span>5ステップ</span><span>おすすめの仕事</span><span>AI活用術</span><span>スキルマップ</span></div>
+    </div>
+    <div class="art">
+      <div class="ring"></div>
+      <svg class="ic pc" style="stroke-width:1.7"><use href="#i-laptop"/></svg>
+      <div class="bub b1"><svg class="ic"><use href="#i-clock"/></svg><span>時間</span></div>
+      <div class="bub o b2"><svg class="ic"><use href="#i-home"/></svg><span>場所</span></div>
+      <div class="bub o b3"><svg class="ic"><use href="#i-bag"/></svg><span>経験</span></div>
+      <div class="bub b4"><svg class="ic"><use href="#i-ai"/></svg><span>AI活用</span></div>
+      <svg class="ic spark" style="left:250px;top:-6px;width:44px;height:44px"><use href="#i-ai"/></svg>
+      <svg class="ic spark" style="left:258px;bottom:22px;width:34px;height:34px;color:var(--coral)"><use href="#i-ai"/></svg>
+    </div>
+    <div class="info">
+      <div><b>日 時</b>2026.12.12（土）10:00〜</div>
+      <div><b>形 式</b>オンライン（Zoom）</div>
+      <div><b>参加費</b>無料</div>
+    </div>
+  </section>
 
   <!-- ===== 1 在宅ワークの3つの魅力 ===== -->
   <section class="slide s1">
